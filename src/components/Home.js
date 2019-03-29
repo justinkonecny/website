@@ -22,23 +22,33 @@ class Home extends Component {
         return (
             <div>
                 <div className={this.state.isMobile ? "intro-mobile" : "intro"}>
-                    <div className="intro-text">
+                    <div className={this.state.isMobile ? "intro-text-mobile" : "intro-text"}>
                         <h2>Hi, I'm</h2>
                         <h1>Justin Konecny.</h1>
-                        {/*<p style={{ 'color': '#828282', 'marginLeft': 0 }}>I'm a <span style={{ 'fontWeight': '700' }}>Cybersecurity</span> major at*/}
-                            {/*<span style={{ 'fontWeight': '700' }}> Northeastern University</span>, currently pursuing a*/}
-                            {/*career relating to <span style={{ 'fontWeight': '700' }}>software engineering</span>.</p>*/}
+                        <p style={{ 'color': '#828282' }}>
+                            I'm a <span style={{ 'fontWeight': '700' }}>Cybersecurity</span> major at
+                            <span style={{ 'fontWeight': '700' }}> Northeastern University</span>, currently
+                            pursuing a career in <span style={{ 'fontWeight': '700' }}>software engineering</span>.
+                        </p>
                     </div>
                     <ProfileImage isMobile={this.state.isMobile} />
                 </div>
-                {/*<div className="body">*/}
-                    {/*<div className="about-me">*/}
-                        {/*<h3>About Me</h3>*/}
-                        {/*<h4>Education</h4>*/}
-                        {/*<p>Northeastern University (Boston, MA)</p>*/}
-                        {/*<p>BS Cybersecurity w/ Concentration Cyber Operations</p>*/}
-                    {/*</div>*/}
-                {/*</div>*/}
+                <div className={this.state.isMobile ? "body-mobile" : "body"}>
+                    <div className="about-me">
+                        <h3>About Me</h3>
+                        <p>
+                            Some words about me.
+                        </p>
+                        <h3>Professional Experience</h3>
+                        <p>
+                            Some work stuff here.
+                        </p>
+                        <h3>Software Projects</h3>
+                        <p>
+                            Some project stuff here.
+                        </p>
+                    </div>
+                </div>
             </div>
         );
     }
