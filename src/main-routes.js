@@ -6,7 +6,7 @@ import Login from './components/Login';
 export function MainRoutes() {
     return (
         <Switch>
-            <Route exact path="/" component={Home}/>
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login}/>
             <Route path="*" render={() => (<Redirect to="/"/>)}/>
         </Switch>

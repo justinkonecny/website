@@ -1,0 +1,25 @@
+.nav {
+    background-color: #323232;
+    color: #ffffff;
+    padding: 10px;
+    position: fixed;
+    width: 100vw;
+    top: 0;
+}
+
+.hide {
+    animation-name: fadeOut;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.15s;
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
