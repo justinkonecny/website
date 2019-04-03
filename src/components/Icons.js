@@ -19,7 +19,7 @@ class Icons extends Component {
             return null;
         } else {
             return (
-                <div style={{'margin': '75px 0'}}>
+                <div style={{'margin': '75px 0 0 0'}}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
                         <img className='icon' src={github} alt='github' style={this.iconStyle}/>
                     </a>
