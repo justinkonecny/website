@@ -21,16 +21,16 @@ class Icons extends Component {
             return (
                 <div style={{'margin': '75px 0 0 0'}}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
-                        <img className='icon' src={github} alt='github' style={this.iconStyle}/>
+                        <img src={github} alt='github' style={this.iconStyle}/>
                     </a>
                     <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
-                        <img className='icon' src={linkedin} alt='linkedin' style={this.iconStyle}/>
+                        <img src={linkedin} alt='linkedin' style={this.iconStyle}/>
                     </a>
                     <a href='https://www.facebook.com/konecnyj' target='_blank' rel='noopener noreferrer'>
-                        <img className='icon' src={facebook} alt='facebook' style={this.iconStyle}/>
+                        <img src={facebook} alt='facebook' style={this.iconStyle}/>
                     </a>
                     <a href='https://www.instagram.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
-                        <img className='icon' src={instagram} alt='instagram' style={this.iconStyle}/>
+                        <img src={instagram} alt='instagram' style={this.iconStyle}/>
                     </a>
                 </div>
             );

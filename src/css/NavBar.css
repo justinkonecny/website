@@ -1,8 +1,36 @@
+.nav-inner {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    margin: auto 15px;
+}
+
+.nav-link {
+    height: 100%;
+    display: flex;
+}
+
+.nav-link:hover {
+    background-color: #8c8c8c;
+    cursor: pointer;
+}
+
+.main-link {
+    background-color: #FF5157;
+}
+
+.main-link:hover {
+    background-color: rgb(255, 116, 119);
+}
+
 .nav {
+    text-align: left;
     background-color: #323232;
     color: #ffffff;
-    padding: 10px;
+    display: flex;
+    align-items: center;
     position: fixed;
+    height: 50px;
     width: 100vw;
     transform: translateY(0px);
     transition-timing-function: ease-in-out;

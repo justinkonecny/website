@@ -5,7 +5,7 @@ class NavBar extends Component {
     render() {
         return (
             <div className={this.props.display ? 'nav' : 'nav hide'}>
-                <p>NAV</p>
+                {this.props.links}
             </div>
         );
     }
