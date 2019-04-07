@@ -1,17 +1,24 @@
 .nav-inner {
-    text-decoration: none;
     color: white;
     font-size: 14px;
     margin: auto 15px;
 }
 
+.nav-inner:hover {
+    color: #ffd1cf;
+}
+
+.nav-inner-main:hover {
+    color: white;
+}
+
 .nav-link {
+    text-decoration: none;
     height: 100%;
     display: flex;
 }
 
 .nav-link:hover {
-    background-color: #8c8c8c;
     cursor: pointer;
 }
 
@@ -20,7 +27,7 @@
 }
 
 .main-link:hover {
-    background-color: rgb(255, 116, 119);
+    background-color: #ff6269;
 }
 
 .nav {

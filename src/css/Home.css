@@ -11,13 +11,19 @@ h2 {
 }
 
 h3 {
-    margin: 10vh 0 5px 0;
+    margin: 10vh 0 0 0;
     font-size: 30px;
 }
 
 h4 {
-    margin: 4px 8px;
-    font-size: 25px;
+    margin: 6px 0;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+h5 {
+    margin: 6px 0 10px 0;
+    font-size: 17px;
     font-weight: 500;
 }
 
@@ -28,10 +34,11 @@ p {
 
 .intro {
     background-color: #f0f0f0;
-    margin-top: 40px;
+
     display: flex;
     width: 100%;
     min-height: 500px;
+    padding-top: 50px;
 }
 
 .intro-mobile {
@@ -73,6 +80,33 @@ p {
     margin: 10vw;
 }
 
-.about-me {
+.body-info {
     text-align: left;
+}
+
+.right {
+    float: right;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.list {
+    margin: 10px 0;
+}
+
+.list li {
+    margin: 8px;
+}
+
+.skills {
+    margin: 30px 0 0 0;
+}
+
+.skill {
+    margin: 0 4px;
+    padding: 8px;
+    font-size: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
 }

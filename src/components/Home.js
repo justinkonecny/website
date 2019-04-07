@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
-import '../css/Home.css';
+import resume from '../resources/resume.pdf';
 import Icons from './Icons.js';
 import NavBar from './NavBar';
+import '../css/Home.css';
 
 class Home extends Component {
     constructor(props) {
@@ -11,10 +12,22 @@ class Home extends Component {
         this.resizeListener = this.resizeListener.bind(this);
         this.state = {isMobile: false, showNavBar: true};
         this.mobileThreshold = 850;
+        this.skillProficient = {'border-color': '#125eff'};
+        this.skillKnowledgeable = {'border-color': '#81a4ff'};
+        this.skillFamiliar = {'border-color': '#a5c5ff'};
         this.navLinks = [
-            <div className='nav-link main-link'><a className='nav-inner' href='#about-me'>About Me</a></div>,
-            <div className='nav-link'><a className='nav-inner' href='#experience'>Professional Experience</a></div>,
-            <div className='nav-link'><a className='nav-inner' href='#projects'>Software Projects</a></div>
+            <a className='nav-link main-link' href='#about-me'>
+                <div className='nav-inner nav-inner-main'>About Me</div>
+            </a>,
+            <a className='nav-link' href='#experience'>
+                <div className='nav-inner'>Experience</div>
+            </a>,
+            <a className='nav-link' href='#projects'>
+                <div className='nav-inner'>Projects</div>
+            </a>,
+            <a className='nav-link' href={resume}>
+                <div className='nav-inner'>Resume</div>
+            </a>
         ];
     }
 
@@ -71,21 +84,39 @@ class Home extends Component {
                     <ProfileImage isMobile={this.state.isMobile}/>
                 </div>
                 <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
-                    <div className='about-me'>
+                    <div className='body-info'>
                         <h3 id='about-me'>About Me</h3>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Libero nunc consequat interdum varius sit amet mattis
-                            vulputate. Donec ac odio tempor orci dapibus ultrices. Consectetur a erat nam at lectus urna
-                            duis convallis convallis. Nisi porta lorem mollis aliquam ut porttitor leo a diam. Feugiat
-                            nibh sed pulvinar proin. Turpis in eu mi bibendum neque egestas congue quisque. Adipiscing
-                            elit duis tristique sollicitudin nibh sit. Nisi lacus sed viverra tellus in. Amet luctus
-                            venenatis lectus magna fringilla urna porttitor rhoncus. Ridiculus mus mauris vitae
-                            ultricies. Consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis. Volutpat
-                            odio facilisis mauris sit amet massa vitae. Viverra adipiscing at in tellus integer feugiat
-                            scelerisque varius morbi.
-                        </p>
+                        <hr/>
+                        <h4>Northeastern University<span className='right'>Boston, MA</span></h4>
+                        <h5>Cybersecurity, B.S.<span className='right'>Expected: 2022</span></h5>
+                        <p>Relevant Coursework:</p>
+                        <ul className='list'>
+                            <li>Object-Oriented Design</li>
+                            <li>Algorithms & Data Structures</li>
+                            <li>Networks & Distributed Systems</li>
+                            <li>Computer Systems</li>
+                            <li>Theory of Computation</li>
+                            <li>Foundations of Cybersecurity</li>
+                            <li>Fundamentals of Computer Science 1 & 2</li>
+                            <li>Discrete Structures</li>
+                            <li>Probability & Statistics</li>
+                            <li>Statistics & Stochastic Processes</li>
+                            <li>Embedded Design: Robotics</li>
+                            <li>Differential Equations & Linear Algebra</li>
+                        </ul>
+                        <div className='skills'>
+                            <span className='skill' style={this.skillProficient}>Java</span>
+                            <span className='skill' style={this.skillProficient}>Python</span>
+                            <span className='skill' style={this.skillKnowledgeable}>C/C++</span>
+                            <span className='skill' style={this.skillKnowledgeable}>Racket</span>
+                            <span className='skill' style={this.skillKnowledgeable}>LaTeX</span>
+                            <span className='skill' style={this.skillFamiliar}>AMD64 Assembly</span>
+                        </div>
+
                         <h3 id='experience'>Professional Experience</h3>
+                        <hr/>
+                        <h4>Vonage<span className='right'>Holmdel, NJ</span></h4>
+                        <h5>Information Security Associate<span className='right'>Summer 2018</span></h5>
                         <p>
                             Vivamus arcu felis bibendum ut tristique. Ipsum dolor sit amet consectetur adipiscing elit.
                             Hendrerit gravida rutrum quisque non tellus. Iaculis urna id volutpat lacus laoreet. Tempor
@@ -95,7 +126,9 @@ class Home extends Component {
                             Auctor urna nunc id cursus metus. Et netus et malesuada fames ac turpis egestas maecenas
                             pharetra. Dictum at tempor commodo ullamcorper a lacus vestibulum sed.
                         </p>
+
                         <h3 id='projects'>Software Projects</h3>
+                        <hr/>
                         <p>
                             Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at
                             lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.
