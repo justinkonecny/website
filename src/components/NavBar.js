@@ -5,8 +5,14 @@ class NavBar extends Component {
     render() {
         return (
             <div className={this.props.display ? 'nav' : 'nav hide'}>
-                {this.props.links}
+                <div className={'nav-left'}>
+                    {this.props.linksLeft}
+                </div>
+                <div className={'nav-right'}>
+                    {this.props.linksRight}
+                </div>
             </div>
+
         );
     }
 }

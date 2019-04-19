@@ -15,18 +15,20 @@ class Home extends Component {
         this.skillProficient = {'border-color': '#125eff'};
         this.skillKnowledgeable = {'border-color': '#81a4ff'};
         this.skillFamiliar = {'border-color': '#a5c5ff'};
-        this.navLinks = [
-            <a className='nav-link main-link' href='#about-me'>
-                <div className='nav-inner nav-inner-main'>About Me</div>
+        this.navLinksLeft = [
+            <a className='nav-link' href='#about-me'>
+                <div className='nav-inner'>About Me</div>
             </a>,
             <a className='nav-link' href='#experience'>
                 <div className='nav-inner'>Experience</div>
             </a>,
             <a className='nav-link' href='#projects'>
                 <div className='nav-inner'>Projects</div>
-            </a>,
-            <a className='nav-link' href={resume}>
-                <div className='nav-inner'>Resume</div>
+            </a>
+        ];
+        this.navLinksRight = [
+            <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'}>
+                <div className='nav-inner nav-inner-main'>Resume</div>
             </a>
         ];
     }
@@ -69,7 +71,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar display={this.state.showNavBar} links={this.navLinks}/>
+                <NavBar display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
                 <div className={this.state.isMobile ? 'intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-text-mobile' : 'intro-text'}>
                         <h2>Hi, I'm</h2>
@@ -88,7 +90,7 @@ class Home extends Component {
                         <h3 id='about-me'>About Me</h3>
                         <hr/>
                         <h4>Northeastern University<span className='right'>Boston, MA</span></h4>
-                        <h5>Cybersecurity, B.S.<span className='right'>Expected: 2022</span></h5>
+                        <h5>Cybersecurity, B.S.<span className='right'>Expected 2022</span></h5>
                         <p>Relevant Coursework:</p>
                         <ul className='list'>
                             <li>Object-Oriented Design</li>
@@ -115,29 +117,43 @@ class Home extends Component {
 
                         <h3 id='experience'>Professional Experience</h3>
                         <hr/>
+
+                        {/*<h4>Rocket Software<span className='right'>Waltham, MA</span></h4>*/}
+                        {/*<h5>Software Engineer Co-op<span className='right'>July - December 2019</span></h5>*/}
+                        {/*<p>*/}
+                            {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
+                            {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
+                            {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
+                            {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
+                            {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
+                        {/*</p>*/}
+                        {/*<div className='skills'>*/}
+                            {/*<span className='skill' style={this.skillProficient}>Java</span>*/}
+                        {/*</div>*/}
+
                         <h4>Vonage<span className='right'>Holmdel, NJ</span></h4>
-                        <h5>Information Security Associate<span className='right'>Summer 2018</span></h5>
+                        <h5>Information Security Associate<span className='right'>July - August 2018</span></h5>
                         <p>
-                            Vivamus arcu felis bibendum ut tristique. Ipsum dolor sit amet consectetur adipiscing elit.
-                            Hendrerit gravida rutrum quisque non tellus. Iaculis urna id volutpat lacus laoreet. Tempor
-                            nec feugiat nisl pretium fusce id velit ut tortor. Orci sagittis eu volutpat odio facilisis
-                            mauris sit. Nisl nisi scelerisque eu ultrices vitae auctor eu augue ut. Sit amet purus
-                            gravida quis. Arcu felis bibendum ut tristique et egestas. Dolor morbi non arcu risus.
-                            Auctor urna nunc id cursus metus. Et netus et malesuada fames ac turpis egestas maecenas
-                            pharetra. Dictum at tempor commodo ullamcorper a lacus vestibulum sed.
+                            Vonage is a business cloud communications provider, headquartered in New Jersey. As an
+                            Information Security Associate, I worked directly with the the Vonage Information Security
+                            team to learn industry practices. Over this summer, I experienced how to integrate
+                            software solutions with the team's practices to produce efficient and effective solutions.
                         </p>
+                        <div className='skills'>
+                            <span className='skill' style={this.skillProficient}>Python</span>
+                            <span className='skill' style={this.skillProficient}>AWS</span>
+                            <span className='skill' style={this.skillProficient}>Linux CLI</span>
+                        </div>
 
                         <h3 id='projects'>Software Projects</h3>
                         <hr/>
                         <p>
-                            Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at
-                            lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.
-                            Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.
-                            Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit
-                            scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.
-                            Nibh mauris cursus mattis molestie a. Etiam sit amet nisl purus in mollis nunc sed id.
-                            Molestie nunc non blandit massa enim nec dui nunc. Vestibulum mattis ullamcorper velit sed
-                            ullamcorper morbi tincidunt ornare. Nibh sed pulvinar proin gravida hendrerit lectus a.
+                            <h4>Liberty Cars</h4>
+                            <p>Check it out <a href={'https://carsearch-24041.firebaseapp.com'} target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
+                            <div className='skills'>
+                                <span className='skill' style={this.skillProficient}>Vue.js</span>
+                                <span className='skill' style={this.skillProficient}>HTML/CSS</span>
+                            </div>
                         </p>
                     </div>
                 </div>
