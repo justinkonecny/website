@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import github from '../resources/github.svg';
 import linkedin from '../resources/linkedin.svg';
-import instagram from '../resources/instagram.svg';
-import facebook from '../resources/flogo.svg';
+// import instagram from '../resources/instagram.svg';
+// import facebook from '../resources/flogo.svg';
 
 
 class Icons extends Component {
@@ -26,12 +26,12 @@ class Icons extends Component {
                     <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
                         <img src={linkedin} alt='linkedin' style={this.iconStyle}/>
                     </a>
-                    <a href='https://www.facebook.com/konecnyj' target='_blank' rel='noopener noreferrer'>
-                        <img src={facebook} alt='facebook' style={this.iconStyle}/>
-                    </a>
-                    <a href='https://www.instagram.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
-                        <img src={instagram} alt='instagram' style={this.iconStyle}/>
-                    </a>
+                    {/*<a href='https://www.facebook.com/konecnyj' target='_blank' rel='noopener noreferrer'>*/}
+                        {/*<img src={facebook} alt='facebook' style={this.iconStyle}/>*/}
+                    {/*</a>*/}
+                    {/*<a href='https://www.instagram.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>*/}
+                        {/*<img src={instagram} alt='instagram' style={this.iconStyle}/>*/}
+                    {/*</a>*/}
                 </div>
             );
         }
