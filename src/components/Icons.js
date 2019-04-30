@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import github from '../resources/github.svg';
 import linkedin from '../resources/linkedin.svg';
-// import instagram from '../resources/instagram.svg';
-// import facebook from '../resources/flogo.svg';
 
-
+/**
+ * Component for displaying social media icons on a page. Renders and links Github and LinkedIn.
+ */
 class Icons extends Component {
     constructor(props) {
         super(props);
         this.iconStyle = {
-            'margin': '5px',
-            'width': '30px'
+            'margin': '5px', // The spacing between each icon
+            'width': '30px' // The width of each icon
         };
     }
 
+    /**
+     * If on a desktop, returns the component to display the social media icons. Otherwise, returns null.
+     * @returns {*}
+     */
     render() {
         if (this.props.isMobile) {
             return null;
@@ -26,12 +30,6 @@ class Icons extends Component {
                     <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
                         <img src={linkedin} alt='linkedin' style={this.iconStyle}/>
                     </a>
-                    {/*<a href='https://www.facebook.com/konecnyj' target='_blank' rel='noopener noreferrer'>*/}
-                        {/*<img src={facebook} alt='facebook' style={this.iconStyle}/>*/}
-                    {/*</a>*/}
-                    {/*<a href='https://www.instagram.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>*/}
-                        {/*<img src={instagram} alt='instagram' style={this.iconStyle}/>*/}
-                    {/*</a>*/}
                 </div>
             );
         }

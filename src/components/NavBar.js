@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import '../css/NavBar.css';
 
+/**
+ * The navigation bar component displayed at the top of the website, disappears as the user scrolls down the page.
+ * All links rendered on the left side of the navigation bar are passed as a list to the 'linksLeft' prop.
+ * The link rendered on the right side of the navigation bar are passed as a list to the 'linksRight' prop.
+ */
 class NavBar extends Component {
     render() {
         return (

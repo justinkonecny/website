@@ -5,17 +5,34 @@ import Icons from './Icons.js';
 import NavBar from './NavBar';
 import '../css/Home.css';
 
+/**
+ * Component for the home page (the main website display component).
+ * Renders the navigation bar and the website body.
+ */
 class Home extends Component {
+    /**
+     * Creates the home component with the given props.
+     *
+     * @param props The properties passed to this component.
+     */
     constructor(props) {
         super(props);
+        // Scroll listener to handle hiding the navigation bar
         this.scrollListener = this.scrollListener.bind(this);
+        // Resize listener to handle switching to a mobile display
         this.resizeListener = this.resizeListener.bind(this);
+        // The current state of the page
         this.state = {isMobile: false, showNavBar: true};
+        // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
+
+        // Constants for consistent display
         this.skillProficient = {'border-color': '#125eff'};
         this.skillKnowledgeable = {'border-color': '#81a4ff'};
         this.skillFamiliar = {'border-color': '#a5c5ff'};
         this.skillCert = {'border-color': '#eb4d45'};
+
+        // The links passed to the navigation bar component for rendering (on the left)
         this.navLinksLeft = [
             <a className='nav-link' href='#about-me'>
                 <div className='nav-inner'>About Me</div>
@@ -27,6 +44,7 @@ class Home extends Component {
                 <div className='nav-inner'>Projects</div>
             </a>
         ];
+        // The links passed to the navigation bar component for rendering (on the right)
         this.navLinksRight = [
             <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'}>
                 <div className='nav-inner nav-inner-main'>Resume</div>
@@ -34,6 +52,9 @@ class Home extends Component {
         ];
     }
 
+    /**
+     * Updates the page's state to show or hide the navigation bar, based on how far down the user has scrolled.
+     */
     scrollListener() {
         console.log(window.pageYOffset);
         if (window.pageYOffset > 50) {
@@ -45,6 +66,9 @@ class Home extends Component {
         }
     }
 
+    /**
+     * Updates the page's state to the mobile or desktop version, based on the current window width.
+     */
     resizeListener() {
         if (window.innerWidth <= this.mobileThreshold && !this.state.isMobile) {
             // Handles resizing to a smaller width window
@@ -55,6 +79,10 @@ class Home extends Component {
         }
     }
 
+    /**
+     * Sets this component's scroll listener and resize listener.
+     * Updates the current state to mobile if the window width is less than the mobile width threshold.
+     */
     componentWillMount() {
         window.addEventListener('scroll', this.scrollListener);
         window.addEventListener('resize', this.resizeListener);
@@ -64,15 +92,23 @@ class Home extends Component {
         }
     }
 
+    /**
+     * Removes this component's scroll listener and resize listener.
+     */
     componentWillUnmount() {
         window.removeEventListener('scroll', this.scrollListener);
         window.removeEventListener('resize', this.resizeListener);
     }
 
+    /**
+     * Renders this component.
+     */
     render() {
         return (
             <div>
                 <NavBar display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
+
+                {/* The introduction section, includes name, picture, and social media icons */}
                 <div className={this.state.isMobile ? 'intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-text-mobile' : 'intro-text'}>
                         <h2>Hi, I'm</h2>
@@ -86,6 +122,9 @@ class Home extends Component {
                     </div>
                     <ProfileImage isMobile={this.state.isMobile}/>
                 </div>
+
+                {/* The main body, includes education, software projects, skills, and work experience */}
+                {/* EDUCATION */}
                 <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
                     <div className={'body-info'}>
                         <h3 id={'about-me'}>About Me</h3>
@@ -117,20 +156,20 @@ class Home extends Component {
                             <span className={'skill'} style={this.skillFamiliar}>AMD64 Assembly</span>
                         </div>
 
+                        {/* WORK EXPERIENCE */}
                         <h3 id={'experience'}>Professional Experience</h3>
                         <hr/>
-
                         {/*<h4>Rocket Software<span className={'right'}>Waltham, MA</span></h4>*/}
                         {/*<h5>Software Engineer Co-op<span className={'right'}>July - December 2019</span></h5>*/}
                         {/*<p>*/}
-                            {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
-                            {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
-                            {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
-                            {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
-                            {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
+                        {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
+                        {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
+                        {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
+                        {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
+                        {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
                         {/*</p>*/}
                         {/*<div className={'skills'}>*/}
-                            {/*<span className={'skill'} style={this.skillProficient}>Java</span>*/}
+                        {/*<span className={'skill'} style={this.skillProficient}>Java</span>*/}
                         {/*</div>*/}
 
                         <h4>Vonage<span className={'right'}>Holmdel, NJ</span></h4>
@@ -142,10 +181,18 @@ class Home extends Component {
                             software solutions with the team's practices to produce efficient and effective solutions.
                         </p>
                         <ul className={'list'}>
-                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage/retrieval of team information</li>
-                            <li>Developed a Python script to process and record information from vulnerability scans of thousands of hosts</li>
-                            <li>Employed Python scripts to facilitate cloning hundreds of GitHub repositories for static source code analysis</li>
-                            <li>Reviewed and submitted Jira tickets to track bug fix requests and project progress across company teams</li>
+                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage/retrieval of
+                                team information
+                            </li>
+                            <li>Developed a Python script to process and record information from vulnerability scans of
+                                thousands of hosts
+                            </li>
+                            <li>Employed Python scripts to facilitate cloning hundreds of GitHub repositories for static
+                                source code analysis
+                            </li>
+                            <li>Reviewed and submitted Jira tickets to track bug fix requests and project progress
+                                across company teams
+                            </li>
                         </ul>
                         <div className={'skills'} style={{'margin-bottom': '0'}}>
                             <span className={'skill'} style={this.skillProficient}>Python</span>
@@ -157,11 +204,13 @@ class Home extends Component {
                             <span className={'skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
                         </div>
 
+                        {/* FEATURED SOFTWARE PROJECTS */}
                         <h3 id='projects'>Software Projects</h3>
                         <hr/>
                         <p>
                             <h4>Calendays</h4>
-                            <p>Check it out <a href={'https://calendays-ccfc4.firebaseapp.com'} target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
+                            <p>Check it out <a href={'https://calendays-ccfc4.firebaseapp.com'} target={'_blank'}
+                                               rel={'noopener noreferrer'}>here</a>!</p>
                             <div className={'skills'}>
                                 <span className={'skill'} style={this.skillProficient}>React / JSX</span>
                                 <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
@@ -169,7 +218,8 @@ class Home extends Component {
                             </div>
 
                             <h4>Liberty Cars</h4>
-                            <p>Check it out <a href={'https://libertycars.firebaseapp.com'} target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
+                            <p>Check it out <a href={'https://libertycars.firebaseapp.com'} target={'_blank'}
+                                               rel={'noopener noreferrer'}>here</a>!</p>
                             <div className={'skills'}>
                                 <span className={'skill'} style={this.skillProficient}>Vue.js / JavaScript</span>
                                 <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
@@ -189,12 +239,15 @@ class Home extends Component {
                         </p>
                     </div>
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         );
     }
 }
 
+/**
+ * Component to crop and display the profile image. Does not render on a mobile device.
+ */
 class ProfileImage extends Component {
     render() {
         if (this.props.isMobile) {
@@ -211,6 +264,9 @@ class ProfileImage extends Component {
     }
 }
 
+/**
+ * Component for the footer displayed at the bottom of the page. Does not render on a mobile device.
+ */
 class Footer extends Component {
     render() {
         if (this.props.isMobile) {
