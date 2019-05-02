@@ -108,17 +108,21 @@ class Home extends Component {
             <div>
                 <NavBar display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
 
-                {/* The introduction section, includes name, picture, and social media icons */}
-                <div className={this.state.isMobile ? 'intro-mobile' : 'intro'}>
-                    <div className={this.state.isMobile ? 'intro-text-mobile' : 'intro-text'}>
-                        <h2>Hi, I'm</h2>
-                        <h1>Justin Konecny.</h1>
-                        <p style={{'color': '#828282', 'font-size': '17px'}}>
-                            I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
+                <div className={'intro'}>
+                    <div className={'intro-inner'}>
+                        <h1>Hi, I'm Justin Konecny.</h1>
+                        <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
+                            &#60;/ I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                             <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
-                            pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>.
+                            pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>. />
                         </p>
                         <Icons isMobile={this.state.isMobile}/>
+                    </div>
+                </div>
+
+                <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
+                    <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
+                        <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
                     </div>
                     <ProfileImage isMobile={this.state.isMobile}/>
                 </div>
@@ -127,7 +131,7 @@ class Home extends Component {
                 {/* EDUCATION */}
                 <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
                     <div className={'body-info'}>
-                        <h3 id={'about-me'}>About Me</h3>
+                        <h3 id={'about-me'}>&#60;/ Education</h3>
                         <hr/>
                         <h4>Northeastern University<span className={'right'}>Boston, MA</span></h4>
                         <h5>Cybersecurity, B.S.<span className={'right'}>Expected 2022</span></h5>
@@ -157,7 +161,7 @@ class Home extends Component {
                         </div>
 
                         {/* WORK EXPERIENCE */}
-                        <h3 id={'experience'}>Professional Experience</h3>
+                        <h3 id={'experience'}>&#60;/ Professional Experience</h3>
                         <hr/>
                         {/*<h4>Rocket Software<span className={'right'}>Waltham, MA</span></h4>*/}
                         {/*<h5>Software Engineer Co-op<span className={'right'}>July - December 2019</span></h5>*/}
@@ -205,7 +209,7 @@ class Home extends Component {
                         </div>
 
                         {/* FEATURED SOFTWARE PROJECTS */}
-                        <h3 id='projects'>Software Projects</h3>
+                        <h3 id='projects'>&#60;/ Software Projects</h3>
                         <hr/>
                         <p>
                             <h4>Calendays</h4>
@@ -254,7 +258,7 @@ class ProfileImage extends Component {
             return null;
         } else {
             return (
-                <div className={'intro-profile'}>
+                <div className={'about-profile'}>
                     <div className={'profile-crop'}>
                         <img src={profile} className={'profile-img'} alt={'Profile Image'}/>
                     </div>

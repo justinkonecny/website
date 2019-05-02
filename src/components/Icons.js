@@ -10,7 +10,7 @@ class Icons extends Component {
         super(props);
         this.iconStyle = {
             'margin': '5px', // The spacing between each icon
-            'width': '30px' // The width of each icon
+            'width': '40px' // The width of each icon
         };
     }
 
@@ -23,7 +23,7 @@ class Icons extends Component {
             return null;
         } else {
             return (
-                <div style={{'margin': '75px 0 0 0'}}>
+                <div style={{'margin': '65px 0 0 0'}}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
                         <img src={github} alt='github' style={this.iconStyle}/>
                     </a>

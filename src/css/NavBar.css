@@ -1,22 +1,27 @@
 .nav-inner {
-    color: white;
-    font-size: 14px;
+    color: #1e2f60;
+    font-size: 17px;
+    font-weight: 600;
     margin: auto 15px;
 }
 
+.nav-inner-main {
+    color: white;
+}
+
 .nav-inner:hover {
-    color: #ffd1cf;
+    color: black;
 }
 
 .nav-inner-main:hover {
-    color: white;
+    color: black;
 }
 
 .nav-link {
     text-decoration: none;
     height: 75%;
     display: flex;
-    border-radius: 2px;
+    border-radius: 5px;
 }
 
 .nav-link:hover {
@@ -24,12 +29,12 @@
 }
 
 .main-link {
-    background-color: #FF5157;
+    background-color: #197a88;
     margin-left: auto;
 }
 
 .main-link:hover {
-    background-color: #ff6269;
+    background-color: #197a88;
 }
 
 .nav-left {
@@ -50,8 +55,6 @@
 
 .nav {
     text-align: left;
-    background-color: #323232;
-    color: #ffffff;
     display: flex;
     align-items: center;
     position: fixed;
