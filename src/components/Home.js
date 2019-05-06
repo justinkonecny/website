@@ -27,15 +27,18 @@ class Home extends Component {
         this.mobileThreshold = 850;
 
         // Constants for consistent display
-        this.skillProficient = {'border-color': '#125eff'};
-        this.skillKnowledgeable = {'border-color': '#81a4ff'};
-        this.skillFamiliar = {'border-color': '#a5c5ff'};
-        this.skillCert = {'border-color': '#eb4d45'};
+        this.skillProficient = {'backgroundColor': '#284496'};
+        this.skillKnowledgeable = {'backgroundColor': '#3c65cd'};
+        this.skillFamiliar = {'backgroundColor': '#4877ff'};
+        this.skillCert = {'backgroundColor': '#eb4d45'};
 
         // The links passed to the navigation bar component for rendering (on the left)
         this.navLinksLeft = [
             <a className='nav-link' href='#about-me'>
                 <div className='nav-inner'>About Me</div>
+            </a>,
+            <a className='nav-link' href='#education'>
+                <div className='nav-inner'>Education</div>
             </a>,
             <a className='nav-link' href='#experience'>
                 <div className='nav-inner'>Experience</div>
@@ -120,35 +123,71 @@ class Home extends Component {
                     </div>
                 </div>
 
+                {/* The main body, includes education, software projects, skills, and work experience */}
+                {/* ABOUT ME */}
                 <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
                     <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
-                        <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
+                        <h3 id={'about-me'} style={{'color': 'white', 'marginBottom': '20px'}}>&#60;/ About Me</h3>
+                        <p style={{'color': 'white'}}>
+                            Hello! I'm Brittany, a software engineer based in Boston, MA who enjoys building things that
+                            live on the internet. I develop exceptional websites and web apps that provide intuitive,
+                            pixel-perfect user interfaces with efficient and modern backends.
+                        </p>
+                        <p style={{'color': 'white', 'marginTop': '16px'}}>
+                            Shortly after graduating from Northeastern University, I joined the engineering team at
+                            Upstatement where I work on a wide variety of interesting and meaningful projects on a daily
+                            basis.
+                        </p>
                     </div>
                     <ProfileImage isMobile={this.state.isMobile}/>
                 </div>
+                <div className={'highlights'}>
+                    <div className={'highlight'}>
+                        <h4>Languages</h4>
+                        <p>Content</p>
+                    </div>
 
-                {/* The main body, includes education, software projects, skills, and work experience */}
+                    <div className={'highlight'}>
+                        <h4>Software</h4>
+                        <p>Content</p>
+                    </div>
+
+                    <div className={'highlight'}>
+                        <h4>Interests</h4>
+                        <p>Content</p>
+                    </div>
+                </div>
+
+
                 {/* EDUCATION */}
                 <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
                     <div className={'body-info'}>
-                        <h3 id={'about-me'}>&#60;/ Education</h3>
+                        <h3 id={'education'}>&#60;/ Education</h3>
                         <hr/>
-                        <h4>Northeastern University<span className={'right'}>Boston, MA</span></h4>
-                        <h5>Cybersecurity, B.S.<span className={'right'}>Expected 2022</span></h5>
+                        <h4>Northeastern University, Boston, MA</h4>
+                        <h5>
+                            B.S. Cybersecurity, Concentration Cyber Operations<br/>
+                            Minor in Mathematics<br/>
+                            Expected 2022
+                        </h5>
                         <p>Relevant Coursework:</p>
-                        <ul className={'list'}>
-                            <li>Object-Oriented Design</li>
-                            <li>Algorithms & Data Structures</li>
-                            <li>Networks & Distributed Systems</li>
-                            <li>Computer Systems</li>
-                            <li>Theory of Computation</li>
-                            <li>Foundations of Cybersecurity</li>
-                            <li>Fundamentals of Computer Science 1 & 2</li>
-                            <li>Discrete Structures</li>
-                            <li>Probability & Statistics</li>
-                            <li>Statistics & Stochastic Processes</li>
-                            <li>Embedded Design: Robotics</li>
-                            <li>Differential Equations & Linear Algebra</li>
+                        <ul className={'list-container'}>
+                            <div className={'list'}>
+                                <li>Object-Oriented Design</li>
+                                <li>Algorithms & Data Structures</li>
+                                <li>Networks & Distributed Systems</li>
+                                <li>Computer Systems</li>
+                                <li>Theory of Computation</li>
+                                <li>Foundations of Cybersecurity</li>
+                            </div>
+                            <div className={'list'}>
+                                <li>Fundamentals of Computer Science 1 & 2</li>
+                                <li>Discrete Structures</li>
+                                <li>Probability & Statistics</li>
+                                <li>Statistics & Stochastic Processes</li>
+                                <li>Embedded Design: Robotics</li>
+                                <li>Differential Equations & Linear Algebra</li>
+                            </div>
                         </ul>
                         <div className={'skills'}>
                             <span className={'skill'} style={this.skillProficient}>Java</span>
@@ -163,21 +202,21 @@ class Home extends Component {
                         {/* WORK EXPERIENCE */}
                         <h3 id={'experience'}>&#60;/ Professional Experience</h3>
                         <hr/>
-                        {/*<h4>Rocket Software<span className={'right'}>Waltham, MA</span></h4>*/}
-                        {/*<h5>Software Engineer Co-op<span className={'right'}>July - December 2019</span></h5>*/}
-                        {/*<p>*/}
-                        {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
-                        {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
-                        {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
-                        {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
-                        {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
-                        {/*</p>*/}
-                        {/*<div className={'skills'}>*/}
-                        {/*<span className={'skill'} style={this.skillProficient}>Java</span>*/}
-                        {/*</div>*/}
+                        <h4>Rocket Software, Waltham, MA</h4>
+                        <h5>Software Engineer Co-op<br/>July - December 2019</h5>
+                        <p>
+                            Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at
+                            lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.
+                            Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.
+                            Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit
+                            scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.
+                        </p>
+                        <div className={'skills'}>
+                            <span className={'skill'} style={this.skillProficient}>Java</span>
+                        </div>
 
-                        <h4>Vonage<span className={'right'}>Holmdel, NJ</span></h4>
-                        <h5>Information Security Associate<span className={'right'}>July - August 2018</span></h5>
+                        <h4>Vonage, Holmdel, NJ</h4>
+                        <h5>Information Security Associate<br/>July - August 2018</h5>
                         <p>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security

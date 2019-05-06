@@ -15,18 +15,21 @@ h2 {
 h3 {
     margin: 10vh 0 0 0;
     font-size: 30px;
+    color: #197a88;
 }
 
 h4 {
     margin: 6px 0;
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 h5 {
     margin: 6px 0 10px 0;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 500;
+    font-family: 'IBM Plex Mono', monospace;
 }
 
 p {
@@ -82,19 +85,36 @@ p {
 
 .profile-crop {
     margin: auto 20vw auto auto;
-    width: 250px;
-    height: 250px;
+    width: 300px;
+    height: 300px;
     overflow: hidden;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .profile-img {
-    margin: -50px 0 0 -10px ;
-    width: 250px;
+    margin: -90px 0 0 -52px ;
+    width: 385px;
+}
+
+.highlights {
+    display: flex;
+    padding: 0 10vw;
+}
+
+.highlight {
+    margin: auto;
+    border-radius: 10px;
+    /*border: 1px solid #434a58;*/
+    background-color: #16191d;
+    color: white;
+    width: 20vw;
+    padding: 50px 0;
+    position: relative;
+    top: -50px;
 }
 
 .body {
-    margin: 50px 40vw 50px 20vw;
+    margin: 50px 30vw 50px 20vw;
 }
 
 .body-mobile {
@@ -105,19 +125,17 @@ p {
     text-align: left;
 }
 
-.right {
-    float: right;
-    font-size: 14px;
-    font-weight: 400;
-    font-style: italic;
+.list-container {
+    margin: 10px 0;
+    display: flex;
+}
+
+.list-container li {
+    margin: 8px;
 }
 
 .list {
-    margin: 10px 0;
-}
-
-.list li {
-    margin: 8px;
+    margin: 0 5%;
 }
 
 .skills {
@@ -125,11 +143,11 @@ p {
 }
 
 .skill {
+    color: white;
     margin: 0 8px 0 0;
-    padding: 8px;
-    font-size: 10px;
-    border: 1px solid black;
-    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 13px;
+    border-radius: 4px;
 }
 
 .footer {

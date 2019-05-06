@@ -9,8 +9,8 @@ class Icons extends Component {
     constructor(props) {
         super(props);
         this.iconStyle = {
-            'margin': '5px', // The spacing between each icon
-            'width': '40px' // The width of each icon
+            'margin': '10px', // The spacing between each icon
+            'width': '45px' // The width of each icon
         };
     }
 
