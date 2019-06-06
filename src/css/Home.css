@@ -108,7 +108,7 @@ p {
     background-color: #16191d;
     color: white;
     width: 20vw;
-    padding: 50px 0;
+    padding: 15px 0;
     position: relative;
     top: -50px;
 }
@@ -138,6 +138,21 @@ p {
     margin: 0 5%;
 }
 
+.highlight-skills {
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.h-skill {
+    color: white;
+    margin: 5px auto;
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+}
+
 .skills {
     margin: 20px 0 40px 0;
 }
@@ -146,8 +161,34 @@ p {
     color: white;
     margin: 0 8px 0 0;
     padding: 8px 12px;
-    font-size: 13px;
+    font-size: 14px;
     border-radius: 4px;
+}
+
+.projects {
+    background-color: #21252b;
+    width: 100%;
+    padding: 2px 0 50px 0;
+    min-height: 890px;
+}
+
+.project {
+    display: flex;
+    background-color: #16191d;
+    border-radius: 5px;
+    padding: 20px;
+    color: white;
+    margin: 0 0 20px 0;
+}
+
+.project-text {
+    margin-left: 20vw;
+    margin-right: 30vw;
+    text-align: left;
+}
+
+.img-proj {
+    width: 100%;
 }
 
 .footer {

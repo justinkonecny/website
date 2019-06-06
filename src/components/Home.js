@@ -3,6 +3,7 @@ import profile from '../resources/profile.jpeg';
 import resume from '../resources/resume.pdf';
 import Icons from './Icons.js';
 import NavBar from './NavBar';
+import liberty_cars from '../resources/liberty_cars.png';
 import '../css/Home.css';
 
 /**
@@ -129,7 +130,7 @@ class Home extends Component {
                     <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
                         <h3 id={'about-me'} style={{'color': 'white', 'marginBottom': '20px'}}>&#60;/ About Me</h3>
                         <p style={{'color': 'white'}}>
-                            Hello! I'm Brittany, a software engineer based in Boston, MA who enjoys building things that
+                            Hello! I'm Justin, a software engineer based in Boston, MA who enjoys building things that
                             live on the internet. I develop exceptional websites and web apps that provide intuitive,
                             pixel-perfect user interfaces with efficient and modern backends.
                         </p>
@@ -144,17 +145,39 @@ class Home extends Component {
                 <div className={'highlights'}>
                     <div className={'highlight'}>
                         <h4>Languages</h4>
-                        <p>Content</p>
+                        <div className={'highlight-skills'}>
+                            <div className={'h-skill'} style={this.skillProficient}>Java</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Python</div>
+                            <div className={'h-skill'} style={this.skillProficient}>C/C++</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>React</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>Racket</div>
+                            <div className={'h-skill'} style={this.skillFamiliar}>Assembly</div>
+                        </div>
                     </div>
 
                     <div className={'highlight'}>
                         <h4>Software</h4>
-                        <p>Content</p>
+                        <div className={'highlight-skills'}>
+                            <div className={'h-skill'} style={this.skillProficient}>Linux</div>
+                            <div className={'h-skill'} style={this.skillProficient}>IntelliJ</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Eclipse</div>
+                            <div className={'h-skill'} style={this.skillProficient}>PyCharm</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>GDB</div>
+                            <div className={'h-skill'} style={this.skillKnowledgeable}>Vim</div>
+                        </div>
                     </div>
 
                     <div className={'highlight'}>
                         <h4>Interests</h4>
-                        <p>Content</p>
+                        <div className={'highlight-skills'}>
+                            <div className={'h-skill'} style={this.skillProficient}>Running</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Snowboarding</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Traveling</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Cooking</div>
+                            <div className={'h-skill'} style={this.skillProficient}>Spanish</div>
+                        </div>
                     </div>
                 </div>
 
@@ -213,6 +236,10 @@ class Home extends Component {
                         </p>
                         <div className={'skills'}>
                             <span className={'skill'} style={this.skillProficient}>Java</span>
+                            <span className={'skill'} style={this.skillProficient}>JavaScript</span>
+                            <span className={'skill'} style={this.skillKnowledgeable}>TypeScript</span>
+                            <span className={'skill'} style={this.skillKnowledgeable}>Node.js</span>
+                            <span className={'skill'} style={this.skillKnowledgeable}>Python</span>
                         </div>
 
                         <h4>Vonage, Holmdel, NJ</h4>
@@ -246,42 +273,74 @@ class Home extends Component {
                         <div className={'skills'}>
                             <span className={'skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
                         </div>
-
-                        {/* FEATURED SOFTWARE PROJECTS */}
-                        <h3 id='projects'>&#60;/ Software Projects</h3>
-                        <hr/>
-                        <p>
-                            <h4>Calendays</h4>
-                            <p>Check it out <a href={'https://calendays-ccfc4.firebaseapp.com'} target={'_blank'}
-                                               rel={'noopener noreferrer'}>here</a>!</p>
-                            <div className={'skills'}>
-                                <span className={'skill'} style={this.skillProficient}>React / JSX</span>
-                                <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
-                                <span className={'skill'} style={this.skillProficient}>Firebase</span>
-                            </div>
-
-                            <h4>Liberty Cars</h4>
-                            <p>Check it out <a href={'https://libertycars.firebaseapp.com'} target={'_blank'}
-                                               rel={'noopener noreferrer'}>here</a>!</p>
-                            <div className={'skills'}>
-                                <span className={'skill'} style={this.skillProficient}>Vue.js / JavaScript</span>
-                                <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
-                                <span className={'skill'} style={this.skillProficient}>Firebase</span>
-                            </div>
-
-                            <h4>Interactive Animator</h4>
-                            <div className={'skills'}>
-                                <span className={'skill'} style={this.skillProficient}>Java / Swing</span>
-                                <span className={'skill'} style={this.skillProficient}>MVC</span>
-                            </div>
-
-                            <h4>Distributed Key-Value Store</h4>
-                            <div className={'skills'}>
-                                <span className={'skill'} style={this.skillProficient}>Python</span>
-                            </div>
-                        </p>
                     </div>
                 </div>
+
+                {/* FEATURED SOFTWARE PROJECTS */}
+                <div className={'projects'}>
+                    <div className={'project-text'}>
+                        <h3 id='projects' style={{'color': 'white'}}>&#60;/ Software Projects</h3>
+                        <hr/>
+
+                        <h4 style={{'color': 'white'}}>Featured Projects</h4>
+                        <div className={'project'}>
+                            <div>
+                                <h4>Calendays</h4>
+                                <p>Check it out <a style={{'color': '#3c65cd'}}
+                                                   href={'https://calendays-ccfc4.firebaseapp.com'}
+                                                   target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
+                                <div className={'skills'}>
+                                    <span className={'skill'} style={this.skillProficient}>React / JSX</span>
+                                    <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
+                                    <span className={'skill'} style={this.skillProficient}>Firebase</span>
+                                </div>
+                            </div>
+                            <div>
+                                IMG
+                            </div>
+                        </div>
+
+                        <div className={'project'}>
+                            <div>
+                                <h4>Liberty Cars</h4>
+                                <p>Check it out <a style={{'color': '#3c65cd'}}
+                                                   href={'https://libertycars.firebaseapp.com'}
+                                                   target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
+                                <div className={'skills'}>
+                                    <span className={'skill'} style={this.skillProficient}>Vue.js</span>
+                                    <span className={'skill'} style={this.skillProficient}>JavaScript</span>
+                                    <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
+                                    <span className={'skill'} style={this.skillProficient}>Firebase</span>
+                                </div>
+                            </div>
+                            <div>
+                                <img className={'img-proj'} src={liberty_cars}/>
+                            </div>
+                        </div>
+
+                        <h4 style={{'color': 'white'}}>Additional Projects</h4>
+                        <div className={'project'}>
+                            <div>
+                                <h4>Interactive Animator</h4>
+                                <div className={'skills'}>
+                                    <span className={'skill'} style={this.skillProficient}>Java / Swing</span>
+                                    <span className={'skill'} style={this.skillProficient}>MVC</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={'project'}>
+                            <div>
+                                <h4>Distributed Key-Value Store</h4>
+                                <div className={'skills'}>
+                                    <span className={'skill'} style={this.skillProficient}>Python</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
                 <Footer/>
             </div>
         );
@@ -317,7 +376,7 @@ class Footer extends Component {
         } else {
             return (
                 <div className={'footer'}>
-                    <p>Designed and Built by Justin Konecny</p>
+                    <p>Developed by Justin Konecny</p>
                 </div>
             );
         }
