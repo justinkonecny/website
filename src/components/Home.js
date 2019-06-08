@@ -3,7 +3,7 @@ import profile from '../resources/profile.jpeg';
 import resume from '../resources/resume.pdf';
 import Icons from './Icons.js';
 import NavBar from './NavBar';
-import liberty_cars from '../resources/liberty_cars.png';
+import liberty_cars from '../resources/liberty_cars_results.png';
 import '../css/Home.css';
 
 /**
@@ -128,17 +128,20 @@ class Home extends Component {
                 {/* ABOUT ME */}
                 <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
                     <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
-                        <h3 id={'about-me'} style={{'color': 'white', 'marginBottom': '20px'}}>&#60;/ About Me</h3>
-                        <p style={{'color': 'white'}}>
-                            Hello! I'm Justin, a software engineer based in Boston, MA who enjoys building things that
-                            live on the internet. I develop exceptional websites and web apps that provide intuitive,
-                            pixel-perfect user interfaces with efficient and modern backends.
-                        </p>
-                        <p style={{'color': 'white', 'marginTop': '16px'}}>
-                            Shortly after graduating from Northeastern University, I joined the engineering team at
-                            Upstatement where I work on a wide variety of interesting and meaningful projects on a daily
-                            basis.
-                        </p>
+                        <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
+                        <hr/>
+                        <div style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
+                            <p>
+                                Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
+                                Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
+                                a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
+                            </p>
+                            <br/>
+                            <p>
+                                I love developing software across the stack and I'm always looking for new opportunities
+                                to expand my skill set.
+                            </p>
+                        </div>
                     </div>
                     <ProfileImage isMobile={this.state.isMobile}/>
                 </div>
@@ -182,9 +185,10 @@ class Home extends Component {
                 </div>
 
 
-                {/* EDUCATION */}
                 <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
                     <div className={'body-info'}>
+
+                        {/* EDUCATION */}
                         <h3 id={'education'}>&#60;/ Education</h3>
                         <hr/>
                         <h4>Northeastern University, Boston, MA</h4>
@@ -269,6 +273,7 @@ class Home extends Component {
                             <span className={'skill'} style={this.skillProficient}>Amazon Web Services</span>
                             <span className={'skill'} style={this.skillProficient}>Linux CLI</span>
                             <span className={'skill'} style={this.skillProficient}>Git</span>
+                            <span className={'skill'} style={this.skillFamiliar}>Nessus</span>
                         </div>
                         <div className={'skills'}>
                             <span className={'skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
@@ -278,7 +283,7 @@ class Home extends Component {
 
                 {/* FEATURED SOFTWARE PROJECTS */}
                 <div className={'projects'}>
-                    <div className={'project-text'}>
+                    <div className={'project-body'}>
                         <h3 id='projects' style={{'color': 'white'}}>&#60;/ Software Projects</h3>
                         <hr/>
 
@@ -301,20 +306,29 @@ class Home extends Component {
                         </div>
 
                         <div className={'project'}>
-                            <div>
+                            <div className={'project-descript'}>
                                 <h4>Liberty Cars</h4>
-                                <p>Check it out <a style={{'color': '#3c65cd'}}
-                                                   href={'https://libertycars.firebaseapp.com'}
-                                                   target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
-                                <div className={'skills'}>
-                                    <span className={'skill'} style={this.skillProficient}>Vue.js</span>
-                                    <span className={'skill'} style={this.skillProficient}>JavaScript</span>
-                                    <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
-                                    <span className={'skill'} style={this.skillProficient}>Firebase</span>
+                                <p>
+                                    An app developed with Vue.js for simultaneously searching multiple geographic
+                                    locations for a used car that matches user-specific criteria.
+                                </p>
+                                <br/>
+                                <p>
+                                    Check it out <a style={{'color': '#3c65cd'}}
+                                                    href={'https://libertycars.firebaseapp.com'}
+                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>!
+                                </p>
+                                <div className={'highlight-skills'} style={{'margin': '10px 0'}}>
+                                    <span className={'h-skill'} style={this.skillProficient}>Vue.js</span>
+                                    <span className={'h-skill'} style={this.skillProficient}>JavaScript</span>
+                                    <span className={'h-skill'} style={this.skillProficient}>HTML/CSS</span>
+                                    <span className={'h-skill'} style={this.skillProficient}>Firebase</span>
                                 </div>
                             </div>
-                            <div>
-                                <img className={'img-proj'} src={liberty_cars}/>
+                            <div className={'img-container'}>
+                                <div style={{'margin': 'auto'}}>
+                                    <img className={'img-proj'} src={liberty_cars}/>
+                                </div>
                             </div>
                         </div>
 
@@ -340,6 +354,13 @@ class Home extends Component {
                     </div>
                 </div>
 
+                <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
+                    <div className={'body-info'}>
+                        <h3 id='contact'>&#60;/ Get In Touch</h3>
+                        <hr/>
+                        <Icons/>
+                    </div>
+                </div>
 
                 <Footer/>
             </div>
@@ -358,7 +379,7 @@ class ProfileImage extends Component {
             return (
                 <div className={'about-profile'}>
                     <div className={'profile-crop'}>
-                        <img src={profile} className={'profile-img'} alt={'Profile Image'}/>
+                        <img src={profile} className={'profile-img'} alt={'Profile'}/>
                     </div>
                 </div>
             );

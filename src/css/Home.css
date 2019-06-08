@@ -34,7 +34,7 @@ h5 {
 
 p {
     margin: 0;
-    font-size: 16px;
+    font-size: 17px;
 }
 
 .intro {
@@ -69,6 +69,7 @@ p {
     margin-left: 20vw;
     width: 42vw;
     text-align: left;
+    color: white;
 }
 
 .about-text-mobile {
@@ -149,7 +150,6 @@ p {
     color: white;
     margin: 5px auto;
     padding: 8px 12px;
-    font-size: 14px;
     border-radius: 4px;
 }
 
@@ -161,7 +161,6 @@ p {
     color: white;
     margin: 0 8px 0 0;
     padding: 8px 12px;
-    font-size: 14px;
     border-radius: 4px;
 }
 
@@ -181,14 +180,25 @@ p {
     margin: 0 0 20px 0;
 }
 
-.project-text {
+.project-body {
     margin-left: 20vw;
     margin-right: 30vw;
     text-align: left;
 }
 
+.project-descript {
+    width: 50%;
+    padding: 5px 25px 5px 5px;
+}
+
+.img-container {
+    display: flex;
+    width: 50%;
+}
+
 .img-proj {
     width: 100%;
+    border-radius: 5px;
 }
 
 .footer {
