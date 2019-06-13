@@ -1,20 +1,7 @@
 .nav-inner {
-    color: #1e2f60;
     font-size: 18px;
     font-weight: 500;
     margin: auto 15px;
-}
-
-.nav-inner-main {
-    color: white;
-}
-
-.nav-inner:hover {
-    color: black;
-}
-
-.nav-inner-main:hover {
-    color: #bbdcff;
 }
 
 .nav-link {
@@ -22,19 +9,24 @@
     height: 75%;
     display: flex;
     border-radius: 5px;
+    color: #1e2f60;
 }
 
 .nav-link:hover {
     cursor: pointer;
+    color: #197a88
 }
 
 .main-link {
+    color: white;
+    border: 1px solid #197a88;
     background-color: #197a88;
     margin-left: auto;
 }
 
 .main-link:hover {
-    background-color: #197a88;
+    background-color: white;
+    color: #197a88;
 }
 
 .nav-left {

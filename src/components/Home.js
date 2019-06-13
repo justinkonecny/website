@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 import liberty_cars from '../resources/liberty_cars_results.png';
 import animator from '../resources/animator.png';
 import '../css/Home.css';
+import email from "../resources/mail.svg";
 
 /**
  * Component for the home page (the main website display component).
@@ -128,59 +129,62 @@ class Home extends Component {
                 {/* The main body, includes education, software projects, skills, and work experience */}
                 {/* ABOUT ME */}
                 <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
-                    <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
-                        <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
-                        <hr/>
-                        <div style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
-                            <p>
-                                Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
-                                Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
-                                a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
-                            </p>
-                            <br/>
-                            <p>
-                                I love developing software across the stack and I'm always looking for new opportunities
-                                to expand my skill set.
-                            </p>
+                    <div className={'about-inner'}>
+                        <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
+                            <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
+                            <hr/>
+                            <div style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
+                                <p>
+                                    Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
+                                    Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
+                                    a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
+                                </p>
+                                <br/>
+                                <p>
+                                    I love developing software across the stack and I'm always looking for new opportunities
+                                    to expand my skill set.
+                                </p>
+                            </div>
                         </div>
-                    </div>
-                    <ProfileImage isMobile={this.state.isMobile}/>
-                </div>
-                <div className={'highlights'}>
-                    <div className={'highlight'}>
-                        <h4>Languages</h4>
-                        <div className={'highlight-skills'}>
-                            <div className={'h-skill'} style={this.skillProficient}>Java</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Python</div>
-                            <div className={'h-skill'} style={this.skillProficient}>C/C++</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>JavaScript</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>React</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>Racket</div>
-                            <div className={'h-skill'} style={this.skillFamiliar}>Assembly</div>
-                        </div>
+                        <ProfileImage isMobile={this.state.isMobile}/>
                     </div>
 
-                    <div className={'highlight'}>
-                        <h4>Software</h4>
-                        <div className={'highlight-skills'}>
-                            <div className={'h-skill'} style={this.skillProficient}>Linux</div>
-                            <div className={'h-skill'} style={this.skillProficient}>IntelliJ</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Eclipse</div>
-                            <div className={'h-skill'} style={this.skillProficient}>PyCharm</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>GDB</div>
-                            <div className={'h-skill'} style={this.skillKnowledgeable}>Vim</div>
+                    <div className={'highlights'}>
+                        <div className={'highlight'}>
+                            <h4>Languages</h4>
+                            <div className={'highlight-skills'}>
+                                <div className={'h-skill'} style={this.skillProficient}>Java</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Python</div>
+                                <div className={'h-skill'} style={this.skillProficient}>C/C++</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>React</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>Racket</div>
+                                <div className={'h-skill'} style={this.skillFamiliar}>Assembly</div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div className={'highlight'}>
-                        <h4>Interests</h4>
-                        <div className={'highlight-skills'}>
-                            <div className={'h-skill'} style={this.skillProficient}>Running</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Snowboarding</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Traveling</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Cooking</div>
-                            <div className={'h-skill'} style={this.skillProficient}>Spanish</div>
+                        <div className={'highlight'}>
+                            <h4>Software</h4>
+                            <div className={'highlight-skills'}>
+                                <div className={'h-skill'} style={this.skillProficient}>Linux</div>
+                                <div className={'h-skill'} style={this.skillProficient}>IntelliJ</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Eclipse</div>
+                                <div className={'h-skill'} style={this.skillProficient}>PyCharm</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>GDB</div>
+                                <div className={'h-skill'} style={this.skillKnowledgeable}>Vim</div>
+                            </div>
+                        </div>
+
+                        <div className={'highlight'}>
+                            <h4>Interests</h4>
+                            <div className={'highlight-skills'}>
+                                <div className={'h-skill'} style={this.skillProficient}>Running</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Snowboarding</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Traveling</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Cooking</div>
+                                <div className={'h-skill'} style={this.skillProficient}>Spanish</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -215,6 +219,7 @@ class Home extends Component {
                                 <li>Statistics & Stochastic Processes</li>
                                 <li>Embedded Design: Robotics</li>
                                 <li>Differential Equations & Linear Algebra</li>
+                                <li>Linear Algebra</li>
                             </div>
                         </ul>
                         <div className={'skills'}>
@@ -232,20 +237,21 @@ class Home extends Component {
                         <hr/>
                         <h4>Rocket Software, Waltham, MA</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019</h5>
-                        <p>
-                            Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at
-                            lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.
-                            Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.
-                            Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit
-                            scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.
-                        </p>
-                        <div className={'skills'}>
-                            <span className={'skill'} style={this.skillProficient}>Java</span>
-                            <span className={'skill'} style={this.skillProficient}>JavaScript</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>TypeScript</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>Node.js</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>Python</span>
-                        </div>
+                        {/*<p>*/}
+                            {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
+                            {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
+                            {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
+                            {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
+                            {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
+                        {/*</p>*/}
+                        {/*<div className={'skills'}>*/}
+                            {/*<span className={'skill'} style={this.skillProficient}>Java</span>*/}
+                            {/*<span className={'skill'} style={this.skillProficient}>JavaScript</span>*/}
+                            {/*<span className={'skill'} style={this.skillKnowledgeable}>TypeScript</span>*/}
+                            {/*<span className={'skill'} style={this.skillKnowledgeable}>Node.js</span>*/}
+                            {/*<span className={'skill'} style={this.skillKnowledgeable}>Python</span>*/}
+                        {/*</div>*/}
+                        <br/>
 
                         <h4>Vonage, Holmdel, NJ</h4>
                         <h5>Information Security Associate<br/>July - August 2018</h5>
@@ -337,27 +343,26 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <h4 style={{'color': 'white'}}>Additional Projects</h4>
+                        <h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>
                         <div className={'project'}>
+                            <div className={'img-container'}>
+                                <div style={{'margin': 'auto'}}>
+                                    <img className={'img-proj'} src={animator}/>
+                                </div>
+                            </div>
                             <div className={'project-descript'}>
                                 <h4 style={{'marginBottom': '20px'}}>Interactive Animator</h4>
                                 <p>
                                     A Java application developed with a Java Swing user interface in a pair programming
                                     setting to read and display textual descriptions of animations. Display modes include
-                                    interactive, visual, textual, and SVG. Interactive options featured are pause, resume,
-                                    restart, loop on/off, speed increase/decrease, and export.
+                                    interactive, visual, textual, and SVG. Interactive options developed are pause, resume,
+                                    restart, loop on/off, speed increase/decrease, and export animation.
                                 </p>
                                 <br/>
-
                                 <div className={'project-skills'} style={{'margin': '10px 0'}}>
                                     <span className={'proj-skill'} style={this.skillProficient}>Java</span>
                                     <span className={'proj-skill'} style={this.skillProficient}>Swing</span>
                                     <span className={'proj-skill'} style={this.skillProficient}>MVC</span>
-                                </div>
-                            </div>
-                            <div className={'img-container'}>
-                                <div style={{'margin': 'auto'}}>
-                                    <img className={'img-proj'} src={animator}/>
                                 </div>
                             </div>
                         </div>
@@ -369,7 +374,14 @@ class Home extends Component {
                     <div className={'body-info'}>
                         <h3 id='contact'>&#60;/ Get In Touch</h3>
                         <hr/>
-                        <Icons/>
+                        <div style={{'display': 'flex'}}>
+                            <a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>
+                                <div className={'contact-me'}>
+                                    Email Me
+                                </div>
+                            </a>
+
+                        </div>
                     </div>
                 </div>
 
