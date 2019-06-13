@@ -4,6 +4,7 @@ import resume from '../resources/resume.pdf';
 import Icons from './Icons.js';
 import NavBar from './NavBar';
 import liberty_cars from '../resources/liberty_cars_results.png';
+import animator from '../resources/animator.png';
 import '../css/Home.css';
 
 /**
@@ -287,42 +288,46 @@ class Home extends Component {
                         <h3 id='projects' style={{'color': 'white'}}>&#60;/ Software Projects</h3>
                         <hr/>
 
-                        <h4 style={{'color': 'white'}}>Featured Projects</h4>
-                        <div className={'project'}>
-                            <div>
-                                <h4>Calendays</h4>
-                                <p>Check it out <a style={{'color': '#3c65cd'}}
-                                                   href={'https://calendays-ccfc4.firebaseapp.com'}
-                                                   target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>
-                                <div className={'skills'}>
-                                    <span className={'skill'} style={this.skillProficient}>React / JSX</span>
-                                    <span className={'skill'} style={this.skillProficient}>HTML/CSS</span>
-                                    <span className={'skill'} style={this.skillProficient}>Firebase</span>
-                                </div>
-                            </div>
-                            <div>
-                                IMG
-                            </div>
-                        </div>
+                        <h4 style={{'color': 'white'}}>Featured Project</h4>
+
+                        {/*<div className={'project'}>*/}
+                            {/*<div>*/}
+                                {/*<h4>Calendays</h4>*/}
+                                {/*<p>Check it out <a style={{'color': '#3c65cd'}}*/}
+                                                   {/*href={'https://calendays-ccfc4.firebaseapp.com'}*/}
+                                                   {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>*/}
+                                {/*<div className={'skills'}>*/}
+                                    {/*<span className={'skill'} style={this.skillProficient}>React / JSX</span>*/}
+                                    {/*<span className={'skill'} style={this.skillProficient}>HTML/CSS</span>*/}
+                                    {/*<span className={'skill'} style={this.skillProficient}>Firebase</span>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                            {/*<div>*/}
+                                {/*IMG*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
 
                         <div className={'project'}>
                             <div className={'project-descript'}>
-                                <h4>Liberty Cars</h4>
+                                <h4 style={{'marginBottom': '20px'}}>Liberty Cars</h4>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
                                     locations for a used car that matches user-specific criteria.
                                 </p>
                                 <br/>
                                 <p>
-                                    Check it out <a style={{'color': '#3c65cd'}}
+                                    Try it out <a style={{'color': '#3c65cd'}}
                                                     href={'https://libertycars.firebaseapp.com'}
-                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>!
+                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>, or
+                                    see the code <a style={{'color': '#3c65cd'}}
+                                                  href={'https://github.com/justinkonecny/liberty_cars'}
+                                                  target={'_blank'} rel={'noopener noreferrer'}>here</a>!
                                 </p>
-                                <div className={'highlight-skills'} style={{'margin': '10px 0'}}>
-                                    <span className={'h-skill'} style={this.skillProficient}>Vue.js</span>
-                                    <span className={'h-skill'} style={this.skillProficient}>JavaScript</span>
-                                    <span className={'h-skill'} style={this.skillProficient}>HTML/CSS</span>
-                                    <span className={'h-skill'} style={this.skillProficient}>Firebase</span>
+                                <div className={'project-skills'} style={{'margin': '10px 0'}}>
+                                    <span className={'proj-skill'} style={this.skillProficient}>Vue.js</span>
+                                    <span className={'proj-skill'} style={this.skillProficient}>JavaScript</span>
+                                    <span className={'proj-skill'} style={this.skillProficient}>HTML/CSS</span>
+                                    <span className={'proj-skill'} style={this.skillProficient}>Firebase</span>
                                 </div>
                             </div>
                             <div className={'img-container'}>
@@ -334,23 +339,29 @@ class Home extends Component {
 
                         <h4 style={{'color': 'white'}}>Additional Projects</h4>
                         <div className={'project'}>
-                            <div>
-                                <h4>Interactive Animator</h4>
-                                <div className={'skills'}>
-                                    <span className={'skill'} style={this.skillProficient}>Java / Swing</span>
-                                    <span className={'skill'} style={this.skillProficient}>MVC</span>
+                            <div className={'project-descript'}>
+                                <h4 style={{'marginBottom': '20px'}}>Interactive Animator</h4>
+                                <p>
+                                    A Java application developed with a Java Swing user interface in a pair programming
+                                    setting to read and display textual descriptions of animations. Display modes include
+                                    interactive, visual, textual, and SVG. Interactive options featured are pause, resume,
+                                    restart, loop on/off, speed increase/decrease, and export.
+                                </p>
+                                <br/>
+
+                                <div className={'project-skills'} style={{'margin': '10px 0'}}>
+                                    <span className={'proj-skill'} style={this.skillProficient}>Java</span>
+                                    <span className={'proj-skill'} style={this.skillProficient}>Swing</span>
+                                    <span className={'proj-skill'} style={this.skillProficient}>MVC</span>
+                                </div>
+                            </div>
+                            <div className={'img-container'}>
+                                <div style={{'margin': 'auto'}}>
+                                    <img className={'img-proj'} src={animator}/>
                                 </div>
                             </div>
                         </div>
 
-                        <div className={'project'}>
-                            <div>
-                                <h4>Distributed Key-Value Store</h4>
-                                <div className={'skills'}>
-                                    <span className={'skill'} style={this.skillProficient}>Python</span>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
