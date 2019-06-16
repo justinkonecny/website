@@ -6,7 +6,6 @@ import NavBar from './NavBar';
 import liberty_cars from '../resources/liberty_cars_results.png';
 import animator from '../resources/animator.png';
 import '../css/Home.css';
-import email from "../resources/mail.svg";
 
 /**
  * Component for the home page (the main website display component).
@@ -25,9 +24,23 @@ class Home extends Component {
         // Resize listener to handle switching to a mobile display
         this.resizeListener = this.resizeListener.bind(this);
         // The current state of the page
-        this.state = {isMobile: false, showNavBar: true};
+        this.state = {
+            isMobile: false,
+            showNavBar: true,
+            showIntro: false,
+            showAboutMe: false,
+            showHighlights: false,
+            showNEUSkills: false,
+            showVonageSkills: false,
+            showLibertySkills: false,
+            showAnimatorSkills: false
+        };
         // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
+
+        this.introDelayMS = 800;
+
+        this.lastScroll = 0;
 
         // Constants for consistent display
         this.skillProficient = {'backgroundColor': '#284496'};
@@ -37,22 +50,22 @@ class Home extends Component {
 
         // The links passed to the navigation bar component for rendering (on the left)
         this.navLinksLeft = [
-            <a className='nav-link' href='#about-me'>
+            <a className='nav-link' href='#about-me' key={'navAboutMe'}>
                 <div className='nav-inner'>About Me</div>
             </a>,
-            <a className='nav-link' href='#education'>
+            <a className='nav-link' href='#education' key={'navEducation'}>
                 <div className='nav-inner'>Education</div>
             </a>,
-            <a className='nav-link' href='#experience'>
+            <a className='nav-link' href='#experience' key={'navExperience'}>
                 <div className='nav-inner'>Experience</div>
             </a>,
-            <a className='nav-link' href='#projects'>
+            <a className='nav-link' href='#projects' key={'navProjects'}>
                 <div className='nav-inner'>Projects</div>
             </a>
         ];
         // The links passed to the navigation bar component for rendering (on the right)
         this.navLinksRight = [
-            <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'}>
+            <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
                 <div className='nav-inner nav-inner-main'>Resume</div>
             </a>
         ];
@@ -63,13 +76,42 @@ class Home extends Component {
      */
     scrollListener() {
         console.log(window.pageYOffset);
-        if (window.pageYOffset > 50) {
-            // Handles scrolling down the page
+        if (window.pageYOffset < 50) {
+            // Handles scrolling to top of page
+            this.setState({showNavBar: true});
+        } else if (window.pageYOffset > this.lastScroll) {
+            // Scrolling towards bottom of page
+            this.lastScroll = window.pageYOffset;
             this.setState({showNavBar: false});
-        } else {
-            // Handles scrolling back up the page
+        } else if ( this.lastScroll - window.pageYOffset > 50) {
+            // Scrolling towards top of the page
+            this.lastScroll = window.pageYOffset;
             this.setState({showNavBar: true});
         }
+
+        if (window.pageYOffset > this.getElementYCoord('animator') && this.state.showAnimatorSkills === false) {
+            this.setState({showAnimatorSkills: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('liberty-cars') && this.state.showLibertySkills === false) {
+            this.setState({showLibertySkills: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('vonage-skills') && this.state.showVonageSkills === false) {
+            this.setState({showVonageSkills: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('neu-skills') && this.state.showNEUSkills === false) {
+            this.setState({showNEUSkills: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('highlights') && this.state.showHighlights === false) {
+            this.setState({showHighlights: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('about-me') && this.state.showAboutMe === false) {
+            this.setState({showAboutMe: true});
+        }
+
+    }
+
+    getElementYCoord(name) {
+        return document.getElementById(name).getBoundingClientRect().top + window.scrollY - (0.75 * window.innerHeight);
     }
 
     /**
@@ -92,6 +134,7 @@ class Home extends Component {
     componentWillMount() {
         window.addEventListener('scroll', this.scrollListener);
         window.addEventListener('resize', this.resizeListener);
+        setTimeout(() => this.setState({showIntro: true}), this.introDelayMS);
 
         if (window.innerWidth <= this.mobileThreshold) {
             this.setState({isMobile: true});
@@ -117,12 +160,14 @@ class Home extends Component {
                 <div className={'intro'}>
                     <div className={'intro-inner'}>
                         <h1>Hi, I'm Justin Konecny.</h1>
-                        <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
-                            &#60;/ I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
-                            <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
-                            pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>. />
-                        </p>
-                        <Icons isMobile={this.state.isMobile}/>
+                        <div className={this.state.showIntro ? 'slide-right' : 'slide-right-hide'}>
+                            <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
+                                I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
+                                <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
+                                pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>.
+                            </p>
+                            <Icons isMobile={this.state.isMobile} />
+                        </div>
                     </div>
                 </div>
 
@@ -131,9 +176,10 @@ class Home extends Component {
                 <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
                     <div className={'about-inner'}>
                         <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
-                            <h3 id={'about-me'} style={{'color': 'white'}}>&#60;/ About Me</h3>
+                            <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
                             <hr/>
-                            <div style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
+                            <div className={this.state.showAboutMe ? 'slide-right' : 'slide-right-hide'}
+                                 style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
                                 <p>
                                     Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
                                     Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
@@ -149,41 +195,41 @@ class Home extends Component {
                         <ProfileImage isMobile={this.state.isMobile}/>
                     </div>
 
-                    <div className={'highlights'}>
+                    <div id={'highlights'} className={'highlights'}>
                         <div className={'highlight'}>
                             <h4>Languages</h4>
-                            <div className={'highlight-skills'}>
-                                <div className={'h-skill'} style={this.skillProficient}>Java</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Python</div>
-                                <div className={'h-skill'} style={this.skillProficient}>C/C++</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>JavaScript</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>React</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>Racket</div>
-                                <div className={'h-skill'} style={this.skillFamiliar}>Assembly</div>
+                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Python</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>C/C++</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>React</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Racket</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>Assembly</div>
                             </div>
                         </div>
 
                         <div className={'highlight'}>
                             <h4>Software</h4>
-                            <div className={'highlight-skills'}>
-                                <div className={'h-skill'} style={this.skillProficient}>Linux</div>
-                                <div className={'h-skill'} style={this.skillProficient}>IntelliJ</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Eclipse</div>
-                                <div className={'h-skill'} style={this.skillProficient}>PyCharm</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>GDB</div>
-                                <div className={'h-skill'} style={this.skillKnowledgeable}>Vim</div>
+                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>IntelliJ</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Eclipse</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>PyCharm</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>GDB</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vim</div>
                             </div>
                         </div>
 
                         <div className={'highlight'}>
                             <h4>Interests</h4>
-                            <div className={'highlight-skills'}>
-                                <div className={'h-skill'} style={this.skillProficient}>Running</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Snowboarding</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Traveling</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Cooking</div>
-                                <div className={'h-skill'} style={this.skillProficient}>Spanish</div>
+                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Running</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Snowboarding</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Traveling</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Cooking</div>
+                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish</div>
                             </div>
                         </div>
                     </div>
@@ -194,7 +240,7 @@ class Home extends Component {
                     <div className={'body-info'}>
 
                         {/* EDUCATION */}
-                        <h3 id={'education'}>&#60;/ Education</h3>
+                        <h3 id={'education'}>Education</h3>
                         <hr/>
                         <h4>Northeastern University, Boston, MA</h4>
                         <h5>
@@ -222,18 +268,18 @@ class Home extends Component {
                                 <li>Linear Algebra</li>
                             </div>
                         </ul>
-                        <div className={'skills'}>
-                            <span className={'skill'} style={this.skillProficient}>Java</span>
-                            <span className={'skill'} style={this.skillProficient}>Python</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>C/C++</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>Racket</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>LaTeX</span>
-                            <span className={'skill'} style={this.skillKnowledgeable}>Git</span>
-                            <span className={'skill'} style={this.skillFamiliar}>AMD64 Assembly</span>
+                        <div id={'neu-skills'} className={this.state.showNEUSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Java</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
+                            <span className={'skill-all body-skill'} style={this.skillKnowledgeable}>C/C++</span>
+                            <span className={'skill-all body-skill'} style={this.skillKnowledgeable}>Racket</span>
+                            <span className={'skill-all body-skill'} style={this.skillKnowledgeable}>LaTeX</span>
+                            <span className={'skill-all body-skill'} style={this.skillKnowledgeable}>Git</span>
+                            <span className={'skill-all body-skill'} style={this.skillFamiliar}>AMD64 Assembly</span>
                         </div>
 
                         {/* WORK EXPERIENCE */}
-                        <h3 id={'experience'}>&#60;/ Professional Experience</h3>
+                        <h3 id={'experience'}>Professional Experience</h3>
                         <hr/>
                         <h4>Rocket Software, Waltham, MA</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019</h5>
@@ -275,15 +321,14 @@ class Home extends Component {
                                 across company teams
                             </li>
                         </ul>
-                        <div className={'skills'} style={{'margin-bottom': '0'}}>
-                            <span className={'skill'} style={this.skillProficient}>Python</span>
-                            <span className={'skill'} style={this.skillProficient}>Amazon Web Services</span>
-                            <span className={'skill'} style={this.skillProficient}>Linux CLI</span>
-                            <span className={'skill'} style={this.skillProficient}>Git</span>
-                            <span className={'skill'} style={this.skillFamiliar}>Nessus</span>
-                        </div>
-                        <div className={'skills'}>
-                            <span className={'skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
+                        <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Amazon Web Services</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Linux CLI</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Git</span>
+                            <span className={'skill-all body-skill'} style={this.skillFamiliar}>Nessus</span>
+                            <br/> <br/>
+                            <span className={'skill-all body-skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
                         </div>
                     </div>
                 </div>
@@ -291,7 +336,7 @@ class Home extends Component {
                 {/* FEATURED SOFTWARE PROJECTS */}
                 <div className={'projects'}>
                     <div className={'project-body'}>
-                        <h3 id='projects' style={{'color': 'white'}}>&#60;/ Software Projects</h3>
+                        <h3 id='projects' style={{'color': 'white'}}>Software Projects</h3>
                         <hr/>
 
                         <h4 style={{'color': 'white'}}>Featured Project</h4>
@@ -315,7 +360,7 @@ class Home extends Component {
 
                         <div className={'project'}>
                             <div className={'project-descript'}>
-                                <h4 style={{'marginBottom': '20px'}}>Liberty Cars</h4>
+                                <h4 id={'liberty-cars'} style={{'marginBottom': '20px'}}>Liberty Cars</h4>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
                                     locations for a used car that matches user-specific criteria.
@@ -329,16 +374,16 @@ class Home extends Component {
                                                   href={'https://github.com/justinkonecny/liberty_cars'}
                                                   target={'_blank'} rel={'noopener noreferrer'}>here</a>!
                                 </p>
-                                <div className={'project-skills'} style={{'margin': '10px 0'}}>
-                                    <span className={'proj-skill'} style={this.skillProficient}>Vue.js</span>
-                                    <span className={'proj-skill'} style={this.skillProficient}>JavaScript</span>
-                                    <span className={'proj-skill'} style={this.skillProficient}>HTML/CSS</span>
-                                    <span className={'proj-skill'} style={this.skillProficient}>Firebase</span>
+                                <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>Vue.js</span>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>JavaScript</span>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>HTML/CSS</span>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>Firebase</span>
                                 </div>
                             </div>
                             <div className={'img-container'}>
                                 <div style={{'margin': 'auto'}}>
-                                    <img className={'img-proj'} src={liberty_cars}/>
+                                    <img className={'img-proj'} src={liberty_cars} alt={'Liberty Cars'}/>
                                 </div>
                             </div>
                         </div>
@@ -347,11 +392,11 @@ class Home extends Component {
                         <div className={'project'}>
                             <div className={'img-container'}>
                                 <div style={{'margin': 'auto'}}>
-                                    <img className={'img-proj'} src={animator}/>
+                                    <img className={'img-proj'} src={animator} alt={'Animator'}/>
                                 </div>
                             </div>
                             <div className={'project-descript'}>
-                                <h4 style={{'marginBottom': '20px'}}>Interactive Animator</h4>
+                                <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
                                 <p>
                                     A Java application developed with a Java Swing user interface in a pair programming
                                     setting to read and display textual descriptions of animations. Display modes include
@@ -359,10 +404,10 @@ class Home extends Component {
                                     restart, loop on/off, speed increase/decrease, and export animation.
                                 </p>
                                 <br/>
-                                <div className={'project-skills'} style={{'margin': '10px 0'}}>
-                                    <span className={'proj-skill'} style={this.skillProficient}>Java</span>
-                                    <span className={'proj-skill'} style={this.skillProficient}>Swing</span>
-                                    <span className={'proj-skill'} style={this.skillProficient}>MVC</span>
+                                <div className={this.state.showAnimatorSkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>Java</span>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>Swing</span>
+                                    <span className={'skill-all proj-skill'} style={this.skillProficient}>MVC</span>
                                 </div>
                             </div>
                         </div>

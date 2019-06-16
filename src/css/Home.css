@@ -2,7 +2,7 @@ h1 {
     margin: 0 0 30px 0;
     font-size: 66px;
     font-family: 'IBM Plex Mono', monospace;
-    color: #284496
+    color: #284496;
 }
 
 h2 {
@@ -116,6 +116,17 @@ p {
     /*top: -50px;*/
 }
 
+.highlight-skills {
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.highlight-skill {
+    margin: 5px auto;
+}
+
 .body {
     margin: 50px 30vw 50px 20vw;
 }
@@ -141,29 +152,22 @@ p {
     margin: 0 5%;
 }
 
-.highlight-skills {
-    width: 70%;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
+.skill-all {
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
 }
 
-.h-skill {
-    color: white;
-    margin: 5px auto;
-    padding: 8px 12px;
-    border-radius: 4px;
+.skill-all:hover {
+    filter: brightness(150%);
 }
 
 .skills {
     margin: 20px 0 40px 0;
 }
 
-.skill {
-    color: white;
+.body-skill {
     margin: 0 8px 0 0;
-    padding: 8px 12px;
-    border-radius: 4px;
 }
 
 .projects {
@@ -200,10 +204,7 @@ p {
 }
 
 .proj-skill {
-    color: white;
     margin: 5px;
-    padding: 8px 12px;
-    border-radius: 4px;
 }
 
 .img-container {
@@ -219,17 +220,16 @@ p {
 .contact-me {
     margin: auto;
     padding: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 700;
-    color:  #197a88;
-    border: 2px solid #197a88;
+    color:  white;
+    border: 1px solid #197a88;
+    background-color: #197a88;
     border-radius: 5px;
 }
 
 .contact-me:hover {
     cursor: pointer;
-    color: white;
-    background-color: #197a88;
+    color: #197a88;
+    background-color: white;
 }
 
 .footer {
@@ -241,4 +241,29 @@ p {
 
 .footer p {
     font-size: 13px;
+}
+
+
+
+
+.slide-right {
+    position: relative;
+    left: 0;
+    transition-timing-function: ease-in-out;
+    transition-duration: 150ms;
+}
+
+.slide-right-hide {
+    position: relative;
+    left: -1000px;
+}
+
+.fade-in {
+    opacity: 100%;
+    transition-timing-function: ease-in-out;
+    transition-duration: 300ms;
+}
+
+.fade-in-hide {
+    opacity: 0;
 }
