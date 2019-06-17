@@ -89,29 +89,29 @@ class Home extends Component {
             this.setState({showNavBar: true});
         }
 
-        if (window.pageYOffset > this.getElementYCoord('animator') && this.state.showAnimatorSkills === false) {
+        if (window.pageYOffset > this.getElementYCoord('animator', 0.60) && this.state.showAnimatorSkills === false) {
             this.setState({showAnimatorSkills: true});
         }
-        if (window.pageYOffset > this.getElementYCoord('liberty-cars') && this.state.showLibertySkills === false) {
+        if (window.pageYOffset > this.getElementYCoord('liberty-cars', 0.65) && this.state.showLibertySkills === false) {
             this.setState({showLibertySkills: true});
         }
-        if (window.pageYOffset > this.getElementYCoord('vonage-skills') && this.state.showVonageSkills === false) {
+        if (window.pageYOffset > this.getElementYCoord('vonage-skills', 0.9) && this.state.showVonageSkills === false) {
             this.setState({showVonageSkills: true});
         }
-        if (window.pageYOffset > this.getElementYCoord('neu-skills') && this.state.showNEUSkills === false) {
+        if (window.pageYOffset > this.getElementYCoord('neu-skills', 0.9) && this.state.showNEUSkills === false) {
             this.setState({showNEUSkills: true});
         }
-        if (window.pageYOffset > this.getElementYCoord('highlights') && this.state.showHighlights === false) {
+        if (window.pageYOffset > this.getElementYCoord('highlights', 0.65) && this.state.showHighlights === false) {
             this.setState({showHighlights: true});
         }
-        if (window.pageYOffset > this.getElementYCoord('about-me') && this.state.showAboutMe === false) {
+        if (window.pageYOffset > this.getElementYCoord('about-me', 0.75) && this.state.showAboutMe === false) {
             this.setState({showAboutMe: true});
         }
 
     }
 
-    getElementYCoord(name) {
-        return document.getElementById(name).getBoundingClientRect().top + window.scrollY - (0.75 * window.innerHeight);
+    getElementYCoord(name, offset) {
+        return document.getElementById(name).getBoundingClientRect().top + window.scrollY - (offset * window.innerHeight);
     }
 
     /**
@@ -160,7 +160,7 @@ class Home extends Component {
                 <div className={'intro'}>
                     <div className={'intro-inner'}>
                         <h1>Hi, I'm Justin Konecny.</h1>
-                        <div className={this.state.showIntro ? 'slide-right' : 'slide-right-hide'}>
+                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'}>
                             <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
@@ -173,12 +173,13 @@ class Home extends Component {
 
                 {/* The main body, includes education, software projects, skills, and work experience */}
                 {/* ABOUT ME */}
-                <div className={this.state.isMobile ? 'about-mobile' : 'about'}>
+                {/*<div className={this.state.isMobile ? 'about-mobile' : 'about'}>*/}
+                <div className={this.state.showIntro ? 'about fade-in' : 'about fade-in-hide'}>
                     <div className={'about-inner'}>
                         <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
                             <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
                             <hr/>
-                            <div className={this.state.showAboutMe ? 'slide-right' : 'slide-right-hide'}
+                            <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
                                  style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
                                 <p>
                                     Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
