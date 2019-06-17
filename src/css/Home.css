@@ -2,7 +2,7 @@ h1 {
     margin: 0 0 30px 0;
     font-size: 66px;
     font-family: 'IBM Plex Mono', monospace;
-    color: #284496
+    color: #284496;
 }
 
 h2 {
@@ -53,9 +53,12 @@ p {
 
 .about {
     background-color: #21252b;
-    display: flex;
-    width: 100%;
     min-height: 590px;
+    width: 100%;
+}
+
+.about-inner {
+    display: flex;
 }
 
 .about-mobile {
@@ -85,7 +88,7 @@ p {
 }
 
 .profile-crop {
-    margin: auto 20vw auto auto;
+    margin: 10vh 20vw auto auto;
     width: 300px;
     height: 300px;
     overflow: hidden;
@@ -99,25 +102,38 @@ p {
 
 .highlights {
     display: flex;
-    padding: 0 10vw;
+    padding: 75px 15vw;
 }
 
 .highlight {
-    margin: auto;
+    margin: 0 auto auto auto;
     border-radius: 10px;
-    background-color: #16191d;
+    /*background-color: #16191d;*/
     color: white;
     width: 20vw;
     padding: 15px 0;
-    position: relative;
-    top: -50px;
+    /*position: relative;*/
+    /*top: -50px;*/
+}
+
+.highlight-skills {
+    width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.highlight-skill {
+    margin: 5px auto;
 }
 
 .body {
+    background-color: white;
     margin: 50px 30vw 50px 20vw;
 }
 
 .body-mobile {
+    background-color: white;
     margin: 10vw;
 }
 
@@ -138,29 +154,22 @@ p {
     margin: 0 5%;
 }
 
-.highlight-skills {
-    width: 70%;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
+.skill-all {
+    color: white;
+    border-radius: 4px;
+    padding: 8px 12px;
 }
 
-.h-skill {
-    color: white;
-    margin: 5px auto;
-    padding: 8px 12px;
-    border-radius: 4px;
+.skill-all:hover {
+    filter: brightness(150%);
 }
 
 .skills {
     margin: 20px 0 40px 0;
 }
 
-.skill {
-    color: white;
+.body-skill {
     margin: 0 8px 0 0;
-    padding: 8px 12px;
-    border-radius: 4px;
 }
 
 .projects {
@@ -172,7 +181,7 @@ p {
 
 .project {
     display: flex;
-    background-color: #16191d;
+    /*background-color: #16191d;*/
     border-radius: 5px;
     padding: 20px;
     color: white;
@@ -187,7 +196,7 @@ p {
 
 .project-descript {
     width: 50%;
-    padding: 5px 25px 5px 5px;
+    padding: 5px 25px 5px 25px;
 }
 
 .project-skills {
@@ -197,10 +206,7 @@ p {
 }
 
 .proj-skill {
-    color: white;
     margin: 5px;
-    padding: 8px 12px;
-    border-radius: 4px;
 }
 
 .img-container {
@@ -213,6 +219,21 @@ p {
     border-radius: 5px;
 }
 
+.contact-me {
+    margin: auto;
+    padding: 10px;
+    color:  white;
+    border: 1px solid #197a88;
+    background-color: #197a88;
+    border-radius: 5px;
+}
+
+.contact-me:hover {
+    cursor: pointer;
+    color: #197a88;
+    background-color: white;
+}
+
 .footer {
     margin-top: 100px;
     background-color: #323232;
@@ -222,4 +243,20 @@ p {
 
 .footer p {
     font-size: 13px;
+}
+
+
+
+.fade-in {
+    opacity: 100%;
+    position: relative;
+    top: 0;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+.fade-in-hide {
+    opacity: 0;
+    position: relative;
+    top: 25px;
 }
