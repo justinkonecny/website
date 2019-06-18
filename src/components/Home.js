@@ -26,7 +26,7 @@ class Home extends Component {
         // The current state of the page
         this.state = {
             isMobile: false,
-            showNavBar: true,
+            showNavBar: false,
             showIntro: false,
             showAboutMe: false,
             showHighlights: false,
@@ -38,8 +38,10 @@ class Home extends Component {
         // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
 
-        this.introDelayMS = 800;
+        // The number of milliseconds the introduction is delayed
+        this.introDelayMS = 2000;
 
+        // The y-position of the page just before scrolling
         this.lastScroll = 0;
 
         // Constants for consistent display
@@ -134,7 +136,7 @@ class Home extends Component {
     componentWillMount() {
         window.addEventListener('scroll', this.scrollListener);
         window.addEventListener('resize', this.resizeListener);
-        setTimeout(() => this.setState({showIntro: true}), this.introDelayMS);
+        setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
 
         if (window.innerWidth <= this.mobileThreshold) {
             this.setState({isMobile: true});
@@ -159,8 +161,8 @@ class Home extends Component {
 
                 <div className={'intro'}>
                     <div className={'intro-inner'}>
-                        <h1>Hi, I'm Justin Konecny.</h1>
-                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'}>
+                        <h1 id={'name'} className={this.state.showIntro ? 'slide-up' : 'slide-up-hide'} >Hi, I'm Justin Konecny.</h1>
+                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '200px'}}>
                             <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
@@ -392,7 +394,7 @@ class Home extends Component {
                         <h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>
                         <div className={'project'}>
                             <div className={'img-container'}>
-                                <div style={{'margin': 'auto'}}>
+                                <div style={{'margin': 'auto', 'width': '90%'}}>
                                     <img className={'img-proj'} src={animator} alt={'Animator'}/>
                                 </div>
                             </div>

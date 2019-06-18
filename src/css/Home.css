@@ -5,6 +5,19 @@ h1 {
     color: #284496;
 }
 
+#name {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+    animation: type 2s linear;
+}
+
+@keyframes type {
+    from {
+        width: 0;
+    }
+}
+
 h2 {
     margin: 0;
     font-size: 20px;
@@ -96,7 +109,7 @@ p {
 }
 
 .profile-img {
-    margin: -90px 0 0 -52px ;
+    margin: -90px 0 0 -52px;
     width: 385px;
 }
 
@@ -222,7 +235,7 @@ p {
 .contact-me {
     margin: auto;
     padding: 10px;
-    color:  white;
+    color: white;
     border: 1px solid #197a88;
     background-color: #197a88;
     border-radius: 5px;
@@ -246,13 +259,25 @@ p {
 }
 
 
+.slide-up {
+    position: relative;
+    top: 0;
+    transition-timing-function: ease-in-out;
+    transition-duration: 100ms;
+}
+
+.slide-up-hide {
+    position: relative;
+    top: 150px;
+}
+
 
 .fade-in {
     opacity: 100%;
     position: relative;
     top: 0;
     transition-timing-function: ease-in-out;
-    transition-duration: 100ms;
+    transition-duration: 150ms;
 }
 
 .fade-in-hide {
