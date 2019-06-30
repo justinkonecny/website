@@ -14,19 +14,19 @@
 
 .nav-link:hover {
     cursor: pointer;
-    color: #197a88
+    color: var(--green);
 }
 
 .main-link {
     color: white;
-    border: 1px solid #197a88;
-    background-color: #197a88;
+    border: 1px solid var(--green);
+    background-color: var(--green);
     margin-left: auto;
 }
 
 .main-link:hover {
     background-color: white;
-    color: #197a88;
+    color: var(--green);
 }
 
 .nav-left {
@@ -58,6 +58,10 @@
     transition-timing-function: ease-in-out;
     transition-duration: 150ms;
     top: 0;
+}
+
+.nav-mobile {
+    height: 50px;
 }
 
 .hide {

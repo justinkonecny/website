@@ -8,17 +8,25 @@ import '../css/NavBar.css';
  */
 class NavBar extends Component {
     render() {
-        return (
-            <div className={this.props.display ? 'nav' : 'nav hide'}>
-                <div className={'nav-left'}>
-                    {this.props.linksLeft}
+        if (this.props.isMobile) {
+            return null;
+            // return (
+            //     <div className={this.props.display ? 'nav nav-mobile' : 'nav nav-mobile hide'}>
+            //         More
+            //     </div>
+            // );
+        } else {
+            return (
+                <div className={this.props.display ? 'nav' : 'nav hide'}>
+                    <div className={'nav-left'}>
+                        {this.props.linksLeft}
+                    </div>
+                    <div className={'nav-right'}>
+                        {this.props.linksRight}
+                    </div>
                 </div>
-                <div className={'nav-right'}>
-                    {this.props.linksRight}
-                </div>
-            </div>
-
-        );
+            );
+        }
     }
 }
 
