@@ -390,16 +390,16 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        <div>
-                            <p style={{'color': 'white', 'fontSize': '30px'}}>
-                                See More
-                            </p>
-                        </div>
+                        {/*<div>*/}
+                            {/*<p style={{'color': 'white', 'fontSize': '30px'}}>*/}
+                                {/*See More*/}
+                            {/*</p>*/}
+                        {/*</div>*/}
 
                     </div>
                 </div>
 
-                <div className={'body'}>
+                <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                     <div className={'body-info'}>
                         <h3 id='contact'>Get In Touch</h3>
                         <hr/>

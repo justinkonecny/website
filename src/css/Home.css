@@ -263,7 +263,7 @@ p {
 .project {
     display: flex;
     border-radius: 5px;
-    padding: 20px;
+    padding: 20px 0;
     color: white;
     margin: 0 0 20px 0;
 }
