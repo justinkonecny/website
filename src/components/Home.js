@@ -26,7 +26,7 @@ class Home extends Component {
         // The current state of the page
         this.state = {
             isMobile: false,
-            showNavBar: true,
+            showNavBar: false,
             showIntro: false,
             showAboutMe: false,
             showHighlights: false,
@@ -38,8 +38,10 @@ class Home extends Component {
         // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
 
-        this.introDelayMS = 800;
+        // The number of milliseconds the introduction is delayed
+        this.introDelayMS = 2000;
 
+        // The y-position of the page just before scrolling
         this.lastScroll = 0;
 
         // Constants for consistent display
@@ -110,6 +112,13 @@ class Home extends Component {
 
     }
 
+    /**
+     * Returns the y position of an element with the given id of name, and adjusts the coordinate by the given offset.
+     *
+     * @param name The id of the element.
+     * @param offset The amount to adjust the position by (as a percentage of window height).
+     * @returns {number} The adjusted y position of the element.
+     */
     getElementYCoord(name, offset) {
         return document.getElementById(name).getBoundingClientRect().top + window.scrollY - (offset * window.innerHeight);
     }
@@ -132,9 +141,10 @@ class Home extends Component {
      * Updates the current state to mobile if the window width is less than the mobile width threshold.
      */
     componentWillMount() {
-        window.addEventListener('scroll', this.scrollListener);
+        // window.addEventListener('scroll', this.scrollListener);
         window.addEventListener('resize', this.resizeListener);
-        setTimeout(() => this.setState({showIntro: true}), this.introDelayMS);
+        window.addEventListener('scroll', this.scrollListener);
+        setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
 
         if (window.innerWidth <= this.mobileThreshold) {
             this.setState({isMobile: true});
@@ -155,13 +165,12 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
-
-                <div className={'intro'}>
-                    <div className={'intro-inner'}>
-                        <h1>Hi, I'm Justin Konecny.</h1>
-                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'}>
-                            <p style={{'fontSize': '22px', 'marginRight': '45vw'}}>
+                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
+                <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
+                    <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
+                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I'm Justin Konecny.</h1>
+                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '200px'}}>
+                            <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
                                 pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>.
@@ -173,71 +182,77 @@ class Home extends Component {
 
                 {/* The main body, includes education, software projects, skills, and work experience */}
                 {/* ABOUT ME */}
-                {/*<div className={this.state.isMobile ? 'about-mobile' : 'about'}>*/}
-                <div className={this.state.showIntro ? 'about fade-in' : 'about fade-in-hide'}>
-                    <div className={'about-inner'}>
-                        <div className={this.state.isMobile ? 'about-text-mobile' : 'about-text'}>
-                            <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
-                            <hr/>
-                            <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
-                                 style={{'textIndent': '1.0em', 'marginTop': '20px'}}>
-                                <p>
-                                    Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
-                                    Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
-                                    a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
-                                </p>
-                                <br/>
-                                <p>
-                                    I love developing software across the stack and I'm always looking for new opportunities
-                                    to expand my skill set.
-                                </p>
+                <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'}>
+                    <div className={this.state.isMobile ? 'about about-mobile' : 'about'}>
+                        <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
+                            <div className={this.state.isMobile ? 'about-text about-text-mobile' : 'about-text'}>
+                                <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
+                                <hr/>
+                                <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
+                                     style={{'textIndent': '1.0em', 'margin': '20px auto'}}>
+                                    <p>
+                                        Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
+                                        Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
+                                        a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
+                                    </p>
+                                    <br/>
+                                    <p>
+                                        I love developing software across the stack and I'm always looking for new opportunities
+                                        to expand my skill set.
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        <ProfileImage isMobile={this.state.isMobile}/>
-                    </div>
-
-                    <div id={'highlights'} className={'highlights'}>
-                        <div className={'highlight'}>
-                            <h4>Languages</h4>
-                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Python</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>C/C++</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>JavaScript</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>React</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Racket</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>Assembly</div>
-                            </div>
+                            <ProfileImage isMobile={this.state.isMobile}/>
                         </div>
 
-                        <div className={'highlight'}>
-                            <h4>Software</h4>
-                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>IntelliJ</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Eclipse</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>PyCharm</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>GDB</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vim</div>
+                        <div id={'highlights'} className={this.state.isMobile ? 'highlights highlights-mobile' : 'highlights'}>
+                            <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
+                                <h4>Languages</h4>
+                                <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
+                                    <div className={'highlight-skills'}>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Python</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>C/C++</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>React</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Racket</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>Assembly</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
-                        <div className={'highlight'}>
-                            <h4>Interests</h4>
-                            <div className={this.state.showHighlights ? 'highlight-skills fade-in' : 'highlight-skills fade-in-hide'}>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Running</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Snowboarding</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Traveling</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Cooking</div>
-                                <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish</div>
+                            <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
+                                <h4>Software</h4>
+                                <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
+                                    <div className={'highlight-skills'}>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>IntelliJ</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Eclipse</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>PyCharm</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>GDB</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vim</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
+                                <h4>Interests</h4>
+                                <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
+                                    <div className={'highlight-skills'}>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Running</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Snowboarding</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Traveling</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Cooking</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-
-                <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
+                <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                     <div className={'body-info'}>
 
                         {/* EDUCATION */}
@@ -250,7 +265,7 @@ class Home extends Component {
                             Expected 2022
                         </h5>
                         <p>Relevant Coursework:</p>
-                        <ul className={'list-container'}>
+                        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                             <div className={'list'}>
                                 <li>Object-Oriented Design</li>
                                 <li>Algorithms & Data Structures</li>
@@ -284,20 +299,6 @@ class Home extends Component {
                         <hr/>
                         <h4>Rocket Software, Waltham, MA</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019</h5>
-                        {/*<p>*/}
-                            {/*Risus nec feugiat in fermentum posuere urna. Sodales ut etiam sit amet nisl. A erat nam at*/}
-                            {/*lectus urna duis convallis convallis tellus. Bibendum neque egestas congue quisque egestas.*/}
-                            {/*Eu consequat ac felis donec. Dictum at tempor commodo ullamcorper a lacus vestibulum.*/}
-                            {/*Pulvinar etiam non quam lacus suspendisse faucibus. Congue mauris rhoncus aenean vel elit*/}
-                            {/*scelerisque. Vulputate mi sit amet mauris commodo. Sit amet mattis vulputate enim nulla.*/}
-                        {/*</p>*/}
-                        {/*<div className={'skills'}>*/}
-                            {/*<span className={'skill'} style={this.skillProficient}>Java</span>*/}
-                            {/*<span className={'skill'} style={this.skillProficient}>JavaScript</span>*/}
-                            {/*<span className={'skill'} style={this.skillKnowledgeable}>TypeScript</span>*/}
-                            {/*<span className={'skill'} style={this.skillKnowledgeable}>Node.js</span>*/}
-                            {/*<span className={'skill'} style={this.skillKnowledgeable}>Python</span>*/}
-                        {/*</div>*/}
                         <br/>
 
                         <h4>Vonage, Holmdel, NJ</h4>
@@ -305,21 +306,16 @@ class Home extends Component {
                         <p>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
-                            team to learn industry practices. Over this summer, I experienced how to integrate
-                            software solutions with the team's practices to produce efficient and effective solutions.
+                            team to develop software-based solutions for internal use.
                         </p>
                         <ul className={'list'}>
-                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage/retrieval of
-                                team information
+                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information
                             </li>
-                            <li>Developed a Python script to process and record information from vulnerability scans of
-                                thousands of hosts
+                            <li>Developed a Python script to process information from vulnerability scans of thousands of hosts
                             </li>
-                            <li>Employed Python scripts to facilitate cloning hundreds of GitHub repositories for static
-                                source code analysis
+                            <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis
                             </li>
-                            <li>Reviewed and submitted Jira tickets to track bug fix requests and project progress
-                                across company teams
+                            <li>Reviewed Jira tickets to track bug fix requests and project progress across company teams
                             </li>
                         </ul>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
@@ -336,32 +332,13 @@ class Home extends Component {
 
                 {/* FEATURED SOFTWARE PROJECTS */}
                 <div className={'projects'}>
-                    <div className={'project-body'}>
+                    <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
                         <h3 id='projects' style={{'color': 'white'}}>Software Projects</h3>
                         <hr/>
 
-                        <h4 style={{'color': 'white'}}>Featured Project</h4>
-
-                        {/*<div className={'project'}>*/}
-                            {/*<div>*/}
-                                {/*<h4>Calendays</h4>*/}
-                                {/*<p>Check it out <a style={{'color': '#3c65cd'}}*/}
-                                                   {/*href={'https://calendays-ccfc4.firebaseapp.com'}*/}
-                                                   {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!</p>*/}
-                                {/*<div className={'skills'}>*/}
-                                    {/*<span className={'skill'} style={this.skillProficient}>React / JSX</span>*/}
-                                    {/*<span className={'skill'} style={this.skillProficient}>HTML/CSS</span>*/}
-                                    {/*<span className={'skill'} style={this.skillProficient}>Firebase</span>*/}
-                                {/*</div>*/}
-                            {/*</div>*/}
-                            {/*<div>*/}
-                                {/*IMG*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
-
-                        <div className={'project'}>
-                            <div className={'project-descript'}>
-                                <h4 id={'liberty-cars'} style={{'marginBottom': '20px'}}>Liberty Cars</h4>
+                        <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
+                            <h4 id={'liberty-cars'} style={{'marginBottom': '20px'}}>Liberty Cars</h4>
+                            <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
                                     locations for a used car that matches user-specific criteria.
@@ -369,11 +346,11 @@ class Home extends Component {
                                 <br/>
                                 <p>
                                     Try it out <a style={{'color': '#3c65cd'}}
-                                                    href={'https://libertycars.firebaseapp.com'}
-                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>, or
+                                                  href={'https://libertycars.firebaseapp.com'}
+                                                  target={'_blank'} rel={'noopener noreferrer'}>here</a>, or
                                     see the code <a style={{'color': '#3c65cd'}}
-                                                  href={'https://github.com/justinkonecny/liberty_cars'}
-                                                  target={'_blank'} rel={'noopener noreferrer'}>here</a>!
+                                                    href={'https://github.com/justinkonecny/liberty_cars'}
+                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>!
                                 </p>
                                 <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Vue.js</span>
@@ -382,22 +359,22 @@ class Home extends Component {
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Firebase</span>
                                 </div>
                             </div>
-                            <div className={'img-container'}>
+                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
                                 <div style={{'margin': 'auto'}}>
                                     <img className={'img-proj'} src={liberty_cars} alt={'Liberty Cars'}/>
                                 </div>
                             </div>
                         </div>
 
-                        <h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>
-                        <div className={'project'}>
-                            <div className={'img-container'}>
-                                <div style={{'margin': 'auto'}}>
+                        {/*<h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>*/}
+                        <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
+                            <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
+                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
+                                <div style={{'margin': 'auto', 'width': '90%'}}>
                                     <img className={'img-proj'} src={animator} alt={'Animator'}/>
                                 </div>
                             </div>
-                            <div className={'project-descript'}>
-                                <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
+                            <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
                                 <p>
                                     A Java application developed with a Java Swing user interface in a pair programming
                                     setting to read and display textual descriptions of animations. Display modes include
@@ -413,12 +390,18 @@ class Home extends Component {
                             </div>
                         </div>
 
+                        <div>
+                            <p style={{'color': 'white', 'fontSize': '30px'}}>
+                                See More
+                            </p>
+                        </div>
+
                     </div>
                 </div>
 
-                <div className={this.state.isMobile ? 'body-mobile' : 'body'}>
+                <div className={'body'}>
                     <div className={'body-info'}>
-                        <h3 id='contact'>&#60;/ Get In Touch</h3>
+                        <h3 id='contact'>Get In Touch</h3>
                         <hr/>
                         <div style={{'display': 'flex'}}>
                             <a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>
@@ -442,17 +425,13 @@ class Home extends Component {
  */
 class ProfileImage extends Component {
     render() {
-        if (this.props.isMobile) {
-            return null;
-        } else {
-            return (
-                <div className={'about-profile'}>
-                    <div className={'profile-crop'}>
-                        <img src={profile} className={'profile-img'} alt={'Profile'}/>
-                    </div>
+        return (
+            <div className={this.props.isMobile ? 'about-profile-mobile' : 'about-profile'}>
+                <div className={this.props.isMobile ? 'profile-crop profile-crop-mobile' : 'profile-crop'}>
+                    <img src={profile} className={this.props.isMobile ? 'profile-img profile-img-mobile' : 'profile-img'} alt={'Profile'}/>
                 </div>
-            );
-        }
+            </div>
+        );
     }
 }
 

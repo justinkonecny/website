@@ -21,7 +21,19 @@ class Icons extends Component {
      */
     render() {
         if (this.props.isMobile) {
-            return null;
+            return (
+                <div style={{'margin': '40px 0 0 0', 'textAlign': 'center'}}>
+                    <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
+                        <img src={github} alt='github' style={this.iconStyle}/>
+                    </a>
+                    <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
+                        <img src={linkedin} alt='linkedin' style={this.iconStyle}/>
+                    </a>
+                    <a href='mailto:konecnyjustin@gmail.com'>
+                        <img src={email} alt='email' style={this.iconStyle}/>
+                    </a>
+                </div>
+            );
         } else {
             return (
                 <div style={{'margin': '65px 0 0 0'}}>
