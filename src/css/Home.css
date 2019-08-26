@@ -1,3 +1,7 @@
+:root {
+    --content-margin: 25vw;
+}
+
 h1 {
     margin: 0 0 30px 0;
     font-size: 66px;
@@ -6,9 +10,7 @@ h1 {
 }
 
 @keyframes type {
-    from {
-        width: 0;
-    }
+    from { width: 0; }
 }
 
 h2 {
@@ -187,7 +189,7 @@ p {
 
 .body {
     background-color: white;
-    margin: 50px 30vw 50px 20vw;
+    margin: 50px var(--content-margin) 50px 20vw;
 }
 
 .body-mobile {
@@ -222,6 +224,20 @@ p {
     margin: 0 5%;
 }
 
+@keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    10% { transform: translate(0px, -2px) rotate(2deg); }
+    20% { transform: translate(0px, -3px) rotate(4deg); }
+    30% { transform: translate(0px, -3px) rotate(2deg); }
+    40% { transform: translate(0px, -2px) rotate(-4deg); }
+    50% { transform: translate(0px, 0px) rotate(0deg); }
+    60% { transform: translate(0px, 2px) rotate(4deg); }
+    70% { transform: translate(0px, 3px) rotate(2deg); }
+    80% { transform: translate(0px, 3px) rotate(-4deg); }
+    90% { transform: translate(0px, 2px) rotate(-2deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
 .skill-all {
     color: white;
     border-radius: 4px;
@@ -231,6 +247,7 @@ p {
 .skill-all:hover {
     filter: brightness(150%);
     cursor: default;
+    animation: shake 200ms ease-in-out;
 }
 
 .skills {
@@ -252,7 +269,7 @@ p {
 
 .project-body {
     margin-left: 20vw;
-    margin-right: 30vw;
+    margin-right: var(--content-margin);
     text-align: left;
 }
 
@@ -306,6 +323,37 @@ p {
 .img-proj {
     width: 100%;
     border-radius: 5px;
+}
+
+.additional-projects {
+    margin-top: 40px;
+    color: white;
+}
+
+.additional-projects-container {
+    display: flex;
+    width: 100%;
+}
+
+.additional-projects-container-mobile {
+    width: 100%;
+}
+
+.additional-projects-content {
+    margin: 0 auto 30px 0;
+}
+
+.additional-projects-content-mobile {
+    margin: 0 0 30px 0;
+}
+
+.content-left {
+    width: 30%;
+}
+
+.content-right {
+    padding-left: 15px;
+    width: 65%;
 }
 
 .contact-me {

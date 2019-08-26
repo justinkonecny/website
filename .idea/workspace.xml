@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="401" column="83" selection-start-line="401" selection-start-column="83" selection-end-line="401" selection-end-column="83" />
+            <state relative-caret-position="660">
+              <caret line="238" column="118" selection-start-line="238" selection-start-column="118" selection-end-line="238" selection-end-column="118" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -34,22 +34,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/NavBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/css/Home.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="179">
-              <caret line="266" column="17" lean-forward="true" selection-start-line="266" selection-start-column="17" selection-end-line="266" selection-end-column="17" />
+            <state relative-caret-position="735">
+              <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -72,6 +60,11 @@
       <find>skill-highlight</find>
       <find>vonage</find>
       <find>list-con</find>
+      <find>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</find>
+      <find>ul</find>
+      <find>list</find>
+      <find>skill</find>
+      <find>30vw</find>
     </findStrings>
     <replaceStrings>
       <replace>'</replace>
@@ -117,15 +110,15 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="x" value="1680" />
-    <option name="width" value="954" />
-    <option name="height" value="1080" />
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -165,7 +158,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,24 +267,28 @@
       <workItem from="1561474357084" duration="1346000" />
       <workItem from="1561562618172" duration="3967000" />
       <workItem from="1561931223943" duration="3950000" />
-      <workItem from="1562084274933" duration="420000" />
+      <workItem from="1562084274933" duration="575000" />
+      <workItem from="1566660202098" duration="1011000" />
+      <workItem from="1566667009673" duration="693000" />
+      <workItem from="1566700148828" duration="3550000" />
+      <workItem from="1566786317514" duration="940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85041000" />
+    <option name="totallyTimeSpent" value="91390000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="0" width="1920" height="1080" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.106371775" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1416516" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.27227724" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2122449" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -300,7 +296,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21584159" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.21530612" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -467,16 +463,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/css/Home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="266" column="17" lean-forward="true" selection-start-line="266" selection-start-column="17" selection-end-line="266" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/NavBar.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
+        <state relative-caret-position="150">
           <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
@@ -484,10 +473,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/block.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="248" column="16" selection-start-line="248" selection-start-column="16" selection-end-line="248" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/css/Home.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="735">
+          <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="401" column="83" selection-start-line="401" selection-start-column="83" selection-end-line="401" selection-end-column="83" />
+        <state relative-caret-position="660">
+          <caret line="238" column="118" selection-start-line="238" selection-start-column="118" selection-end-line="238" selection-end-column="118" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>

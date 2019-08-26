@@ -32,6 +32,7 @@ class Home extends Component {
             showHighlights: false,
             showNEUSkills: false,
             showVonageSkills: false,
+            showRocketSkills: false,
             showLibertySkills: false,
             showAnimatorSkills: false
         };
@@ -100,6 +101,9 @@ class Home extends Component {
         if (window.pageYOffset > this.getElementYCoord('vonage-skills', 0.9) && this.state.showVonageSkills === false) {
             this.setState({showVonageSkills: true});
         }
+        if (window.pageYOffset > this.getElementYCoord('rocket-skills', 0.9) && this.state.showRocketSkills === false) {
+            this.setState({showRocketSkills: true});
+        }
         if (window.pageYOffset > this.getElementYCoord('neu-skills', 0.9) && this.state.showNEUSkills === false) {
             this.setState({showNEUSkills: true});
         }
@@ -159,6 +163,19 @@ class Home extends Component {
         window.removeEventListener('resize', this.resizeListener);
     }
 
+    getAdditionalProject(title, content) {
+        return (
+            <div className={this.state.isMobile ? 'additional-projects-container-mobile' : 'additional-projects-container'}>
+                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-left'}>
+                    <h5>{ title }</h5>
+                </div>
+                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-right'}>
+                    { content }
+                </div>
+            </div>
+        );
+    }
+
     /**
      * Renders this component.
      */
@@ -213,11 +230,13 @@ class Home extends Component {
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Python</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>C/C++</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>TypeScript</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>React</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vue.js</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Racket</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>Assembly</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>AMD64 Assembly</div>
                                     </div>
                                 </div>
                             </div>
@@ -227,11 +246,15 @@ class Home extends Component {
                                 <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                     <div className={'highlight-skills'}>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Jira</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>IntelliJ</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Eclipse</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>PyCharm</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>VS Code</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>LaTeX</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>GDB</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vim</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>XCode</div>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +267,7 @@ class Home extends Component {
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Snowboarding</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Traveling</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Cooking</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish Culture</div>
                                     </div>
                                 </div>
                             </div>
@@ -299,6 +322,21 @@ class Home extends Component {
                         <hr/>
                         <h4>Rocket Software, Waltham, MA</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019</h5>
+                        <ul className={'list'}>
+                            <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
+                            <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
+                            <li>Implemented a new shutdown procedure in a Java application to track threads completion for a safe exit</li>
+                            <li>Fulfilled and managed completion of Jira tickets for new features and bug fixes as a member of a scrum team</li>
+                        </ul>
+                        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Java</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>TypeScript</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>JavaScript</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Linux CLI</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Git</span>
+                        </div>
+
                         <br/>
 
                         <h4>Vonage, Holmdel, NJ</h4>
@@ -309,14 +347,9 @@ class Home extends Component {
                             team to develop software-based solutions for internal use.
                         </p>
                         <ul className={'list'}>
-                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information
-                            </li>
-                            <li>Developed a Python script to process information from vulnerability scans of thousands of hosts
-                            </li>
-                            <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis
-                            </li>
-                            <li>Reviewed Jira tickets to track bug fix requests and project progress across company teams
-                            </li>
+                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information</li>
+                            <li>Developed a Python script to process information from vulnerability scans of thousands of hosts</li>
+                            <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis</li>
                         </ul>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
                             <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
@@ -341,14 +374,16 @@ class Home extends Component {
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
-                                    locations for a used car that matches user-specific criteria.
+                                    locations for a used car. Search criteria is entered by the user on the initial page,
+                                    which is then processed to make asynchronous requests for the listing data in each
+                                    location. The results are then presented to the user for viewing.
                                 </p>
                                 <br/>
                                 <p>
-                                    Try it out <a style={{'color': '#3c65cd'}}
-                                                  href={'https://libertycars.firebaseapp.com'}
-                                                  target={'_blank'} rel={'noopener noreferrer'}>here</a>, or
-                                    see the code <a style={{'color': '#3c65cd'}}
+                                    {/*Try it out <a style={{'color': '#3c65cd'}}*/}
+                                                  {/*href={'https://libertycars.firebaseapp.com'}*/}
+                                                  {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*/}
+                                    Check out the code <a style={{'color': '#3c65cd'}}
                                                     href={'https://github.com/justinkonecny/liberty_cars'}
                                                     target={'_blank'} rel={'noopener noreferrer'}>here</a>!
                                 </p>
@@ -366,7 +401,6 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        {/*<h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>*/}
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
                             <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
                             <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
@@ -390,11 +424,48 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        {/*<div>*/}
-                            {/*<p style={{'color': 'white', 'fontSize': '30px'}}>*/}
-                                {/*See More*/}
-                            {/*</p>*/}
-                        {/*</div>*/}
+                        <div className={'additional-projects'}>
+                            <h4 id={'additional-projects'} style={{'marginBottom': '20px'}}>Additional Projects</h4>
+
+                            {/* Distributed Key-Value STore*/}
+                            {this.getAdditionalProject('Distributed, Replicated Key-Value Store',
+                                (<p>
+                                    Implemented the <a style={{'color': '#3c65cd'}}
+                                                   href={'https://raft.github.io/raft.pdf'}
+                                                   target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
+                                    protocol to in Python to create a key-value store to accept <i>put</i>s from
+                                    clients and retrieve the corresponding data when a <i>get</i> is issued.
+                                    All data from clients was replicated, attempting to maintain consistency
+                                    (clients should always receive correct answers to <i>get</i> requests) and
+                                    achieve high-availability (clients should be able to
+                                    execute <i>put</i> and <i>get</i> requests at any time with low latency.
+                                </p>))}
+
+                            {/* Simple Transport Protocol */}
+                            {this.getAdditionalProject('Simple Transport Protocol',
+                                (<p>
+                                    Designed and developed a simple transport protocol in Python that provided a
+                                    reliable datagram service and ensured that data was delivered in order,
+                                    without duplicates, without missing data, and without errors.
+                                </p>))}
+
+                            {/* File System */}
+                            {this.getAdditionalProject('File System',
+                                (<p>
+                                    Programmed a mountable, ext-style file system in C using the FUSE API and
+                                    memory-mapped file storage. Implemented a disk image to allow users to
+                                    create, read, edit, and delete variable-length files within nested directories.
+                                </p>))}
+
+                            {/* Memory Allocator */}
+                            {this.getAdditionalProject('Memory Allocator',
+                                (<p>
+                                    Created a thread-safe memory allocator in C using mutexes, memory-mapped pages,
+                                    and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
+                                    allocation, reallocation and freeing of varying sized memory chunks.
+                                </p>))}
+                            <hr/>
+                        </div>
 
                     </div>
                 </div>
