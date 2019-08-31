@@ -434,9 +434,9 @@ class Home extends Component {
                                     Implemented the <a style={{'color': '#3c65cd'}}
                                                    href={'https://raft.github.io/raft.pdf'}
                                                    target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
-                                    protocol to in Python to create a key-value store to accept <i>put</i>s from
-                                    clients and retrieve the corresponding data when a <i>get</i> is issued.
-                                    All data from clients was replicated, attempting to maintain consistency
+                                    protocol in Python to create a key-value store that accepts <i>put</i>s from
+                                    clients and retrieves the corresponding data when receiving a <i>get</i>.
+                                    All data from clients was replicated, in an attempt to maintain consistency
                                     (clients should always receive correct answers to <i>get</i> requests) and
                                     achieve high-availability (clients should be able to
                                     execute <i>put</i> and <i>get</i> requests at any time with low latency.
