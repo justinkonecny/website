@@ -156,7 +156,7 @@ p {
 
 .highlights {
     display: flex;
-    padding: 75px 15vw;
+    padding: 40px 15vw 75px 15vw;
 }
 
 .highlights-mobile {

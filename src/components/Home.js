@@ -206,7 +206,7 @@ class Home extends Component {
                                 <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
                                 <hr/>
                                 <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
-                                     style={{'textIndent': '1.0em', 'margin': '20px auto'}}>
+                                     style={{'margin': '20px auto'}}>
                                     <p>
                                         Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
                                         Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
@@ -214,8 +214,9 @@ class Home extends Component {
                                     </p>
                                     <br/>
                                     <p>
-                                        I love developing software across the stack and I'm always looking for new opportunities
-                                        to expand my skill set.
+                                        I love developing software across the stack, and I'm always looking for new opportunities
+                                        to expand my skill set. I'm looking for opportunities to make meaningful software
+                                        contributions to real products.
                                     </p>
                                 </div>
                             </div>
@@ -379,14 +380,14 @@ class Home extends Component {
                                     location. The results are then presented to the user for viewing.
                                 </p>
                                 <br/>
-                                <p>
-                                    {/*Try it out <a style={{'color': '#3c65cd'}}*/}
-                                                  {/*href={'https://libertycars.firebaseapp.com'}*/}
-                                                  {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*/}
-                                    Check out the code <a style={{'color': '#3c65cd'}}
-                                                    href={'https://github.com/justinkonecny/liberty_cars'}
-                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>!
-                                </p>
+                                {/*<p>*/}
+                                    {/*/!*Try it out <a style={{'color': '#3c65cd'}}*!/*/}
+                                                  {/*/!*href={'https://libertycars.firebaseapp.com'}*!/*/}
+                                                  {/*/!*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*!/*/}
+                                    {/*Check out the code <a style={{'color': '#3c65cd'}}*/}
+                                                    {/*href={'https://github.com/justinkonecny/liberty_cars'}*/}
+                                                    {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!*/}
+                                {/*</p>*/}
                                 <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Vue.js</span>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>JavaScript</span>
@@ -441,8 +442,8 @@ class Home extends Component {
                                     execute <i>put</i> and <i>get</i> requests at any time with low latency.
                                 </p>))}
 
-                            {/* Simple Transport Protocol */}
-                            {this.getAdditionalProject('Simple Transport Protocol',
+                            {/* Reliable Transport Protocol */}
+                            {this.getAdditionalProject('Reliable Transport Protocol',
                                 (<p>
                                     Designed and developed a simple transport protocol in Python that provided a
                                     reliable datagram service and ensured that data was delivered in order,
