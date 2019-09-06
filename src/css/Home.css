@@ -21,9 +21,10 @@ h2 {
 }
 
 h3 {
-    margin: 10vh 0 0 0;
-    font-size: 30px;
+    margin: 10vh 0 20px 0;
+    font-size: 36px;
     color: var(--green);
+    text-transform: uppercase;
 }
 
 h4 {
@@ -31,6 +32,7 @@ h4 {
     font-size: 26px;
     font-weight: 600;
     font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
 }
 
 h5 {
@@ -221,7 +223,17 @@ p {
 }
 
 .list {
-    margin: 0 5%;
+    margin: 10px 5% 0 5%;
+}
+
+li {
+    list-style-type: none;
+}
+
+li:before {
+    content: "–";
+    position: absolute;
+    margin-left: -1.1em;
 }
 
 @keyframes shake {
@@ -354,6 +366,11 @@ p {
 .content-right {
     padding-left: 15px;
     width: 65%;
+}
+
+#contact {
+    text-transform: none;
+    color: #284496;
 }
 
 .contact-me {

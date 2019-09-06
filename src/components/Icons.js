@@ -22,7 +22,7 @@ class Icons extends Component {
     render() {
         if (this.props.isMobile) {
             return (
-                <div style={{'margin': '40px 0 0 0', 'textAlign': 'center'}}>
+                <div style={{'margin': '20px 0 0 0', 'textAlign': 'center'}}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
                         <img src={github} alt='github' style={this.iconStyle}/>
                     </a>
@@ -36,7 +36,7 @@ class Icons extends Component {
             );
         } else {
             return (
-                <div style={{'margin': '65px 0 0 0'}}>
+                <div style={{'margin': '40px 0 0 0'}}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
                         <img src={github} alt='github' style={this.iconStyle}/>
                     </a>

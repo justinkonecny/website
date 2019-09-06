@@ -192,7 +192,6 @@ class Home extends Component {
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
                                 pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>.
                             </p>
-                            <Icons isMobile={this.state.isMobile} />
                         </div>
                     </div>
                 </div>
@@ -204,7 +203,6 @@ class Home extends Component {
                         <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
                             <div className={this.state.isMobile ? 'about-text about-text-mobile' : 'about-text'}>
                                 <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
-                                <hr/>
                                 <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
                                      style={{'margin': '20px auto'}}>
                                     <p>
@@ -281,7 +279,6 @@ class Home extends Component {
 
                         {/* EDUCATION */}
                         <h3 id={'education'}>Education</h3>
-                        <hr/>
                         <h4>Northeastern University, Boston, MA</h4>
                         <h5>
                             B.S. Cybersecurity, Concentration Cyber Operations<br/>
@@ -320,9 +317,8 @@ class Home extends Component {
 
                         {/* WORK EXPERIENCE */}
                         <h3 id={'experience'}>Professional Experience</h3>
-                        <hr/>
-                        <h4>Rocket Software, Waltham, MA</h4>
-                        <h5>Software Engineer Co-op<br/>July - December 2019</h5>
+                        <h4>Rocket Software</h4>
+                        <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
                         <ul className={'list'}>
                             <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
                             <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
@@ -340,8 +336,8 @@ class Home extends Component {
 
                         <br/>
 
-                        <h4>Vonage, Holmdel, NJ</h4>
-                        <h5>Information Security Associate<br/>July - August 2018</h5>
+                        <h4>Vonage</h4>
+                        <h5>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h5>
                         <p>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
@@ -368,11 +364,10 @@ class Home extends Component {
                 <div className={'projects'}>
                     <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
                         <h3 id='projects' style={{'color': 'white'}}>Software Projects</h3>
-                        <hr/>
 
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-                            <h4 id={'liberty-cars'} style={{'marginBottom': '20px'}}>Liberty Cars</h4>
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
+                                <h5 id={'liberty-cars'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Liberty Cars</h5>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
                                     locations for a used car. Search criteria is entered by the user on the initial page,
@@ -403,13 +398,14 @@ class Home extends Component {
                         </div>
 
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-                            <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
+
                             <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
-                                <div style={{'margin': 'auto', 'width': '90%'}}>
+                                <div style={{'margin': 'auto', 'width': '80%'}}>
                                     <img className={'img-proj'} src={animator} alt={'Animator'}/>
                                 </div>
                             </div>
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
+                                <h5 id={'animator'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Interactive Animator</h5>
                                 <p>
                                     A Java application developed with a Java Swing user interface in a pair programming
                                     setting to read and display textual descriptions of animations. Display modes include
@@ -465,22 +461,29 @@ class Home extends Component {
                                     and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
                                     allocation, reallocation and freeing of varying sized memory chunks.
                                 </p>))}
-                            <hr/>
                         </div>
 
                     </div>
                 </div>
 
                 <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
-                    <div className={'body-info'}>
-                        <h3 id='contact'>Get In Touch</h3>
-                        <hr/>
-                        <div style={{'display': 'flex'}}>
-                            <a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>
-                                <div className={'contact-me'}>
-                                    Email Me
-                                </div>
-                            </a>
+                    <div className={'body-info'} style={{'display': 'flex'}}>
+                        <div style={{'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
+                            <h3 id='contact'>Let's get in touch</h3>
+                            <p>
+                                I am currently seeking opportunities for a co-op position or internship for July - December
+                                2020 in a software engineering roll.
+                            </p>
+                            <br/>
+                            <p>
+                                Looking to chat about my work experiences or any of my projects? Feel free to reach out!
+                            </p>
+                            <Icons isMobile={this.state.isMobile} />
+                            {/*<a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>*/}
+                                {/*<div className={'contact-me'}>*/}
+                                    {/*Email Me*/}
+                                {/*</div>*/}
+                            {/*</a>*/}
 
                         </div>
                     </div>
