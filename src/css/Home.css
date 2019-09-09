@@ -10,7 +10,7 @@ h1 {
 }
 
 @keyframes type {
-    from { width: 0; }
+    to { width: 100%; }
 }
 
 h2 {
@@ -50,8 +50,9 @@ p {
 .name-desk {
     white-space: nowrap;
     overflow: hidden;
-    width: 100%;
-    animation: type 2s linear;
+    width: 0;
+    animation: type 2s linear forwards;
+    animation-delay: 0.5s;
 }
 
 .name-mobile {

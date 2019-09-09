@@ -40,7 +40,7 @@ class Home extends Component {
         this.mobileThreshold = 850;
 
         // The number of milliseconds the introduction is delayed
-        this.introDelayMS = 2000;
+        this.introDelayMS = 2200;
 
         // The y-position of the page just before scrolling
         this.lastScroll = 0;
