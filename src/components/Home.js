@@ -325,7 +325,7 @@ class Home extends Component {
                         </h5>
                         <p>Relevant Coursework:</p>
                         <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
-                            <div className={'list'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                 <li>Object-Oriented Design</li>
                                 <li>Algorithms & Data Structures</li>
                                 <li>Networks & Distributed Systems</li>
@@ -333,7 +333,7 @@ class Home extends Component {
                                 <li>Theory of Computation</li>
                                 <li>Foundations of Cybersecurity</li>
                             </div>
-                            <div className={'list'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                 <li>Fundamentals of Computer Science 1 & 2</li>
                                 <li>Discrete Structures</li>
                                 <li>Probability & Statistics</li>
@@ -357,11 +357,13 @@ class Home extends Component {
                         <h3 id={'experience'}>Professional Experience</h3>
                         <h4>Rocket Software</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
-                        <ul className={'list'}>
-                            <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
-                            <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
-                            <li>Implemented a new shutdown procedure in a Java application to track threads completion for a safe exit</li>
-                            <li>Fulfilled and managed completion of Jira tickets for new features and bug fixes as a member of a scrum team</li>
+                        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
+                                <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
+                                <li>Implemented a new shutdown procedure in a Java application to track threads completion for a safe exit</li>
+                                <li>Fulfilled and managed completion of Jira tickets for new features and bug fixes as a member of a scrum team</li>
+                            </div>
                         </ul>
                         <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
                             <span className={'skill-all body-skill'} style={this.skillProficient}>Java</span>
@@ -381,10 +383,12 @@ class Home extends Component {
                             Information Security Associate, I worked directly with the the Vonage Information Security
                             team to develop software-based solutions for internal use.
                         </p>
-                        <ul className={'list'}>
-                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information</li>
-                            <li>Developed a Python script to process information from vulnerability scans of thousands of hosts</li>
-                            <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis</li>
+                        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information</li>
+                                <li>Developed a Python script to process information from vulnerability scans of thousands of hosts</li>
+                                <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis</li>
+                            </div>
                         </ul>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
                             <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>

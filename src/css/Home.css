@@ -227,6 +227,10 @@ p {
     margin: 10px 5% 0 5%;
 }
 
+.list-mobile {
+    margin: 10px 5% 0 5%;
+}
+
 li {
     list-style-type: none;
 }
