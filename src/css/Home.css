@@ -378,6 +378,11 @@ li:before {
     color: #284496;
 }
 
+.contact-anchor {
+    width: 50px;
+    margin: auto;
+}
+
 .contact-me {
     margin: auto;
     padding: 10px;
@@ -385,6 +390,7 @@ li:before {
     border: 1px solid var(--green);
     background-color: var(--green);
     border-radius: 5px;
+    width: 50px;
 }
 
 .contact-me:hover {

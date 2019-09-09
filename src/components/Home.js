@@ -34,7 +34,8 @@ class Home extends Component {
             showVonageSkills: false,
             showRocketSkills: false,
             showLibertySkills: false,
-            showAnimatorSkills: false
+            showAnimatorSkills: false,
+            hoverIcons: new Set()
         };
         // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
@@ -165,21 +166,38 @@ class Home extends Component {
 
     componentDidMount() {
         let all = Array.from(document.getElementsByClassName('skill-all'));
-        const icons = Array.from(document.getElementsByClassName('contact-icon'));
-        const resume = document.getElementsByClassName('resume')[0];
-        all = all.concat(icons);
-        all.push(resume);
 
-        console.log(all);
+        if (!this.state.isMobile) {
+            const resume = document.getElementsByClassName('resume')[0];
+            all.push(resume);
+        }
 
         for (let i = 0; i < all.length; i++) {
-            all[i].addEventListener('animationend', function(e) {
-                all[i].classList.remove('skill-animation');
-            });
-
             all[i].addEventListener('mouseover', function(e) {
                 all[i].classList.add('skill-animation')
             });
+
+            all[i].addEventListener('animationend', function(e) {
+                all[i].classList.remove('skill-animation');
+            });
+        }
+
+        const icons = Array.from(document.getElementsByClassName('contact-icon'));
+
+        for (let i = 0; i < icons.length; i++) {
+            icons[i].addEventListener('mouseover', function (e) {
+                icons[i].classList.add('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.add(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
+
+            icons[i].addEventListener('animationend', function (e) {
+                icons[i].classList.remove('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.delete(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
         }
     }
 
@@ -487,7 +505,9 @@ class Home extends Component {
 
                 <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                     <div className={'body-info'} style={{'display': 'flex'}}>
-                        <div style={{'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
+                        <div style={this.state.isMobile
+                            ? {'margin': 'auto', 'textAlign': 'center', 'padding': '0 5vw'}
+                            : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
                             <h3 id='contact'>Let's get in touch</h3>
                             <p>
                                 I am currently seeking opportunities for a co-op position or internship for July - December
@@ -497,7 +517,7 @@ class Home extends Component {
                             <p>
                                 Looking to chat about my work experiences or any of my projects? Feel free to reach out!
                             </p>
-                            <Icons isMobile={this.state.isMobile} />
+                            <Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons} />
                             {/*<a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>*/}
                                 {/*<div className={'contact-me'}>*/}
                                     {/*Email Me*/}
