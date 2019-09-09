@@ -68,7 +68,7 @@ class Home extends Component {
         ];
         // The links passed to the navigation bar component for rendering (on the right)
         this.navLinksRight = [
-            <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
+            <a className='nav-link main-link resume' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
                 <div className='nav-inner nav-inner-main'>Resume</div>
             </a>
         ];
@@ -161,6 +161,26 @@ class Home extends Component {
     componentWillUnmount() {
         window.removeEventListener('scroll', this.scrollListener);
         window.removeEventListener('resize', this.resizeListener);
+    }
+
+    componentDidMount() {
+        let all = Array.from(document.getElementsByClassName('skill-all'));
+        const icons = Array.from(document.getElementsByClassName('contact-icon'));
+        const resume = document.getElementsByClassName('resume')[0];
+        all = all.concat(icons);
+        all.push(resume);
+
+        console.log(all);
+
+        for (let i = 0; i < all.length; i++) {
+            all[i].addEventListener('animationend', function(e) {
+                all[i].classList.remove('skill-animation');
+            });
+
+            all[i].addEventListener('mouseover', function(e) {
+                all[i].classList.add('skill-animation')
+            });
+        }
     }
 
     getAdditionalProject(title, content) {
@@ -398,7 +418,6 @@ class Home extends Component {
                         </div>
 
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-
                             <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
                                 <div style={{'margin': 'auto', 'width': '80%'}}>
                                     <img className={'img-proj'} src={animator} alt={'Animator'}/>
