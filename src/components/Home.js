@@ -357,6 +357,10 @@ class Home extends Component {
                         <h3 id={'experience'}>Professional Experience</h3>
                         <h4>Rocket Software</h4>
                         <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
+                        <p>
+                            Rocket Software is a software development firm that develops products that are designed to
+                            run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
+                        </p>
                         <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                             <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                 <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
@@ -440,11 +444,6 @@ class Home extends Component {
                         </div>
 
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
-                                <div style={{'margin': 'auto', 'width': '80%'}}>
-                                    <img className={'img-proj'} src={animator} alt={'Animator'}/>
-                                </div>
-                            </div>
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
                                 <h5 id={'animator'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Interactive Animator</h5>
                                 <p>
@@ -458,6 +457,11 @@ class Home extends Component {
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Java</span>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Swing</span>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>MVC</span>
+                                </div>
+                            </div>
+                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
+                                <div style={{'margin': 'auto'}}>
+                                    <img className={'img-proj'} src={animator} alt={'Animator'}/>
                                 </div>
                             </div>
                         </div>

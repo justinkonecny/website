@@ -7,17 +7,18 @@ class Icons extends Component {
 
     constructor(props) {
         super(props);
-        const colorInactive = '#188e9b';
-        const colorActive = '#1eb2c2';
+        this.colorInactive = '#188e9b';
+        this.colorActive = '#1eb2c2';
+        this.sideLength = '60px';
     }
 
     /**
      * If on a desktop, returns the component to display the social media icons.
      */
     render() {
-        const colorGithub = this.props.hoverIcons.has('icon-github') ? '#1eb2c2' : '#188e9b';
-        const colorLinkedin = this.props.hoverIcons.has('icon-linkedin') ? '#1eb2c2' : '#188e9b';
-        const colorMail= this.props.hoverIcons.has('icon-mail') ? '#1eb2c2' : '#188e9b';
+        const colorGithub = this.props.hoverIcons.has('icon-github') ? this.colorActive : this.colorInactive;
+        const colorLinkedin = this.props.hoverIcons.has('icon-linkedin') ? this.colorActive : this.colorInactive;
+        const colorMail= this.props.hoverIcons.has('icon-mail') ? this.colorActive : this.colorInactive;
 
         return (
             <div style={{'display': 'flex', 'margin': '40px 0 0 0', 'padding': '0 10%'}}>
@@ -25,7 +26,7 @@ class Icons extends Component {
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
                         {/*<img className={'contact-icon'} src={github} alt='github' style={this.iconStyle}/>*/}
                         <svg id={'icon-github'} className={'contact-icon'} version="1.1" xmlns="http://www.w3.org/2000/svg"
-                             x="0px" y="0px" width="49px" height="49px" viewBox="0 0 438.549 438.549"
+                             x="0px" y="0px" width={this.sideLength} height={this.sideLength} viewBox="0 0 438.549 438.549"
                              style={{"enable-background": "new 0 0 438.549 438.549"}}>
                             <g>
                                 <path style={{"fill": colorGithub}} d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
@@ -56,7 +57,7 @@ class Icons extends Component {
                 <div className={'contact-anchor'}>
                     <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
                         {/*<img className={'contact-icon'} src={linkedin} alt='linkedin' style={this.iconStyle}/>*/}
-                        <svg id={'icon-linkedin'} className={'contact-icon'} width="49px" height="49px" version="1.1"
+                        <svg id={'icon-linkedin'} className={'contact-icon'} width={this.sideLength} height={this.sideLength} version="1.1"
                              xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 112.196 112.196"
                              style={{"enable-background": "new 0 0 112.196 112.196"}}>
                             <g>
@@ -77,7 +78,7 @@ class Icons extends Component {
                 <div className={'contact-anchor'}>
                     <a href='mailto:konecnyjustin@gmail.com'>
                         {/*<img className={'contact-icon'} src={email} alt='email' style={this.iconStyle}/>*/}
-                        <svg id={'icon-mail'} className={'contact-icon'} width="49px" height="49px" viewBox="0 0 49 49" version="1.1"
+                        <svg id={'icon-mail'} className={'contact-icon'} width={this.sideLength} height={this.sideLength} viewBox="0 0 49 49" version="1.1"
                              xmlns="http://www.w3.org/2000/svg">
                             <title>Combined Shape</title>
                             <desc>Created with Sketch.</desc>
