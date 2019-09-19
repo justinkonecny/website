@@ -32,14 +32,16 @@ class Home extends Component {
             showHighlights: false,
             showNEUSkills: false,
             showVonageSkills: false,
+            showRocketSkills: false,
             showLibertySkills: false,
-            showAnimatorSkills: false
+            showAnimatorSkills: false,
+            hoverIcons: new Set()
         };
         // The threshold width at which the page switches to the mobile version
         this.mobileThreshold = 850;
 
         // The number of milliseconds the introduction is delayed
-        this.introDelayMS = 2000;
+        this.introDelayMS = 2200;
 
         // The y-position of the page just before scrolling
         this.lastScroll = 0;
@@ -67,7 +69,7 @@ class Home extends Component {
         ];
         // The links passed to the navigation bar component for rendering (on the right)
         this.navLinksRight = [
-            <a className='nav-link main-link' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
+            <a className='nav-link main-link resume' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
                 <div className='nav-inner nav-inner-main'>Resume</div>
             </a>
         ];
@@ -99,6 +101,9 @@ class Home extends Component {
         }
         if (window.pageYOffset > this.getElementYCoord('vonage-skills', 0.9) && this.state.showVonageSkills === false) {
             this.setState({showVonageSkills: true});
+        }
+        if (window.pageYOffset > this.getElementYCoord('rocket-skills', 0.9) && this.state.showRocketSkills === false) {
+            this.setState({showRocketSkills: true});
         }
         if (window.pageYOffset > this.getElementYCoord('neu-skills', 0.9) && this.state.showNEUSkills === false) {
             this.setState({showNEUSkills: true});
@@ -159,6 +164,56 @@ class Home extends Component {
         window.removeEventListener('resize', this.resizeListener);
     }
 
+    componentDidMount() {
+        let all = Array.from(document.getElementsByClassName('skill-all'));
+
+        if (!this.state.isMobile) {
+            const resume = document.getElementsByClassName('resume')[0];
+            all.push(resume);
+        }
+
+        for (let i = 0; i < all.length; i++) {
+            all[i].addEventListener('mouseover', function(e) {
+                all[i].classList.add('skill-animation')
+            });
+
+            all[i].addEventListener('animationend', function(e) {
+                all[i].classList.remove('skill-animation');
+            });
+        }
+
+        const icons = Array.from(document.getElementsByClassName('contact-icon'));
+
+        for (let i = 0; i < icons.length; i++) {
+            icons[i].addEventListener('mouseover', function (e) {
+                icons[i].classList.add('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.add(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
+
+            icons[i].addEventListener('animationend', function (e) {
+                icons[i].classList.remove('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.delete(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
+        }
+    }
+
+    getAdditionalProject(title, content) {
+        return (
+            <div className={this.state.isMobile ? 'additional-projects-container-mobile' : 'additional-projects-container'}>
+                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-left'}>
+                    <h5>{ title }</h5>
+                </div>
+                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-right'}>
+                    { content }
+                </div>
+            </div>
+        );
+    }
+
     /**
      * Renders this component.
      */
@@ -175,7 +230,6 @@ class Home extends Component {
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
                                 pursuing a career in <span style={{'fontWeight': '700'}}>software engineering</span>.
                             </p>
-                            <Icons isMobile={this.state.isMobile} />
                         </div>
                     </div>
                 </div>
@@ -187,9 +241,8 @@ class Home extends Component {
                         <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
                             <div className={this.state.isMobile ? 'about-text about-text-mobile' : 'about-text'}>
                                 <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
-                                <hr/>
                                 <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
-                                     style={{'textIndent': '1.0em', 'margin': '20px auto'}}>
+                                     style={{'margin': '20px auto'}}>
                                     <p>
                                         Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
                                         Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
@@ -197,8 +250,9 @@ class Home extends Component {
                                     </p>
                                     <br/>
                                     <p>
-                                        I love developing software across the stack and I'm always looking for new opportunities
-                                        to expand my skill set.
+                                        I love developing software across the stack, and I'm always looking for new opportunities
+                                        to expand my skill set. I'm looking for opportunities to make meaningful software
+                                        contributions to real products.
                                     </p>
                                 </div>
                             </div>
@@ -213,11 +267,13 @@ class Home extends Component {
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Python</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>C/C++</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>JavaScript</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>TypeScript</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>HTML/CSS</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>React</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vue.js</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Racket</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>Assembly</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillFamiliar}>AMD64 Assembly</div>
                                     </div>
                                 </div>
                             </div>
@@ -227,11 +283,15 @@ class Home extends Component {
                                 <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                     <div className={'highlight-skills'}>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Jira</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>IntelliJ</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Eclipse</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>PyCharm</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>VS Code</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>LaTeX</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>GDB</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>Vim</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillKnowledgeable}>XCode</div>
                                     </div>
                                 </div>
                             </div>
@@ -244,7 +304,7 @@ class Home extends Component {
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Snowboarding</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Traveling</div>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Cooking</div>
-                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish</div>
+                                        <div className={'skill-all highlight-skill'} style={this.skillProficient}>Spanish Culture</div>
                                     </div>
                                 </div>
                             </div>
@@ -257,7 +317,6 @@ class Home extends Component {
 
                         {/* EDUCATION */}
                         <h3 id={'education'}>Education</h3>
-                        <hr/>
                         <h4>Northeastern University, Boston, MA</h4>
                         <h5>
                             B.S. Cybersecurity, Concentration Cyber Operations<br/>
@@ -266,7 +325,7 @@ class Home extends Component {
                         </h5>
                         <p>Relevant Coursework:</p>
                         <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
-                            <div className={'list'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                 <li>Object-Oriented Design</li>
                                 <li>Algorithms & Data Structures</li>
                                 <li>Networks & Distributed Systems</li>
@@ -274,7 +333,7 @@ class Home extends Component {
                                 <li>Theory of Computation</li>
                                 <li>Foundations of Cybersecurity</li>
                             </div>
-                            <div className={'list'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                 <li>Fundamentals of Computer Science 1 & 2</li>
                                 <li>Discrete Structures</li>
                                 <li>Probability & Statistics</li>
@@ -296,27 +355,44 @@ class Home extends Component {
 
                         {/* WORK EXPERIENCE */}
                         <h3 id={'experience'}>Professional Experience</h3>
-                        <hr/>
-                        <h4>Rocket Software, Waltham, MA</h4>
-                        <h5>Software Engineer Co-op<br/>July - December 2019</h5>
+                        <h4>Rocket Software</h4>
+                        <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
+                        <p>
+                            Rocket Software is a software development firm that develops products that are designed to
+                            run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
+                        </p>
+                        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
+                                <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
+                                <li>Implemented a new shutdown procedure in a Java application to track threads completion for a safe exit</li>
+                                <li>Fulfilled and managed completion of Jira tickets for new features and bug fixes as a member of a scrum team</li>
+                            </div>
+                        </ul>
+                        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Java</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>TypeScript</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>JavaScript</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Linux CLI</span>
+                            <span className={'skill-all body-skill'} style={this.skillProficient}>Git</span>
+                        </div>
+
                         <br/>
 
-                        <h4>Vonage, Holmdel, NJ</h4>
-                        <h5>Information Security Associate<br/>July - August 2018</h5>
+                        <h4>Vonage</h4>
+                        <h5>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h5>
                         <p>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
                             team to develop software-based solutions for internal use.
                         </p>
-                        <ul className={'list'}>
-                            <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information
-                            </li>
-                            <li>Developed a Python script to process information from vulnerability scans of thousands of hosts
-                            </li>
-                            <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis
-                            </li>
-                            <li>Reviewed Jira tickets to track bug fix requests and project progress across company teams
-                            </li>
+                        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information</li>
+                                <li>Developed a Python script to process information from vulnerability scans of thousands of hosts</li>
+                                <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis</li>
+                            </div>
                         </ul>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
                             <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
@@ -334,24 +410,25 @@ class Home extends Component {
                 <div className={'projects'}>
                     <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
                         <h3 id='projects' style={{'color': 'white'}}>Software Projects</h3>
-                        <hr/>
 
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-                            <h4 id={'liberty-cars'} style={{'marginBottom': '20px'}}>Liberty Cars</h4>
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
+                                <h5 id={'liberty-cars'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Liberty Cars</h5>
                                 <p>
                                     An app developed with Vue.js for simultaneously searching multiple geographic
-                                    locations for a used car that matches user-specific criteria.
+                                    locations for a used car. Search criteria is entered by the user on the initial page,
+                                    which is then processed to make asynchronous requests for the listing data in each
+                                    location. The results are then presented to the user for viewing.
                                 </p>
                                 <br/>
-                                <p>
-                                    Try it out <a style={{'color': '#3c65cd'}}
-                                                  href={'https://libertycars.firebaseapp.com'}
-                                                  target={'_blank'} rel={'noopener noreferrer'}>here</a>, or
-                                    see the code <a style={{'color': '#3c65cd'}}
-                                                    href={'https://github.com/justinkonecny/liberty_cars'}
-                                                    target={'_blank'} rel={'noopener noreferrer'}>here</a>!
-                                </p>
+                                {/*<p>*/}
+                                    {/*/!*Try it out <a style={{'color': '#3c65cd'}}*!/*/}
+                                                  {/*/!*href={'https://libertycars.firebaseapp.com'}*!/*/}
+                                                  {/*/!*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*!/*/}
+                                    {/*Check out the code <a style={{'color': '#3c65cd'}}*/}
+                                                    {/*href={'https://github.com/justinkonecny/liberty_cars'}*/}
+                                                    {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!*/}
+                                {/*</p>*/}
                                 <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>Vue.js</span>
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>JavaScript</span>
@@ -366,15 +443,9 @@ class Home extends Component {
                             </div>
                         </div>
 
-                        {/*<h4 style={{'color': 'white', 'marginTop': '50px'}}>Additional Projects</h4>*/}
                         <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>
-                            <h4 id={'animator'} style={{'marginBottom': '20px'}}>Interactive Animator</h4>
-                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
-                                <div style={{'margin': 'auto', 'width': '90%'}}>
-                                    <img className={'img-proj'} src={animator} alt={'Animator'}/>
-                                </div>
-                            </div>
                             <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
+                                <h5 id={'animator'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Interactive Animator</h5>
                                 <p>
                                     A Java application developed with a Java Swing user interface in a pair programming
                                     setting to read and display textual descriptions of animations. Display modes include
@@ -388,27 +459,78 @@ class Home extends Component {
                                     <span className={'skill-all proj-skill'} style={this.skillProficient}>MVC</span>
                                 </div>
                             </div>
+                            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
+                                <div style={{'margin': 'auto'}}>
+                                    <img className={'img-proj'} src={animator} alt={'Animator'}/>
+                                </div>
+                            </div>
                         </div>
 
-                        <div>
-                            <p style={{'color': 'white', 'fontSize': '30px'}}>
-                                See More
-                            </p>
+                        <div className={'additional-projects'}>
+                            <h4 id={'additional-projects'} style={{'marginBottom': '20px'}}>Additional Projects</h4>
+
+                            {/* Distributed Key-Value STore*/}
+                            {this.getAdditionalProject('Distributed, Replicated Key-Value Store',
+                                (<p>
+                                    Implemented the <a style={{'color': '#3c65cd'}}
+                                                   href={'https://raft.github.io/raft.pdf'}
+                                                   target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
+                                    protocol in Python to create a key-value store that accepts <i>put</i>s from
+                                    clients and retrieves the corresponding data when receiving a <i>get</i>.
+                                    All data from clients was replicated, in an attempt to maintain consistency
+                                    (clients should always receive correct answers to <i>get</i> requests) and
+                                    achieve high-availability (clients should be able to
+                                    execute <i>put</i> and <i>get</i> requests at any time with low latency.
+                                </p>))}
+
+                            {/* Reliable Transport Protocol */}
+                            {this.getAdditionalProject('Reliable Transport Protocol',
+                                (<p>
+                                    Designed and developed a simple transport protocol in Python that provided a
+                                    reliable datagram service and ensured that data was delivered in order,
+                                    without duplicates, without missing data, and without errors.
+                                </p>))}
+
+                            {/* File System */}
+                            {this.getAdditionalProject('File System',
+                                (<p>
+                                    Programmed a mountable, ext-style file system in C using the FUSE API and
+                                    memory-mapped file storage. Implemented a disk image to allow users to
+                                    create, read, edit, and delete variable-length files within nested directories.
+                                </p>))}
+
+                            {/* Memory Allocator */}
+                            {this.getAdditionalProject('Memory Allocator',
+                                (<p>
+                                    Created a thread-safe memory allocator in C using mutexes, memory-mapped pages,
+                                    and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
+                                    allocation, reallocation and freeing of varying sized memory chunks.
+                                </p>))}
                         </div>
 
                     </div>
                 </div>
 
-                <div className={'body'}>
-                    <div className={'body-info'}>
-                        <h3 id='contact'>Get In Touch</h3>
-                        <hr/>
-                        <div style={{'display': 'flex'}}>
-                            <a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>
-                                <div className={'contact-me'}>
-                                    Email Me
-                                </div>
-                            </a>
+                <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
+                    <div className={'body-info'} style={{'display': 'flex'}}>
+                        <div style={this.state.isMobile
+                            ? {'margin': 'auto', 'textAlign': 'center', 'padding': '0 5vw'}
+                            : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
+                            <h3 id='contact'>Let's get in touch</h3>
+                            <p>
+                                I am currently seeking opportunities for a co-op position or internship for July - December
+                                2020 in a software engineering roll.
+                            </p>
+                            <br/>
+                            <p>
+                                Looking to chat about my work experiences or any of my projects? Feel free to reach out!
+                            </p>
+                            <Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons} />
+                            {/*<a style={{'margin': 'auto', 'textDecoration': 'none'}} href='mailto:konecnyjustin@gmail.com'>*/}
+                                {/*<div className={'contact-me'}>*/}
+                                    {/*Email Me*/}
+                                {/*</div>*/}
+                            {/*</a>*/}
 
                         </div>
                     </div>

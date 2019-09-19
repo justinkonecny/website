@@ -1,3 +1,7 @@
+:root {
+    --content-margin: 25vw;
+}
+
 h1 {
     margin: 0 0 30px 0;
     font-size: 66px;
@@ -6,9 +10,7 @@ h1 {
 }
 
 @keyframes type {
-    from {
-        width: 0;
-    }
+    to { width: 100%; }
 }
 
 h2 {
@@ -19,16 +21,18 @@ h2 {
 }
 
 h3 {
-    margin: 10vh 0 0 0;
-    font-size: 30px;
+    margin: 10vh 0 20px 0;
+    font-size: 36px;
     color: var(--green);
+    text-transform: uppercase;
 }
 
 h4 {
-    margin: 6px 0;
+    margin: 25px 0 10px 0;
     font-size: 26px;
     font-weight: 600;
     font-family: 'IBM Plex Mono', monospace;
+    text-transform: uppercase;
 }
 
 h5 {
@@ -46,8 +50,9 @@ p {
 .name-desk {
     white-space: nowrap;
     overflow: hidden;
-    width: 100%;
-    animation: type 2s linear;
+    width: 0;
+    animation: type 2s linear forwards;
+    animation-delay: 0.5s;
 }
 
 .name-mobile {
@@ -154,7 +159,7 @@ p {
 
 .highlights {
     display: flex;
-    padding: 75px 15vw;
+    padding: 40px 15vw 75px 15vw;
 }
 
 .highlights-mobile {
@@ -182,12 +187,12 @@ p {
 }
 
 .highlight-skill {
-    margin: 5px auto;
+    margin: 5px 5px;
 }
 
 .body {
     background-color: white;
-    margin: 50px 30vw 50px 20vw;
+    margin: 50px var(--content-margin) 50px 20vw;
 }
 
 .body-mobile {
@@ -219,7 +224,35 @@ p {
 }
 
 .list {
-    margin: 0 5%;
+    margin: 10px 5% 0 5%;
+}
+
+.list-mobile {
+    margin: 10px 5% 0 5%;
+}
+
+li {
+    list-style-type: none;
+}
+
+li:before {
+    content: "–";
+    position: absolute;
+    margin-left: -1.1em;
+}
+
+@keyframes shake {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    10% { transform: translate(0px, -3px) rotate(3deg); }
+    20% { transform: translate(0px, -4px) rotate(5deg); }
+    30% { transform: translate(0px, -4px) rotate(3deg); }
+    40% { transform: translate(0px, -3px) rotate(-5deg); }
+    50% { transform: translate(0px, 0px) rotate(0deg); }
+    60% { transform: translate(0px, 3px) rotate(5deg); }
+    70% { transform: translate(0px, 4px) rotate(3deg); }
+    80% { transform: translate(0px, 4px) rotate(-5deg); }
+    90% { transform: translate(0px, 3px) rotate(-3deg); }
+    100% { transform: translate(0px, 0px) rotate(0deg); }
 }
 
 .skill-all {
@@ -231,12 +264,17 @@ p {
 .skill-all:hover {
     filter: brightness(150%);
     cursor: default;
+
 }
 
 .skills {
     margin: 30px 0 40px 0;
     display: flex;
     flex-wrap: wrap;
+}
+
+.skill-animation {
+    animation: shake 500ms ease-in-out;
 }
 
 .body-skill {
@@ -252,7 +290,7 @@ p {
 
 .project-body {
     margin-left: 20vw;
-    margin-right: 30vw;
+    margin-right: var(--content-margin);
     text-align: left;
 }
 
@@ -263,7 +301,7 @@ p {
 .project {
     display: flex;
     border-radius: 5px;
-    padding: 20px;
+    padding: 20px 0;
     color: white;
     margin: 0 0 20px 0;
 }
@@ -275,7 +313,7 @@ p {
 
 .project-descript {
     width: 50%;
-    padding: 5px 25px 5px 25px;
+    padding: 5px 25px 5px 0;
 }
 
 .project-descript-mobile {
@@ -296,6 +334,7 @@ p {
 .img-container {
     display: flex;
     width: 50%;
+    padding-right: 5px;
 }
 
 .img-container-mobile {
@@ -304,8 +343,49 @@ p {
 }
 
 .img-proj {
-    width: 100%;
+    width: 90%;
     border-radius: 5px;
+}
+
+.additional-projects {
+    margin-top: 40px;
+    color: white;
+}
+
+.additional-projects-container {
+    display: flex;
+    width: 100%;
+}
+
+.additional-projects-container-mobile {
+    width: 100%;
+}
+
+.additional-projects-content {
+    margin: 0 auto 30px 0;
+}
+
+.additional-projects-content-mobile {
+    margin: 0 0 30px 0;
+}
+
+.content-left {
+    width: 30%;
+}
+
+.content-right {
+    padding-left: 15px;
+    width: 65%;
+}
+
+#contact {
+    text-transform: none;
+    color: #284496;
+}
+
+.contact-anchor {
+    width: 50px;
+    margin: auto;
 }
 
 .contact-me {
@@ -315,6 +395,7 @@ p {
     border: 1px solid var(--green);
     background-color: var(--green);
     border-radius: 5px;
+    width: 50px;
 }
 
 .contact-me:hover {
