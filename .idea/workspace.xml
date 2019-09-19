@@ -21,7 +21,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="563">
+            <state relative-caret-position="179">
               <caret line="291" column="120" lean-forward="true" selection-start-line="291" selection-start-column="120" selection-end-line="291" selection-end-column="120" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -303,16 +303,15 @@
       <workItem from="1567984871579" duration="2731000" />
       <workItem from="1568063556162" duration="4262000" />
       <workItem from="1568068645886" duration="1162000" />
-      <workItem from="1568773828679" duration="1502000" />
+      <workItem from="1568773828679" duration="1910000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104621000" />
+    <option name="totallyTimeSpent" value="105029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14345992" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -328,7 +327,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21530612" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3479592" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24969475" />
@@ -518,7 +517,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
+        <state relative-caret-position="179">
           <caret line="291" column="120" lean-forward="true" selection-start-line="291" selection-start-column="120" selection-end-line="291" selection-end-column="120" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
