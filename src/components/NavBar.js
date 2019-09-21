@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../css/NavBar.css';
+import icon from '../resources/icon.svg'
 
 /**
  * The navigation bar component displayed at the top of the website, disappears as the user scrolls down the page.
@@ -18,6 +19,9 @@ class NavBar extends Component {
         } else {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
+                    <div style={{'margin': 'auto 20px'}}>
+                        <img src={icon} alt={'icon'} style={{'width': '30px'}}/>
+                    </div>
                     <div className={'nav-left'}>
                         {this.props.linksLeft}
                     </div>

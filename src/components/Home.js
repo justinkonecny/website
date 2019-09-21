@@ -169,7 +169,7 @@ class Home extends Component {
 
         if (!this.state.isMobile) {
             const resume = document.getElementsByClassName('resume')[0];
-            all.push(resume);
+            // all.push(resume);
         }
 
         for (let i = 0; i < all.length; i++) {
@@ -363,10 +363,10 @@ class Home extends Component {
                         </p>
                         <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                             <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
-                                <li>Developed a TypeScript plugin for an open-source command line application to interact with a REST API</li>
-                                <li>Migrated existing Java HTTP servlet-style API endpoints to use Spring Web MVC annotation-based registration</li>
-                                <li>Implemented a new shutdown procedure in a Java application to track threads completion for a safe exit</li>
-                                <li>Fulfilled and managed completion of Jira tickets for new features and bug fixes as a member of a scrum team</li>
+                                <li>Developed a TypeScript plugin for an open-source command line application to get, put, post, and delete information to REST API endpoints</li>
+                                <li>Migrated fifty Java servlet-style API endpoints to use Spring Web MVC annotation-based registration, license checking, and user authorization</li>
+                                <li>Created a global shutdown helper in a Java application to register, track, and wait for hundreds of threads to finish working before safely exiting</li>
+                                <li>Successfully completed many Jira tickets for developing new product features, fixing bugs, and designing new QA tests as a Scrum team member</li>
                             </div>
                         </ul>
                         <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
@@ -389,9 +389,9 @@ class Home extends Component {
                         </p>
                         <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                             <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
-                                <li>Implemented a PostgreSQL vault on an AWS EC2 instance for secure storage of team information</li>
-                                <li>Developed a Python script to process information from vulnerability scans of thousands of hosts</li>
-                                <li>Employed Python scripts to clone hundreds of GitHub repositories for static source code analysis</li>
+                                <li>Implemented a HashiCorp vault to use PostgreSQL on an AWS EC2 instance for secure storage and retrieval of sensitive team information</li>
+                                <li>Developed a Python script to process and record information from the results of scanning thousands of hosts for potential network vulnerabilities</li>
+                                <li>Designed a Python script to facilitate cloning hundreds of GitHub repositories for static source code analysis to identify vulnerabilities</li>
                             </div>
                         </ul>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
