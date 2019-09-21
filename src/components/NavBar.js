@@ -20,7 +20,7 @@ class NavBar extends Component {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
                     <div style={{'margin': 'auto 20px'}}>
-                        <img src={icon} alt={'icon'} style={{'width': '30px'}}/>
+                        <img src={icon} alt={'icon'} style={{'width': '25px'}}/>
                     </div>
                     <div className={'nav-left'}>
                         {this.props.linksLeft}
