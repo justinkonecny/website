@@ -19,8 +19,8 @@ class NavBar extends Component {
         } else {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
-                    <div style={{'margin': 'auto 20px'}}>
-                        <img src={icon} alt={'icon'} style={{'width': '25px'}}/>
+                    <div style={{'margin': 'auto 5px 18px 30px'}}>
+                        <img src={icon} alt={'icon'} style={{'width': '25px', 'height': '25px'}}/>
                     </div>
                     <div className={'nav-left'}>
                         {this.props.linksLeft}
