@@ -1,5 +1,5 @@
 # Personal Website (React)
-Personal website, hosted at https://www.justinkonecny.info.
+Personal website, hosted at https://www.jkonecny.com.
 
 ## Project Structure
 src/
