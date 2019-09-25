@@ -261,7 +261,7 @@ class Home extends Component {
 
                         <div id={'highlights'} className={this.state.isMobile ? 'highlights highlights-mobile' : 'highlights'}>
                             <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
-                                <h4>Languages</h4>
+                                <h4 className={'highlight-title'}>Languages</h4>
                                 <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                     <div className={'highlight-skills'}>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Java</div>
@@ -279,7 +279,7 @@ class Home extends Component {
                             </div>
 
                             <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
-                                <h4>Software</h4>
+                                <h4 className={'highlight-title'}>Software</h4>
                                 <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                     <div className={'highlight-skills'}>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Linux</div>
@@ -297,7 +297,8 @@ class Home extends Component {
                             </div>
 
                             <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
-                                <h4>Interests</h4>
+
+                                <h4 className={'highlight-title'}>Interests</h4>
                                 <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                     <div className={'highlight-skills'}>
                                         <div className={'skill-all highlight-skill'} style={this.skillProficient}>Running</div>
