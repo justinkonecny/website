@@ -27,7 +27,7 @@ class Icons extends Component {
                         {/*<img className={'contact-icon'} src={github} alt='github' style={this.iconStyle}/>*/}
                         <svg id={'icon-github'} className={'contact-icon'} version="1.1" xmlns="http://www.w3.org/2000/svg"
                              x="0px" y="0px" width={this.sideLength} height={this.sideLength} viewBox="0 0 438.549 438.549"
-                             style={{"enable-background": "new 0 0 438.549 438.549"}}>
+                             style={{"enableBackground": "new 0 0 438.549 438.549"}}>
                             <g>
                                 <path style={{"fill": colorGithub}} d="M409.132,114.573c-19.608-33.596-46.205-60.194-79.798-79.8C295.736,15.166,259.057,5.365,219.271,5.365
                                     c-39.781,0-76.472,9.804-110.063,29.408c-33.596,19.605-60.192,46.204-79.8,79.8C9.803,148.168,0,184.854,0,224.63
@@ -59,11 +59,11 @@ class Icons extends Component {
                         {/*<img className={'contact-icon'} src={linkedin} alt='linkedin' style={this.iconStyle}/>*/}
                         <svg id={'icon-linkedin'} className={'contact-icon'} width={this.sideLength} height={this.sideLength} version="1.1"
                              xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 112.196 112.196"
-                             style={{"enable-background": "new 0 0 112.196 112.196"}}>
+                             style={{"enableBackground": "new 0 0 112.196 112.196"}}>
                             <g>
                                 <circle style={{"fill": colorLinkedin}} cx="56.098" cy="56.097" r="56.098"/>
                                 <g>
-                                    <path style={{"fill": "#FFFFFF", "fill-opacity": "1"}} d="M89.616,60.611v23.128H76.207V62.161c0-5.418-1.936-9.118-6.791-9.118
+                                    <path style={{"fill": "#FFFFFF", "fillOpacity": "1"}} d="M89.616,60.611v23.128H76.207V62.161c0-5.418-1.936-9.118-6.791-9.118
                                             c-3.705,0-5.906,2.491-6.878,4.903c-0.353,0.862-0.444,2.059-0.444,3.268v22.524H48.684c0,0,0.18-36.546,0-40.329h13.411v5.715
                                             c-0.027,0.045-0.065,0.089-0.089,0.132h0.089v-0.132c1.782-2.742,4.96-6.662,12.085-6.662
                                             C83.002,42.462,89.616,48.226,89.616,60.611L89.616,60.611z M34.656,23.969c-4.587,0-7.588,3.011-7.588,6.967

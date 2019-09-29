@@ -47,6 +47,17 @@ p {
     font-size: 17px;
 }
 
+button {
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    outline: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
 .name-desk {
     white-space: nowrap;
     overflow: hidden;

@@ -42,6 +42,7 @@ class Home extends Component {
 
         // The number of milliseconds the introduction is delayed
         this.introDelayMS = 2200;
+        this.introDelayMobileMS = 500;
 
         // The y-position of the page just before scrolling
         this.lastScroll = 0;
@@ -51,35 +52,39 @@ class Home extends Component {
         this.skillKnowledgeable = {'backgroundColor': '#3c65cd'};
         this.skillFamiliar = {'backgroundColor': '#4877ff'};
         this.skillCert = {'backgroundColor': '#eb4d45'};
+    }
 
+    getNavLinksLeft() {
         // The links passed to the navigation bar component for rendering (on the left)
-        this.navLinksLeft = [
-            <a className='nav-link' href='#about-me' key={'navAboutMe'}>
-                <div className='nav-inner'>About Me</div>
+        return ([
+            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#about-me'} key={'navAboutMe'}>
+                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>About Me</div>
             </a>,
-            <a className='nav-link' href='#education' key={'navEducation'}>
-                <div className='nav-inner'>Education</div>
+            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#education'} key={'navEducation'}>
+                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Education</div>
             </a>,
-            <a className='nav-link' href='#experience' key={'navExperience'}>
-                <div className='nav-inner'>Experience</div>
+            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#experience'} key={'navExperience'}>
+                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Experience</div>
             </a>,
-            <a className='nav-link' href='#projects' key={'navProjects'}>
-                <div className='nav-inner'>Projects</div>
+            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#projects'} key={'navProjects'}>
+                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Projects</div>
             </a>
-        ];
+        ]);
+    }
+
+    getNavLinksRight() {
         // The links passed to the navigation bar component for rendering (on the right)
-        this.navLinksRight = [
+        return ([
             <a className='nav-link main-link resume' href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
                 <div className='nav-inner nav-inner-main'>Resume</div>
             </a>
-        ];
+        ]);
     }
 
     /**
      * Updates the page's state to show or hide the navigation bar, based on how far down the user has scrolled.
      */
     scrollListener() {
-        console.log(window.pageYOffset);
         if (window.pageYOffset < 50) {
             // Handles scrolling to top of page
             this.setState({showNavBar: true});
@@ -146,13 +151,14 @@ class Home extends Component {
      * Updates the current state to mobile if the window width is less than the mobile width threshold.
      */
     componentWillMount() {
-        // window.addEventListener('scroll', this.scrollListener);
         window.addEventListener('resize', this.resizeListener);
         window.addEventListener('scroll', this.scrollListener);
-        setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
 
         if (window.innerWidth <= this.mobileThreshold) {
             this.setState({isMobile: true});
+            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMobileMS);
+        } else {
+            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
         }
     }
 
@@ -169,6 +175,7 @@ class Home extends Component {
 
         if (!this.state.isMobile) {
             const resume = document.getElementsByClassName('resume')[0];
+            // TODO: Enable resume button animation or delete this code
             // all.push(resume);
         }
 
@@ -220,7 +227,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.navLinksLeft} linksRight={this.navLinksRight}/>
+                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.getNavLinksLeft()} linksRight={this.getNavLinksRight()}/>
                 <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I'm Justin Konecny.</h1>
