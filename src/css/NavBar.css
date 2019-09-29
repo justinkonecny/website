@@ -1,4 +1,8 @@
-@keyframes display-none  { to { visibility: hidden; } }
+@keyframes display-none {
+    to {
+        visibility: hidden;
+    }
+}
 
 .nav-inner {
     font-size: 18px;

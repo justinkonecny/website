@@ -12,22 +12,33 @@ class NavBar extends Component {
 
     constructor(props) {
         super(props);
-        this.updateState = this.updateState.bind(this);
+        this.updateMenuState = this.updateMenuState.bind(this);
         this.state = {
             showMenu: false
         };
     }
 
-    scrollTop() {
+    /**
+     * Scrolls to the top of the page.
+     */
+    scrollToTop() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
 
-    updateState() {
+    /**
+     * Updates the hamburger menu state to show or hide based on the current state.
+     */
+    updateMenuState() {
         let showing = this.state.showMenu;
         this.setState({showMenu: !showing});
     }
 
+    /**
+     * Returns the mobile side menu.
+     *
+     * @returns {*} The mobile side menu.
+     */
     getMenu() {
         return (
             <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
@@ -41,18 +52,19 @@ class NavBar extends Component {
     render() {
         if (this.props.isMobile) {
             if (!this.props.display && this.state.showMenu) {
+                // Hides the side menu if the navigation bar is hidden
                 this.setState({showMenu: false});
             }
 
             return (
                 <div>
                     <div className={this.props.display ? 'nav nav-mobile' : 'nav nav-mobile hide'}>
-                        <div style={{'margin': 'auto 5px 18px 30px'}}>
-                            <button onClick={this.scrollTop}>
+                        <div style={{'margin': '22px 5px 18px 30px'}}>
+                            <button onClick={this.scrollToTop} style={{'width': '50px', 'height': '50px'}}>
                                 <img src={icon} alt={'icon'} style={{'width': '25px', 'height': '25px'}}/>
                             </button>
                         </div>
-                        <button onClick={this.updateState} style={{'margin': '25px 25px auto auto'}}>
+                        <button onClick={this.updateMenuState} style={{'margin': '10px 15px auto auto', 'width': '50px', 'height': '50px'}}>
                             <img className={'menu'} src={menu} alt={'menu'}/>
                         </button>
                     </div>
@@ -63,8 +75,8 @@ class NavBar extends Component {
         } else {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
-                    <div style={{'margin': 'auto 5px 18px 30px'}}>
-                        <button onClick={this.scrollTop}>
+                    <div style={{'margin': '22px 5px 18px 30px'}}>
+                        <button onClick={this.scrollToTop} style={{'width': '50px', 'height': '50px'}}>
                             <img src={icon} alt={'icon'} style={{'width': '25px', 'height': '25px'}}/>
                         </button>
                     </div>

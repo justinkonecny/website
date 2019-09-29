@@ -244,10 +244,12 @@ button:hover {
 
 .list {
     margin: 10px 5% 0 5%;
+    padding-right: 10%;
 }
 
 .list-mobile {
     margin: 10px 5% 0 5%;
+    padding: 0;
 }
 
 li {
@@ -460,4 +462,12 @@ li:before {
     opacity: 0;
     position: relative;
     top: 25px;
+}
+
+:target:before {
+    /* Fix for adding offset to anchor tags */
+    content:"";
+    display:block;
+    height:90px;
+    margin:-90px 0 0;
 }
