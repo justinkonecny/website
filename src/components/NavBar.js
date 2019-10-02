@@ -22,8 +22,7 @@ class NavBar extends Component {
      * Scrolls to the top of the page.
      */
     scrollToTop() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
+        window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
     /**
@@ -41,9 +40,17 @@ class NavBar extends Component {
      */
     getMenu() {
         return (
-            <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
-                <div className={'nav-left nav-left-mobile'}>
-                    {this.props.linksLeft}
+            <div>
+                <div className={this.state.showMenu ? 'blur' : 'menu-hidden'}/>
+                <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
+                    <div className={'menu-btn-container'}>
+                        <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-expanded' : 'menu-hidden'}>
+                            <img className={'menu'} src={menu} alt={'menu'}/>
+                        </button>
+                    </div>
+                    <div className={'nav-left nav-left-mobile'}>
+                        {this.props.linksLeft}
+                    </div>
                 </div>
             </div>
         );
@@ -59,14 +66,20 @@ class NavBar extends Component {
             return (
                 <div>
                     <div className={this.props.display ? 'nav nav-mobile' : 'nav nav-mobile hide'}>
-                        <div style={{'margin': '22px 5px 18px 30px'}}>
-                            <button onClick={this.scrollToTop} style={{'width': '50px', 'height': '50px'}}>
-                                <img src={icon} alt={'icon'} style={{'width': '25px', 'height': '25px'}}/>
-                            </button>
+                        <div style={{'width': '25vw', 'display': 'flex'}}>
+                            <div className={'icon-container'}>
+                                <button onClick={this.scrollToTop} className={'icon-btn'}>
+                                    <img src={icon} alt={'icon'} className={'icon'}/>
+                                </button>
+                            </div>
                         </div>
-                        <button onClick={this.updateMenuState} style={{'margin': '10px 15px auto auto', 'width': '50px', 'height': '50px'}}>
-                            <img className={'menu'} src={menu} alt={'menu'}/>
-                        </button>
+                        <div style={{'width': '75vw', 'display': 'flex'}}>
+                            <div className={'menu-btn-container'} style={{'margin': 'auto 0 auto auto'}}>
+                                <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-hidden' : 'menu-nav-bar'}>
+                                    <img className={'menu'} src={menu} alt={'menu'}/>
+                                </button>
+                            </div>
+                        </div>
                     </div>
 
                     {this.getMenu()}
@@ -75,10 +88,12 @@ class NavBar extends Component {
         } else {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
-                    <div style={{'margin': '22px 5px 18px 30px'}}>
-                        <button onClick={this.scrollToTop} style={{'width': '50px', 'height': '50px'}}>
-                            <img src={icon} alt={'icon'} style={{'width': '25px', 'height': '25px'}}/>
-                        </button>
+                    <div style={{'width': '100px', 'display': 'flex'}}>
+                        <div className={'icon-container'}>
+                            <button onClick={this.scrollToTop} className={'icon-btn'}>
+                                <img src={icon} alt={'icon'} className={'icon'}/>
+                            </button>
+                        </div>
                     </div>
                     <div className={'nav-left'}>
                         {this.props.linksLeft}

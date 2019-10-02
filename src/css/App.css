@@ -41,7 +41,8 @@ html {
 :root {
   --green: #188e9b;
   --darkgrey: #21252b;
-  --lightgrey: #f7f7f7;
+  /*--darkgrey: #323232;*/
+  --lightgrey: #f3f3f3;
 }
 
 

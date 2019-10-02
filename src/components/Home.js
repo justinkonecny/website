@@ -243,6 +243,49 @@ class Home extends Component {
         );
     }
 
+    getIntroType() {
+        // var TxtRotate = function(el, toRotate, period) {
+        //     this.toRotate = toRotate;
+        //     this.el = el;
+        //     this.loopNum = 0;
+        //     this.period = parseInt(period, 10) || 2000;
+        //     this.txt = '';
+        //     this.tick();
+        //     this.isDeleting = false;
+        // };
+        //
+        // TxtRotate.prototype.tick = function() {
+        //     var i = this.loopNum % this.toRotate.length;
+        //     var fullTxt = this.toRotate[i];
+        //
+        //     if (this.isDeleting) {
+        //         this.txt = fullTxt.substring(0, this.txt.length - 1);
+        //     } else {
+        //         this.txt = fullTxt.substring(0, this.txt.length + 1);
+        //     }
+        //
+        //     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+        //
+        //     var that = this;
+        //     var delta = 300 - Math.random() * 100;
+        //
+        //     if (this.isDeleting) { delta /= 2; }
+        //
+        //     if (!this.isDeleting && this.txt === fullTxt) {
+        //         delta = this.period;
+        //         this.isDeleting = true;
+        //     } else if (this.isDeleting && this.txt === '') {
+        //         this.isDeleting = false;
+        //         this.loopNum++;
+        //         delta = 500;
+        //     }
+        //
+        //     setTimeout(function() {
+        //         that.tick();
+        //     }, delta);
+        // };
+    }
+
     /**
      * Renders this component.
      */
@@ -253,7 +296,7 @@ class Home extends Component {
                 <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I'm Justin Konecny.</h1>
-                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '200px'}}>
+                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '20px'}}>
                             <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently
@@ -545,7 +588,7 @@ class Home extends Component {
                             <div style={this.state.isMobile
                                 ? {'margin': 'auto', 'textAlign': 'center', 'padding': '0 5vw'}
                                 : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
-                                <h3 id='contact'>Let's Get in Touch</h3>
+                                <h3 id='contact'>LET'S GET IN TOUCH</h3>
                                 <p>
                                     I am currently seeking opportunities for a co-op position or internship for July - December
                                     2020 in a software engineering roll.
