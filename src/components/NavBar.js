@@ -13,6 +13,7 @@ class NavBar extends Component {
     constructor(props) {
         super(props);
         this.updateMenuState = this.updateMenuState.bind(this);
+        this.scrollToTop = this.scrollToTop.bind(this);
         this.state = {
             showMenu: false
         };
@@ -22,6 +23,7 @@ class NavBar extends Component {
      * Scrolls to the top of the page.
      */
     scrollToTop() {
+        this.setState({showMenu: false});
         window.scrollTo({top: 0, behavior: 'smooth'});
     }
 
@@ -41,14 +43,14 @@ class NavBar extends Component {
     getMenu() {
         return (
             <div>
-                <div className={this.state.showMenu ? 'blur' : 'menu-hidden'}/>
+                <div className={this.state.showMenu ? 'blur' : 'menu-hidden'} onClick={this.updateMenuState}/>
                 <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
                     <div className={'menu-btn-container'}>
                         <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-expanded' : 'menu-hidden'}>
                             <img className={'menu'} src={menu} alt={'menu'}/>
                         </button>
                     </div>
-                    <div className={'nav-left nav-left-mobile'}>
+                    <div className={'nav-left nav-left-mobile'} onClick={this.updateMenuState}>
                         {this.props.linksLeft}
                     </div>
                 </div>

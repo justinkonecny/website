@@ -134,9 +134,8 @@
     position: fixed;
     width: 100vw;
     height: 100vh;
-    opacity: 0.95;
-    filter: blur(3px);
-
+    opacity: 0.75;
+    /*filter: blur(3px);*/
     transition-timing-function: ease-in-out;
     transition-duration: 200ms;
 }
