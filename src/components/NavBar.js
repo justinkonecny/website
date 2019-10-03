@@ -43,15 +43,11 @@ class NavBar extends Component {
     getMenu() {
         return (
             <div>
-                <div className={this.state.showMenu ? 'blur' : 'menu-hidden'} onClick={this.updateMenuState}/>
+                <div className={this.state.showMenu ? 'blur' : 'blur-hidden'} onClick={this.updateMenuState}/>
                 <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
-                    <div className={'menu-btn-container'}>
-                        <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-expanded' : 'menu-hidden'}>
-                            <img className={'menu'} src={menu} alt={'menu'}/>
-                        </button>
-                    </div>
                     <div className={'nav-left nav-left-mobile'} onClick={this.updateMenuState}>
                         {this.props.linksLeft}
+                        {this.props.linksRight}
                     </div>
                 </div>
             </div>
@@ -75,16 +71,11 @@ class NavBar extends Component {
                                 </button>
                             </div>
                         </div>
-                        <div style={{'width': '75vw', 'display': 'flex'}}>
-                            <div className={'menu-btn-container'} style={{'margin': 'auto 0 auto auto'}}>
-                                <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-hidden' : 'menu-nav-bar'}>
-                                    <img className={'menu'} src={menu} alt={'menu'}/>
-                                </button>
-                            </div>
-                        </div>
+                        <button onClick={this.updateMenuState} className={this.state.showMenu ? 'menu-slide-left' : 'menu-nav-bar'}>
+                            <img className={'menu'} src={menu} alt={'menu'}/>
+                        </button>
+                        {this.getMenu()}
                     </div>
-
-                    {this.getMenu()}
                 </div>
             );
         } else {
