@@ -87,8 +87,8 @@ class Home extends Component {
     getNavLinksMain() {
         // The links passed to the navigation bar component for rendering (on the right)
         return ([
-            <a className={'nav-link main-link main-link-mobile'} href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
-                <div className={'nav-inner nav-inner-main nav-inner-mobile'}>Resume</div>
+            <a className={this.state.isMobile ? 'nav-link main-link main-link-mobile' : 'nav-link main-link'} href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
+                <div className={this.state.isMobile ? 'nav-inner nav-inner-main nav-inner-mobile' : 'nav-inner nav-inner-main'}>Resume</div>
             </a>
         ]);
     }
