@@ -41,13 +41,21 @@ class NavBar extends Component {
      * @returns {*} The mobile side menu.
      */
     getMenu() {
+        const menuButtons = this.props.linksLeft.map(el => (
+            <div className={'menu-btn-container'} onClick={this.updateMenuState}>
+                {el}
+            </div>
+        ));
+
         return (
             <div>
                 <div className={this.state.showMenu ? 'blur' : 'blur-hidden'} onClick={this.updateMenuState}/>
                 <div className={this.props.display && this.state.showMenu ? 'menu-container' : 'menu-container hide-left'}>
-                    <div className={'nav-left nav-left-mobile'} onClick={this.updateMenuState}>
-                        {this.props.linksLeft}
-                        {this.props.linksRight}
+                    <div className={'nav-left nav-left-mobile'}>
+                        {menuButtons}
+                        <div className={'menu-btn-container'} onClick={this.updateMenuState}>
+                            {this.props.linksRight}
+                        </div>
                     </div>
                 </div>
             </div>

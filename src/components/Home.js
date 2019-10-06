@@ -24,6 +24,8 @@ class Home extends Component {
         this.scrollListener = this.scrollListener.bind(this);
         // Resize listener to handle switching to a mobile display
         this.resizeListener = this.resizeListener.bind(this);
+        // Handles animating the intro text for desktop version
+        this.typeName = this.typeName.bind(this);
         // The current state of the page
         this.state = {
             isMobile: false,
@@ -43,7 +45,7 @@ class Home extends Component {
         this.mobileThreshold = 850;
 
         // The number of milliseconds the introduction is delayed
-        this.introDelayMS = 2200;
+        this.introDelayMS = 2500;
         this.introDelayMobileMS = 500;
 
         // The y-position of the page just before scrolling
@@ -54,6 +56,9 @@ class Home extends Component {
         this.skillKnowledgeable = {'backgroundColor': '#3c65cd'};
         this.skillFamiliar = {'backgroundColor': '#4877ff'};
         this.skillCert = {'backgroundColor': '#eb4d45'};
+
+        // The animated text that appears at the top of the page
+        this.introText = 'Hi, I\'m Justin Konecny.';
     }
 
     /**
@@ -165,6 +170,36 @@ class Home extends Component {
     }
 
     /**
+     * Handles animating the 'introText' letter by letter.
+     */
+    typeName() {
+        const fullText = this.introText;
+        const el = document.getElementById('name');
+        let hasDeleted = false;
+
+        const back = function() {
+            hasDeleted = true;
+            el.innerHTML = fullText.substring(0, el.innerHTML.length - 1);
+        };
+
+        const type = function() {
+            el.innerHTML = fullText.substring(0, el.innerHTML.length + 1);
+            const timeout = Math.random() * 50;
+            if (!hasDeleted && el.innerHTML.length === 12) {
+                setTimeout(() => {back()}, 50 + timeout);
+                setTimeout(() => {back()}, 125 + (2 * timeout));
+                setTimeout(() => {type()}, 200 + (3 * timeout));
+            } else if (el.innerText.length === fullText.length) {
+                el.classList.remove('border-right');
+            } else {
+                setTimeout(() => {type()}, 50 + timeout);
+            }
+        };
+
+        type();
+    }
+
+    /**
      * Sets this component's scroll listener and resize listener.
      * Updates the current state to mobile if the window width is less than the mobile width threshold.
      */
@@ -192,6 +227,12 @@ class Home extends Component {
      * Handles adding event listeners for binding animation classes to all skills.
      */
     componentDidMount() {
+        if (this.state.isMobile) {
+            document.getElementById('name').innerText = this.introText;
+        } else {
+            setTimeout(this.typeName, 300);
+        }
+
         let all = Array.from(document.getElementsByClassName('skill-all'));
 
         for (let i = 0; i < all.length; i++) {
@@ -243,49 +284,6 @@ class Home extends Component {
         );
     }
 
-    getIntroType() {
-        // var TxtRotate = function(el, toRotate, period) {
-        //     this.toRotate = toRotate;
-        //     this.el = el;
-        //     this.loopNum = 0;
-        //     this.period = parseInt(period, 10) || 2000;
-        //     this.txt = '';
-        //     this.tick();
-        //     this.isDeleting = false;
-        // };
-        //
-        // TxtRotate.prototype.tick = function() {
-        //     var i = this.loopNum % this.toRotate.length;
-        //     var fullTxt = this.toRotate[i];
-        //
-        //     if (this.isDeleting) {
-        //         this.txt = fullTxt.substring(0, this.txt.length - 1);
-        //     } else {
-        //         this.txt = fullTxt.substring(0, this.txt.length + 1);
-        //     }
-        //
-        //     this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-        //
-        //     var that = this;
-        //     var delta = 300 - Math.random() * 100;
-        //
-        //     if (this.isDeleting) { delta /= 2; }
-        //
-        //     if (!this.isDeleting && this.txt === fullTxt) {
-        //         delta = this.period;
-        //         this.isDeleting = true;
-        //     } else if (this.isDeleting && this.txt === '') {
-        //         this.isDeleting = false;
-        //         this.loopNum++;
-        //         delta = 500;
-        //     }
-        //
-        //     setTimeout(function() {
-        //         that.tick();
-        //     }, delta);
-        // };
-    }
-
     /**
      * Renders this component.
      */
@@ -295,7 +293,7 @@ class Home extends Component {
                 <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.getNavLinksOther()} linksRight={this.getNavLinksMain()}/>
                 <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
-                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I'm Justin Konecny.</h1>
+                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk border-right'} />
                         <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '20px'}}>
                             <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
@@ -313,8 +311,7 @@ class Home extends Component {
                         <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
                             <div className={this.state.isMobile ? 'about-text about-text-mobile' : 'about-text'}>
                                 <h3 id={'about-me'} style={{'color': 'white'}}>About Me</h3>
-                                <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'}
-                                     style={{'margin': '20px auto'}}>
+                                <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'} style={{'margin': '20px auto'}}>
                                     <p>
                                         Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
                                         Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
@@ -585,9 +582,7 @@ class Home extends Component {
 
                     <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                         <div className={'body-info'} style={{'display': 'flex'}}>
-                            <div style={this.state.isMobile
-                                ? {'margin': 'auto', 'textAlign': 'center', 'padding': '0 5vw'}
-                                : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
+                            <div style={this.state.isMobile ? {'margin': 'auto', 'textAlign': 'center'} : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
                                 <h3 id='contact'>LET'S GET IN TOUCH</h3>
                                 <p>
                                     I am currently seeking opportunities for a co-op position or internship for July - December

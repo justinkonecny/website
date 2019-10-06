@@ -24,7 +24,6 @@ class Icons extends Component {
             <div style={{'display': 'flex', 'margin': '40px 0 0 0', 'padding': '0 10%'}}>
                 <div className={'contact-anchor'}>
                     <a href='https://github.com/justinkonecny/' target='_blank' rel='noopener noreferrer'>
-                        {/*<img className={'contact-icon'} src={github} alt='github' style={this.iconStyle}/>*/}
                         <svg id={'icon-github'} className={'contact-icon'} version="1.1" xmlns="http://www.w3.org/2000/svg"
                              x="0px" y="0px" width={this.sideLength} height={this.sideLength} viewBox="0 0 438.549 438.549"
                              style={{"enableBackground": "new 0 0 438.549 438.549"}}>
@@ -56,7 +55,6 @@ class Icons extends Component {
 
                 <div className={'contact-anchor'}>
                     <a href='https://www.linkedin.com/in/justin-konecny/' target='_blank' rel='noopener noreferrer'>
-                        {/*<img className={'contact-icon'} src={linkedin} alt='linkedin' style={this.iconStyle}/>*/}
                         <svg id={'icon-linkedin'} className={'contact-icon'} width={this.sideLength} height={this.sideLength} version="1.1"
                              xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 112.196 112.196"
                              style={{"enableBackground": "new 0 0 112.196 112.196"}}>
@@ -77,7 +75,6 @@ class Icons extends Component {
 
                 <div className={'contact-anchor'}>
                     <a href='mailto:konecnyjustin@gmail.com'>
-                        {/*<img className={'contact-icon'} src={email} alt='email' style={this.iconStyle}/>*/}
                         <svg id={'icon-mail'} className={'contact-icon'} width={this.sideLength} height={this.sideLength} viewBox="0 0 49 49" version="1.1"
                              xmlns="http://www.w3.org/2000/svg">
                             <title>Combined Shape</title>
