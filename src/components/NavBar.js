@@ -42,7 +42,7 @@ class NavBar extends Component {
      */
     getMenu() {
         const menuButtons = this.props.linksLeft.map(el => (
-            <div className={'menu-btn-container'} onClick={this.updateMenuState}>
+            <div className={'menu-btn-container'} onClick={this.updateMenuState} key={el.key}>
                 {el}
             </div>
         ));

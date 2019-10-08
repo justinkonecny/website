@@ -58,7 +58,7 @@ class Home extends Component {
         this.skillCert = {'backgroundColor': '#eb4d45'};
 
         // The animated text that appears at the top of the page
-        this.introText = 'Hi, I\'m Justin Konecny.';
+        this.introText = ['Hi, I\'m justin Konecny.', 'Hi, I\'m Justin Konecny.'];
     }
 
     /**
@@ -173,23 +173,25 @@ class Home extends Component {
      * Handles animating the 'introText' letter by letter.
      */
     typeName() {
-        const fullText = this.introText;
         const el = document.getElementById('name');
+        const fullTextCorrect = this.introText[1];
+        let fullTextLower = this.introText[0];
         let hasDeleted = false;
 
         const back = function() {
             hasDeleted = true;
-            el.innerHTML = fullText.substring(0, el.innerHTML.length - 1);
+            el.innerHTML = fullTextLower.substring(0, el.innerHTML.length - 1);
         };
 
         const type = function() {
-            el.innerHTML = fullText.substring(0, el.innerHTML.length + 1);
+            el.innerHTML = fullTextLower.substring(0, el.innerHTML.length + 1);
             const timeout = Math.random() * 50;
-            if (!hasDeleted && el.innerHTML.length === 12) {
+            if (!hasDeleted && el.innerHTML.length === 10) {
                 setTimeout(() => {back()}, 50 + timeout);
                 setTimeout(() => {back()}, 125 + (2 * timeout));
+                fullTextLower = fullTextCorrect;
                 setTimeout(() => {type()}, 200 + (3 * timeout));
-            } else if (el.innerText.length === fullText.length) {
+            } else if (el.innerText.length === fullTextLower.length) {
                 el.classList.remove('border-right');
             } else {
                 setTimeout(() => {type()}, 50 + timeout);
@@ -228,7 +230,7 @@ class Home extends Component {
      */
     componentDidMount() {
         if (this.state.isMobile) {
-            document.getElementById('name').innerText = this.introText;
+            document.getElementById('name').innerText = this.introText[1];
         } else {
             setTimeout(this.typeName, 300);
         }
@@ -294,7 +296,7 @@ class Home extends Component {
                 <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk border-right'} />
-                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '20px'}}>
+                        <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                             <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
                                 <span style={{'fontWeight': '700'}}> Northeastern University</span>, currently

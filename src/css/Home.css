@@ -72,14 +72,15 @@ button:hover {
 .intro {
     text-align: left;
     width: 100%;
-    min-height: 670px;
-    padding-top: 50px;
+    /*min-height: 670px;*/
+    min-height: 100vh;
+    /*padding-top: 50px;*/
     display: flex;
     background-color: white;
 }
 
 .intro-mobile {
-    min-height: calc(100vh - 50px);
+    min-height: 100vh;
 }
 
 .intro-inner {
