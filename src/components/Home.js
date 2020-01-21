@@ -316,8 +316,9 @@ class Home extends Component {
                                 <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'} style={{'margin': '20px auto'}}>
                                     <p>
                                         Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
-                                        Cybersecurity at Northeastern University in Boston, Massachusetts. I recently started
-                                        a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer.
+                                        Cybersecurity at Northeastern University in Boston, Massachusetts. I recently completed
+                                        a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer, and
+                                        I would love to tell you all about it.
                                     </p>
                                     <br/>
                                     <p>
@@ -400,11 +401,13 @@ class Home extends Component {
                                     <li>Object-Oriented Design</li>
                                     <li>Algorithms & Data Structures</li>
                                     <li>Networks & Distributed Systems</li>
+                                    <li>Network Security</li>
+                                    <li>Cryptography</li>
                                     <li>Computer Systems</li>
                                     <li>Theory of Computation</li>
-                                    <li>Foundations of Cybersecurity</li>
                                 </div>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Foundations of Cybersecurity</li>
                                     <li>Fundamentals of CS 1 & 2</li>
                                     <li>Discrete Structures</li>
                                     <li>Probability & Statistics</li>
@@ -434,17 +437,19 @@ class Home extends Component {
                             </p>
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
-                                    <li>Developed a TypeScript plugin for an open-source command line application to get, put, post, and delete information to REST API endpoints</li>
-                                    <li>Migrated fifty Java servlet-style API endpoints to use Spring Web MVC annotation-based registration, license checking, and user authorization</li>
                                     <li>Created a global shutdown helper in a Java application to register, track, and wait for hundreds of threads to finish working before safely exiting</li>
-                                    <li>Successfully completed many Jira tickets for developing new product features, fixing bugs, and designing new QA tests as a Scrum team member</li>
+                                    <li>Added new features to and fixed bugs in a React user-interface application to process user input to interact with new API endpoints and display results</li>
+                                    <li>Developed a TypeScript plugin for an open-source command line application to get, put, post, and delete information to REST API endpoints</li>
+                                    <li>Migrated fifty Java servlet-style API endpoints to use Spring Web MVC</li>
+                                    <li>Successfully completed Jira tickets for developing new product features, fixing bugs, and designing new QA tests as a Scrum team member</li>
                                 </div>
                             </ul>
                             <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
                                 <span className={'skill-all body-skill'} style={this.skillProficient}>Java</span>
                                 <span className={'skill-all body-skill'} style={this.skillProficient}>Python</span>
+                                <span className={'skill-all body-skill'} style={this.skillProficient}>React</span>
                                 <span className={'skill-all body-skill'} style={this.skillProficient}>TypeScript</span>
-                                <span className={'skill-all body-skill'} style={this.skillProficient}>JavaScript</span>
+                                <span className={'skill-all body-skill'} style={this.skillProficient}>Jira</span>
                                 <span className={'skill-all body-skill'} style={this.skillProficient}>Linux CLI</span>
                                 <span className={'skill-all body-skill'} style={this.skillProficient}>Git</span>
                             </div>
@@ -461,8 +466,7 @@ class Home extends Component {
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                     <li>Implemented a HashiCorp vault to use PostgreSQL on an AWS EC2 instance for secure storage and retrieval of sensitive team information</li>
-                                    <li>Developed a Python script to process and record information from the results of scanning thousands of hosts for potential network vulnerabilities</li>
-                                    <li>Designed a Python script to facilitate cloning hundreds of GitHub repositories for static source code analysis to identify vulnerabilities</li>
+                                    <li>Developed Python scripts to process information from the results of scanning thousands of hosts for network vulnerabilities and to facilitate cloning hundreds of GitHub repositories for static source code analysis</li>
                                 </div>
                             </ul>
                             <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
@@ -587,8 +591,7 @@ class Home extends Component {
                             <div style={this.state.isMobile ? {'margin': 'auto', 'textAlign': 'center'} : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
                                 <h3 id='contact'>LET'S GET IN TOUCH</h3>
                                 <p>
-                                    I am currently seeking opportunities for a co-op position or internship for July - December
-                                    2020 in a software engineering roll.
+                                    I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering roll.
                                 </p>
                                 <br/>
                                 <p>
