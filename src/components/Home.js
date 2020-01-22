@@ -323,7 +323,7 @@ class Home extends Component {
                                     <br/>
                                     <p>
                                         I love developing software across the stack, and I'm always looking for new opportunities
-                                        to expand my skill set. I'm looking for opportunities to make meaningful software
+                                        to expand my skill set. I'm seeking out a position to make meaningful software
                                         contributions to real products.
                                     </p>
                                 </div>
