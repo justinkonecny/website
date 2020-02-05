@@ -30,6 +30,15 @@ class Home extends Component {
         this.state = {
             isMobile: false,
             showNavBar: false,
+            // showIntro: false,
+            // skipInto: false,
+            // showAboutMe: false,
+            // showHighlights: false,
+            // showNEUSkills: false,
+            // showVonageSkills: false,
+            // showRocketSkills: false,
+            // showLibertySkills: false,
+            // showAnimatorSkills: false,
             showIntro: false,
             skipInto: false,
             showAboutMe: false,
@@ -109,7 +118,7 @@ class Home extends Component {
             // Scrolling towards bottom of page
             this.lastScroll = window.pageYOffset;
             this.setState({showNavBar: false});
-        } else if ( this.lastScroll - window.pageYOffset > 50) {
+        } else if (this.lastScroll - window.pageYOffset > 50) {
             // Scrolling towards top of the page
             this.lastScroll = window.pageYOffset;
             this.setState({showNavBar: true});
@@ -178,43 +187,35 @@ class Home extends Component {
         let fullTextLower = this.introText[0];
         let hasDeleted = false;
 
-        const back = function() {
+        const back = function () {
             hasDeleted = true;
             el.innerHTML = fullTextLower.substring(0, el.innerHTML.length - 1);
         };
 
-        const type = function() {
+        const type = function () {
             el.innerHTML = fullTextLower.substring(0, el.innerHTML.length + 1);
             const timeout = Math.random() * 50;
             if (!hasDeleted && el.innerHTML.length === 10) {
-                setTimeout(() => {back()}, 50 + timeout);
-                setTimeout(() => {back()}, 125 + (2 * timeout));
+                setTimeout(() => {
+                    back()
+                }, 50 + timeout);
+                setTimeout(() => {
+                    back()
+                }, 125 + (2 * timeout));
                 fullTextLower = fullTextCorrect;
-                setTimeout(() => {type()}, 200 + (3 * timeout));
+                setTimeout(() => {
+                    type()
+                }, 200 + (3 * timeout));
             } else if (el.innerText.length === fullTextLower.length) {
                 el.classList.remove('border-right');
             } else {
-                setTimeout(() => {type()}, 50 + timeout);
+                setTimeout(() => {
+                    type()
+                }, 50 + timeout);
             }
         };
 
         type();
-    }
-
-    /**
-     * Sets this component's scroll listener and resize listener.
-     * Updates the current state to mobile if the window width is less than the mobile width threshold.
-     */
-    componentWillMount() {
-        window.addEventListener('resize', this.resizeListener);
-        window.addEventListener('scroll', this.scrollListener);
-
-        if (window.innerWidth <= this.mobileThreshold) {
-            this.setState({isMobile: true});
-            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMobileMS);
-        } else {
-            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
-        }
     }
 
     /**
@@ -227,8 +228,20 @@ class Home extends Component {
 
     /**
      * Handles adding event listeners for binding animation classes to all skills.
+     * Sets this component's scroll listener and resize listener.
+     * Updates the current state to mobile if the window width is less than the mobile width threshold.
      */
     componentDidMount() {
+        window.addEventListener('resize', this.resizeListener);
+        window.addEventListener('scroll', this.scrollListener);
+
+        if (window.innerWidth <= this.mobileThreshold) {
+            this.setState({isMobile: true});
+            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMobileMS);
+        } else {
+            setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
+        }
+
         if (this.state.isMobile) {
             document.getElementById('name').innerText = this.introText[1];
         } else {
@@ -238,11 +251,11 @@ class Home extends Component {
         let all = Array.from(document.getElementsByClassName('skill-all'));
 
         for (let i = 0; i < all.length; i++) {
-            all[i].addEventListener('mouseover', function(e) {
+            all[i].addEventListener('mouseover', function (e) {
                 all[i].classList.add('skill-animation')
             });
 
-            all[i].addEventListener('animationend', function(e) {
+            all[i].addEventListener('animationend', function (e) {
                 all[i].classList.remove('skill-animation');
             });
         }
@@ -277,10 +290,10 @@ class Home extends Component {
         return (
             <div className={this.state.isMobile ? 'additional-projects-container-mobile' : 'additional-projects-container'}>
                 <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-left'}>
-                    <h5>{ title }</h5>
+                    <h5>{title}</h5>
                 </div>
                 <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-right'}>
-                    { content }
+                    {content}
                 </div>
             </div>
         );
@@ -295,7 +308,7 @@ class Home extends Component {
                 <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.getNavLinksOther()} linksRight={this.getNavLinksMain()}/>
                 <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                     <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
-                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk border-right'} />
+                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk border-right'}/>
                         <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                             <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                 I'm a <span style={{'fontWeight': '700'}}>Cybersecurity</span> major at
@@ -466,7 +479,9 @@ class Home extends Component {
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                     <li>Implemented a HashiCorp vault to use PostgreSQL on an AWS EC2 instance for secure storage and retrieval of sensitive team information</li>
-                                    <li>Developed Python scripts to process information from the results of scanning thousands of hosts for network vulnerabilities and to facilitate cloning hundreds of GitHub repositories for static source code analysis</li>
+                                    <li>Developed Python scripts to process information from the results of scanning thousands of hosts for network vulnerabilities and to facilitate cloning hundreds of GitHub repositories for static source code
+                                        analysis
+                                    </li>
                                 </div>
                             </ul>
                             <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
@@ -497,12 +512,12 @@ class Home extends Component {
                                     </p>
                                     <br/>
                                     {/*<p>*/}
-                                        {/*/!*Try it out <a style={{'color': '#3c65cd'}}*!/*/}
-                                                      {/*/!*href={'https://libertycars.firebaseapp.com'}*!/*/}
-                                                      {/*/!*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*!/*/}
-                                        {/*Check out the code <a style={{'color': '#3c65cd'}}*/}
-                                                        {/*href={'https://github.com/justinkonecny/liberty_cars'}*/}
-                                                        {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!*/}
+                                    {/*/!*Try it out <a style={{'color': '#3c65cd'}}*!/*/}
+                                    {/*/!*href={'https://libertycars.firebaseapp.com'}*!/*/}
+                                    {/*/!*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*!/*/}
+                                    {/*Check out the code <a style={{'color': '#3c65cd'}}*/}
+                                    {/*href={'https://github.com/justinkonecny/liberty_cars'}*/}
+                                    {/*target={'_blank'} rel={'noopener noreferrer'}>here</a>!*/}
                                     {/*</p>*/}
                                     <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
                                         <span className={'skill-all proj-skill'} style={this.skillProficient}>Vue.js</span>
@@ -548,8 +563,8 @@ class Home extends Component {
                                 {this.getAdditionalProject('Distributed, Replicated Key-Value Store',
                                     (<p>
                                         Implemented the <a style={{'color': '#3c65cd'}}
-                                                       href={'https://raft.github.io/raft.pdf'}
-                                                       target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
+                                                           href={'https://raft.github.io/raft.pdf'}
+                                                           target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
                                         protocol in Python to create a key-value store that accepts <i>put</i>s from
                                         clients and retrieves the corresponding data when receiving a <i>get</i>.
                                         All data from clients was replicated, in an attempt to maintain consistency
@@ -591,13 +606,13 @@ class Home extends Component {
                             <div style={this.state.isMobile ? {'margin': 'auto', 'textAlign': 'center'} : {'margin': 'auto', 'textAlign': 'center', 'padding': '0 15vw'}}>
                                 <h3 id='contact'>LET'S GET IN TOUCH</h3>
                                 <p>
-                                    I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering roll.
+                                    I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.
                                 </p>
                                 <br/>
                                 <p>
                                     Looking to chat about my work experiences or any of my projects? Feel free to reach out!
                                 </p>
-                                <Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons} />
+                                <Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons}/>
                             </div>
                         </div>
                     </div>
