@@ -1,11 +1,15 @@
-html {
-  background-color: white;
+@import 'Global';
+
+html, body {
+  background-color: $gray-background;
+  color: $off-white
 }
 
 .App {
   text-align: center;
   font-family: 'IBM Plex Sans', sans-serif;
-  background-color: white;
+  background-color: $gray-background;
+  color: $off-white;
 }
 
 .App-logo {

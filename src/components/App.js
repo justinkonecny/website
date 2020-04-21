@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MainRoutes } from '../mainRoutes.js';
-import '../css/App.css';
+import '../css/App.scss';
 
 /**
  * The main, multi-page website.

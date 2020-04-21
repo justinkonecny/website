@@ -1,3 +1,6 @@
+@import 'Global';
+@import 'App';
+
 :root {
     --content-margin: 25vw;
 }
@@ -5,29 +8,31 @@
 h1 {
     margin: 0 0 30px 0;
     font-size: 66px;
-    font-family: 'IBM Plex Mono', monospace;
-    color: #284496;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    color: $off-white;
+    font-weight: bold;
 }
 
 h2 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 400;
-    color: #696969;
+    margin: 10vh 0 20px 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
 }
 
 h3 {
-    margin: 10vh 0 20px 0;
-    font-size: 36px;
-    color: var(--green);
-    text-transform: uppercase;
+    margin: 25px 0 10px 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 32px;
+    color: $green;
+    font-weight: 600;
 }
 
 h4 {
-    margin: 25px 0 10px 0;
     font-size: 26px;
     font-weight: 600;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
     text-transform: uppercase;
 }
 
@@ -35,7 +40,7 @@ h5 {
     margin: 6px 0 10px 0;
     font-size: 18px;
     font-weight: 500;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
 }
 
 p {
@@ -53,6 +58,48 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+
+
+.timeline {
+    width: 100%;
+    position: relative;
+}
+
+.timeline::after {
+    background-color: $green;
+    position: absolute;
+    width: 2px;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 10%;
+    //margin-left: -1px;
+}
+
+.timeline-section {
+    position: relative;
+    width: 90%;
+    left: 10%;
+}
+
+.timeline-dot {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: calc(10% - 10px);
+    background-color: $green;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-content {
+    background-color: #36393d;
+    padding: 0 10vw;
+    position: relative;
+}
+
 
 .border-right {
     border-right: 0.07em solid #6c6e77;
@@ -72,21 +119,25 @@ button:hover {
 .intro {
     text-align: left;
     width: 100%;
-    /*min-height: 670px;*/
     min-height: 100vh;
-    /*padding-top: 50px;*/
     display: flex;
-    background-color: white;
+
+    .emphasis {
+        color: $green;
+        font-style: italic;
+    }
+
+    .intro-inner {
+        margin: auto auto auto 0;
+        color: $off-white;
+    }
 }
 
 .intro-mobile {
     min-height: 100vh;
 }
 
-.intro-inner {
-    margin: auto auto auto 20vw;
-    color: #292a2f;
-}
+
 
 .intro-inner-mobile {
     margin: 15vh 5vw auto 5vw;
@@ -105,17 +156,15 @@ button:hover {
 }
 
 .about {
-    background-color: var(--darkgrey);
-    min-height: 590px;
     width: 100%;
+
+    .about-inner {
+        display: flex;
+    }
 }
 
 .about-mobile {
     min-height: 100vh;
-}
-
-.about-inner {
-     display: flex;
 }
 
 .about-inner-mobile {
@@ -123,11 +172,8 @@ button:hover {
 }
 
 .about-text {
-    margin-left: 20vw;
-    margin-right: 50px;
-    width: 42vw;
+    max-width: 70vw;
     text-align: left;
-    color: white;
 }
 
 .about-text-mobile {
@@ -148,11 +194,12 @@ button:hover {
 }
 
 .profile-crop {
-    margin: 10vh 20vw auto auto;
+    margin: auto;
     width: 300px;
     height: 300px;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 50%;
+    filter: grayscale(100%);
 }
 
 .profile-crop-mobile {
@@ -169,54 +216,62 @@ button:hover {
     width: 145%;
 }
 
-.highlight-title {
-    text-align: left;
-    width: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 5px;
-}
-
 .highlights {
-    display: flex;
-    padding: 40px 15vw 75px 15vw;
+    margin: 0;
+
+    .highlight {
+        margin: 0;
+        border-radius: 10px;
+        padding: 15px 0;
+
+        .highlight-title {
+            text-align: left;
+            padding-left: 5px;
+        }
+
+        .highlight-skills {
+            width: 60%;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+
+            .highlight-skill {
+                margin: 5px 5px;
+            }
+        }
+    }
 }
 
 .highlights-mobile {
     flex-wrap: wrap;
     padding: 10px 4vw;
+
+    .highlight-mobile {
+        width: 100%;
+    }
 }
 
-.highlight {
-    margin: 0 auto auto auto;
-    border-radius: 10px;
-    color: white;
-    width: 20vw;
-    padding: 15px 0;
+.skill-proficient {
+    opacity: 1;
 }
 
-.highlight-mobile {
-    width: 100%;
+.skill-knowledgeable {
+    opacity: 0.7;
 }
 
-.highlight-skills {
-    width: 70%;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
+.skill-familiar {
+    opacity: 0.4;
 }
 
-.highlight-skill {
-    margin: 5px 5px;
+.skill-cert {
+    opacity: 1;
 }
 
 .body {
-    background-color: white;
     margin: 50px var(--content-margin) 50px 20vw;
 }
 
 .body-mobile {
-    background-color: white;
     margin: 10px 13vw;
 }
 
@@ -278,8 +333,9 @@ li:before {
 }
 
 .skill-all {
-    color: white;
-    border-radius: 4px;
+    border-style: solid;
+    border-width: 1.5px;
+    border-radius: 5px;
     padding: 8px 12px;
 }
 
@@ -304,7 +360,6 @@ li:before {
 }
 
 .projects {
-    background-color: var(--darkgrey);
     width: 100%;
     padding: 2px 0 50px 0;
     min-height: 890px;
@@ -324,7 +379,6 @@ li:before {
     display: flex;
     border-radius: 5px;
     padding: 20px 0;
-    color: white;
     margin: 0 0 20px 0;
 }
 
@@ -371,7 +425,6 @@ li:before {
 
 .additional-projects {
     margin-top: 40px;
-    color: white;
 }
 
 .additional-projects-container {
@@ -413,7 +466,6 @@ li:before {
 .contact-me {
     margin: auto;
     padding: 10px;
-    color: white;
     border: 1px solid var(--green);
     background-color: var(--green);
     border-radius: 5px;
@@ -426,17 +478,24 @@ li:before {
     background-color: white;
 }
 
+.get-in-touch {
+    margin: auto 0;
+    text-align: left;
+}
+
+.get-in-touch-mobile {
+    margin: auto;
+    text-align: center;
+}
+
 .footer {
-    margin-top: 100px;
-    background-color: var(--darkgrey);
-    color: #d7d7d7;
+    margin: 100px 25vw 0 20vw;
     padding: 10px;
 }
 
 .footer p {
     font-size: 13px;
 }
-
 
 .slide-up {
     position: relative;
@@ -449,7 +508,6 @@ li:before {
     position: relative;
     top: 150px;
 }
-
 
 .fade-in {
     opacity: 1;
