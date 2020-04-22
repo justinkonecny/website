@@ -277,7 +277,7 @@ class Home extends Component {
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                                 <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>
-                                    Hi, I'm Justin Konecny.
+                                    Hi, I’m Justin Konecny.
                                 </h1>
                                 <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                                     <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
