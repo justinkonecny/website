@@ -1,10 +1,8 @@
 import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
 import resume from '../resources/resume.pdf';
-import Icons from './Icons.js';
-import NavBar from './NavBar';
-import liberty_cars from '../resources/liberty_cars_results.png';
 import animator from '../resources/animator.png';
+import libertyCars from '../resources/liberty_cars_results.png';
 import '../css/Home.scss';
 
 /**
@@ -231,7 +229,7 @@ class Home extends Component {
         // if (this.state.isMobile) {
         //     document.getElementById('name').innerText = this.introText[1];
         // } else {
-        document.getElementById('name').innerText = this.introText[1]; // TODO
+        // document.getElementById('name').innerText = this.introText[1]; // TODO
         //     // setTimeout(this.typeName, 300);
         // }
         //
@@ -267,26 +265,6 @@ class Home extends Component {
     }
 
     /**
-     * Given a project title and the content to display, returns the properly formatted project component.
-     *
-     * @param title The name of the project.
-     * @param content The content to display (surrounded by <p> tags if required)
-     * @returns {*} The project html
-     */
-    getAdditionalProject(title, content) {
-        return (
-            <div className={this.state.isMobile ? 'additional-projects-container-mobile' : 'additional-projects-container'}>
-                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-left'}>
-                    <h5>{title}</h5>
-                </div>
-                <div className={this.state.isMobile ? 'additional-projects-content-mobile' : 'additional-projects-content content-right'}>
-                    {content}
-                </div>
-            </div>
-        );
-    }
-
-    /**
      * Renders this component.
      */
     render() {
@@ -294,10 +272,13 @@ class Home extends Component {
             <div>
                 {/*<NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.getNavLinksOther()} linksRight={this.getNavLinksMain()}/>*/}
                 <div className={'timeline'}>
-                    <TimelineElement top={'44vh'}>
+
+                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'}>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
-                                <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk border-right'}/>
+                                <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>
+                                    Hi, I'm Justin Konecny.
+                                </h1>
                                 <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                                     <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                         &lt;\ I'm a <span className={'emphasis'}>Cybersecurity</span> major at
@@ -312,7 +293,7 @@ class Home extends Component {
                     {/* The main body, includes education, software projects, skills, and work experience */}
 
                     {/* ABOUT ME */}
-                    <TimelineElement top={'110vh'}>
+                    <TimelineElement dotId={'about-me'}>
                         {/*<div className={this.state.skipIntro ? {} : (this.state.showIntro ? 'fade-in' : 'fade-in-hide')}>*/}
                         <div className={this.state.isMobile ? 'about about-mobile' : 'about'}>
                             <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
@@ -391,209 +372,191 @@ class Home extends Component {
                             </div>
                         </div>
                     </TimelineElement>
+
+                    {/* EDUCATION */}
+                    <TimelineElement dotId={'education'}>
+                        <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
+                            <h2 id={'education'}>Education</h2>
+                            <h3>Northeastern University, Boston, MA</h3>
+                            <h5>
+                                Bachelor of Science in Cybersecurity<br/>
+                                Minor in Mathematics<br/>
+                                Expected 2022
+                            </h5>
+                            <ExpandableText text={'Relevant Coursework'}>
+                                <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                    <div className={this.state.isMobile ? 'list list-mobile' : 'list'} style={{'padding': '0'}}>
+                                        <li>Object-Oriented Design</li>
+                                        <li>Algorithms & Data Structures</li>
+                                        <li>Networks & Distributed Systems</li>
+                                        <li>Network Security</li>
+                                        <li>Cryptography</li>
+                                        <li>Computer Systems</li>
+                                        <li>Theory of Computation</li>
+                                    </div>
+                                    <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                        <li>Foundations of Cybersecurity</li>
+                                        <li>Fundamentals of CS 1 & 2</li>
+                                        <li>Discrete Structures</li>
+                                        <li>Probability & Statistics</li>
+                                        <li>Statistics & Stochastic Processes</li>
+                                        <li>Embedded Design: Robotics</li>
+                                        <li>Differential Equations & Linear Algebra</li>
+                                        <li>Linear Algebra</li>
+                                    </div>
+                                </ul>
+                            </ExpandableText>
+                            <div id={'neu-skills'} className={this.state.showNEUSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                                <span className={'skill-all body-skill skill-proficient'}>Java</span>
+                                <span className={'skill-all body-skill skill-proficient'}>Python</span>
+                                <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                                <span className={'skill-all body-skill skill-knowledgeable'}>C/C++</span>
+                                <span className={'skill-all body-skill skill-knowledgeable'}>Racket</span>
+                                <span className={'skill-all body-skill skill-knowledgeable'}>LaTeX</span>
+                                <span className={'skill-all body-skill skill-familiar'}>AMD64 Assembly</span>
+                            </div>
+                        </div>
+                    </TimelineElement>
+
+                    {/* WORK EXPERIENCE */}
+                    <TimelineElement dotId={'experience'}>
+                        <h2 id={'experience'}>Professional Experience</h2>
+                        <h3>Rocket Software</h3>
+                        <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
+                        <p>
+                            Rocket Software is a software development firm that develops products that are designed to
+                            run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
+                        </p>
+                        <ExpandableText text={'Role + Responsibilities'}>
+                            <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Created a global shutdown helper in a Java application to register, track, and wait for hundreds of threads to finish working before safely exiting</li>
+                                    <li>Added new features to and fixed bugs in a React user-interface application to process user input to interact with new API endpoints and display results</li>
+                                    <li>Developed a TypeScript plugin for an open-source command line application to get, put, post, and delete information to REST API endpoints</li>
+                                    <li>Migrated fifty Java servlet-style API endpoints to use Spring Web MVC</li>
+                                    <li>Successfully completed Jira tickets for developing new product features, fixing bugs, and designing new QA tests as a Scrum team member</li>
+                                </div>
+                            </ul>
+                        </ExpandableText>
+                        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                            <span className={'skill-all body-skill skill-proficient'}>Java</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Python</span>
+                            <span className={'skill-all body-skill skill-proficient'}>React</span>
+                            <span className={'skill-all body-skill skill-proficient'}>TypeScript</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Jira</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                        </div>
+
+                        <br/>
+
+                        <h3>Vonage</h3>
+                        <h5>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h5>
+                        <p>
+                            Vonage is a business cloud communications provider, headquartered in New Jersey. As an
+                            Information Security Associate, I worked directly with the the Vonage Information Security
+                            team to develop software-based solutions for internal use.
+                        </p>
+                        <ExpandableText text={'Role + Responsibilities'}>
+                            <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Implemented a HashiCorp vault to use PostgreSQL on an AWS EC2 instance for secure storage and retrieval of sensitive team information</li>
+                                    <li>Developed Python scripts to process information from the results of scanning thousands of hosts for network vulnerabilities and to facilitate cloning hundreds of GitHub repositories for static source code
+                                        analysis
+                                    </li>
+                                </div>
+                            </ul>
+                        </ExpandableText>
+                        <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                            <span className={'skill-all body-skill skill-proficient'}>Python</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Amazon Web Services</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                            <span className={'skill-all body-skill skill-familiar'}>Nessus</span>
+                            <span className={'skill-all body-skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
+                        </div>
+                    </TimelineElement>
+
+                    {/*/!* FEATURED SOFTWARE PROJECTS *!/*/}
+                    <TimelineElement dotId={'projects'}>
+                        <div className={'projects'}>
+                            <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
+                                <h2 id={'projects'} style={{'color': 'white'}}>Software Projects</h2>
+                                <h3>Featured Projects</h3>
+
+                                <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile}>
+                                    <p>
+                                        An app developed with Vue.js for simultaneously searching multiple geographic
+                                        locations for a used car. Search criteria is entered by the user on the initial page,
+                                        which is then processed to make asynchronous requests for the listing data in each
+                                        location. The results are then presented to the user for viewing.
+                                    </p>
+                                    <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
+                                        <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
+                                        <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
+                                        <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>
+                                        <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
+                                    </div>
+                                </FeaturedProject>
+
+                                <FeaturedProject title={'Interactive Animator'} year={'2018'} imageSrc={animator} isMobile={this.state.isMobile}>
+                                    <p>
+                                        A Java application developed with a Java Swing user interface in a pair programming
+                                        setting to read and display textual descriptions of animations. Display modes include
+                                        interactive, visual, textual, and SVG. Interactive options developed are pause, resume,
+                                        restart, loop on/off, speed increase/decrease, and export animation.
+                                    </p>
+                                    <div className={this.state.showAnimatorSkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
+                                        <span className={'skill-all proj-skill skill-proficient'}>Java</span>
+                                        <span className={'skill-all proj-skill skill-proficient'}>Swing</span>
+                                        <span className={'skill-all proj-skill skill-proficient'}>MVC</span>
+                                    </div>
+                                </FeaturedProject>
+
+
+                                <h3 id={'additional-projects'}>Additional Projects</h3>
+                                <div className={'additional-projects'}>
+
+                                    {/* Distributed Key-Value Store*/}
+                                    <Card title={'Distributed Key-Value Store'} isMobile={this.state.isMobile}>
+                                        Implemented the <a href={'https://raft.github.io/raft.pdf'}
+                                                           target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
+                                        protocol in Python to create a key-value store that accepts <i>put</i>s from
+                                        clients and retrieves the corresponding data when receiving a <i>get</i>.
+                                        All data from clients was replicated, in an attempt to maintain consistency
+                                        (clients should always receive correct answers to <i>get</i> requests) and
+                                        achieve high-availability (clients should be able to
+                                        execute <i>put</i> and <i>get</i> requests at any time with low latency.
+                                    </Card>
+
+                                    {/* Reliable Transport Protocol */}
+                                    <Card title={'Reliable Transport Protocol'} isMobile={this.state.isMobile}>
+                                        Designed and developed a simple transport protocol in Python that provided a
+                                        reliable datagram service and ensured that data was delivered in order,
+                                        without duplicates, without missing data, and without errors.
+                                    </Card>
+
+                                    {/* File System */}
+                                    <Card title={'File System'} isMobile={this.state.isMobile}>
+                                        Programmed a mountable, ext-style file system in C using the FUSE API and
+                                        memory-mapped file storage. Implemented a disk image to allow users to
+                                        create, read, edit, and delete variable-length files within nested directories.
+                                    </Card>
+
+                                    {/* Memory Allocator */}
+                                    <Card title={'Memory Allocator'} isMobile={this.state.isMobile}>
+                                        Created a thread-safe memory allocator in C using mutexes, memory-mapped pages,
+                                        and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
+                                        allocation, reallocation and freeing of varying sized memory chunks.
+                                    </Card>
+                                </div>
+
+                            </div>
+                        </div>
+                    </TimelineElement>
+
                 </div>
 
-
-                {/*<div className={this.state.isMobile ? 'body body-mobile' : 'body'}>*/}
-                {/*    <div className={'body-info'}>*/}
-
-                {/*        /!* EDUCATION *!/*/}
-                {/*        <h2 id={'education'}>Education</h2>*/}
-                {/*        <h3>Northeastern University, Boston, MA</h3>*/}
-                {/*        <h5>*/}
-                {/*            B.S. Cybersecurity, Concentration Cyber Operations<br/>*/}
-                {/*            Minor in Mathematics<br/>*/}
-                {/*            Expected 2022*/}
-                {/*        </h5>*/}
-                {/*        <p>Relevant Coursework:</p>*/}
-                {/*        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>*/}
-                {/*            <div className={this.state.isMobile ? 'list list-mobile' : 'list'} style={{'padding': '0'}}>*/}
-                {/*                <li>Object-Oriented Design</li>*/}
-                {/*                <li>Algorithms & Data Structures</li>*/}
-                {/*                <li>Networks & Distributed Systems</li>*/}
-                {/*                <li>Network Security</li>*/}
-                {/*                <li>Cryptography</li>*/}
-                {/*                <li>Computer Systems</li>*/}
-                {/*                <li>Theory of Computation</li>*/}
-                {/*            </div>*/}
-                {/*            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>*/}
-                {/*                <li>Foundations of Cybersecurity</li>*/}
-                {/*                <li>Fundamentals of CS 1 & 2</li>*/}
-                {/*                <li>Discrete Structures</li>*/}
-                {/*                <li>Probability & Statistics</li>*/}
-                {/*                <li>Statistics & Stochastic Processes</li>*/}
-                {/*                <li>Embedded Design: Robotics</li>*/}
-                {/*                <li>Differential Equations & Linear Algebra</li>*/}
-                {/*                <li>Linear Algebra</li>*/}
-                {/*            </div>*/}
-                {/*        </ul>*/}
-                {/*        <div id={'neu-skills'} className={this.state.showNEUSkills ? 'skills fade-in' : 'skills fade-in-hide'}>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Java</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Python</span>*/}
-                {/*            <span className={'skill-all body-skill skill-knowledgeable'}>C/C++</span>*/}
-                {/*            <span className={'skill-all body-skill skill-knowledgeable'}>Racket</span>*/}
-                {/*            <span className={'skill-all body-skill skill-knowledgeable'}>LaTeX</span>*/}
-                {/*            <span className={'skill-all body-skill skill-knowledgeable'}>Git</span>*/}
-                {/*            <span className={'skill-all body-skill skill-familiar'}>AMD64 Assembly</span>*/}
-                {/*        </div>*/}
-
-                {/*        /!* WORK EXPERIENCE *!/*/}
-                {/*        <h2 id={'experience'}>Professional Experience</h2>*/}
-                {/*        <h3>Rocket Software</h3>*/}
-                {/*        <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>*/}
-                {/*        <p>*/}
-                {/*            Rocket Software is a software development firm that develops products that are designed to*/}
-                {/*            run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.*/}
-                {/*        </p>*/}
-                {/*        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>*/}
-                {/*            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>*/}
-                {/*                <li>Created a global shutdown helper in a Java application to register, track, and wait for hundreds of threads to finish working before safely exiting</li>*/}
-                {/*                <li>Added new features to and fixed bugs in a React user-interface application to process user input to interact with new API endpoints and display results</li>*/}
-                {/*                <li>Developed a TypeScript plugin for an open-source command line application to get, put, post, and delete information to REST API endpoints</li>*/}
-                {/*                <li>Migrated fifty Java servlet-style API endpoints to use Spring Web MVC</li>*/}
-                {/*                <li>Successfully completed Jira tickets for developing new product features, fixing bugs, and designing new QA tests as a Scrum team member</li>*/}
-                {/*            </div>*/}
-                {/*        </ul>*/}
-                {/*        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Java</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Python</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>React</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>TypeScript</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Jira</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Git</span>*/}
-                {/*        </div>*/}
-
-                {/*        <br/>*/}
-
-                {/*        <h3>Vonage</h3>*/}
-                {/*        <h5>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h5>*/}
-                {/*        <p>*/}
-                {/*            Vonage is a business cloud communications provider, headquartered in New Jersey. As an*/}
-                {/*            Information Security Associate, I worked directly with the the Vonage Information Security*/}
-                {/*            team to develop software-based solutions for internal use.*/}
-                {/*        </p>*/}
-                {/*        <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>*/}
-                {/*            <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>*/}
-                {/*                <li>Implemented a HashiCorp vault to use PostgreSQL on an AWS EC2 instance for secure storage and retrieval of sensitive team information</li>*/}
-                {/*                <li>Developed Python scripts to process information from the results of scanning thousands of hosts for network vulnerabilities and to facilitate cloning hundreds of GitHub repositories for static source code*/}
-                {/*                    analysis*/}
-                {/*                </li>*/}
-                {/*            </div>*/}
-                {/*        </ul>*/}
-                {/*        <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Python</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Amazon Web Services</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>*/}
-                {/*            <span className={'skill-all body-skill skill-proficient'}>Git</span>*/}
-                {/*            <span className={'skill-all body-skill skill-familiar'}>Nessus</span>*/}
-                {/*            <br/> <br/>*/}
-                {/*            <span className={'skill-all body-skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
-                {/*/!* FEATURED SOFTWARE PROJECTS *!/*/}
-                {/*<div className={'projects'}>*/}
-                {/*    <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>*/}
-                {/*        <h2 id='projects' style={{'color': 'white'}}>Software Projects</h2>*/}
-
-                {/*        <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>*/}
-                {/*            <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>*/}
-                {/*                <h5 id={'liberty-cars'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Liberty Cars</h5>*/}
-                {/*                <p>*/}
-                {/*                    An app developed with Vue.js for simultaneously searching multiple geographic*/}
-                {/*                    locations for a used car. Search criteria is entered by the user on the initial page,*/}
-                {/*                    which is then processed to make asynchronous requests for the listing data in each*/}
-                {/*                    location. The results are then presented to the user for viewing.*/}
-                {/*                </p>*/}
-                {/*                <br/>*/}
-                {/*                /!*<p>*!/*/}
-                {/*/!*Try it out <a style={{'color': '#3c65cd'}}*!/*/}
-                {/*/!*href={'https://libertycars.firebaseapp.com'}*!/*/}
-                {/*/!*target={'_blank'} rel={'noopener noreferrer'}>here</a>, or*!/*/}
-                {/*                /!*Check out the code <a style={{'color': '#3c65cd'}}*!/*/}
-                {/*                /!*href={'https://github.com/justinkonecny/liberty_cars'}*!/*/}
-                {/*                /!*target={'_blank'} rel={'noopener noreferrer'}>here</a>!*!/*/}
-                {/*                /!*</p>*!/*/}
-                {/*                <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>*/}
-                {/*                <div style={{'margin': 'auto'}}>*/}
-                {/*                    <img className={'img-proj'} src={liberty_cars} alt={'Liberty Cars'}/>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-
-                {/*        <div className={this.state.isMobile ? 'project project-mobile' : 'project'}>*/}
-                {/*            <div className={this.state.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>*/}
-                {/*                <h5 id={'animator'} style={{'marginBottom': '20px', 'fontSize': '24px', 'fontWeight': '600'}}>Interactive Animator</h5>*/}
-                {/*                <p>*/}
-                {/*                    A Java application developed with a Java Swing user interface in a pair programming*/}
-                {/*                    setting to read and display textual descriptions of animations. Display modes include*/}
-                {/*                    interactive, visual, textual, and SVG. Interactive options developed are pause, resume,*/}
-                {/*                    restart, loop on/off, speed increase/decrease, and export animation.*/}
-                {/*                </p>*/}
-                {/*                <br/>*/}
-                {/*                <div className={this.state.showAnimatorSkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>Java</span>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>Swing</span>*/}
-                {/*                    <span className={'skill-all proj-skill skill-proficient'}>MVC</span>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*            <div className={this.state.isMobile ? 'img-container img-container-mobile' : 'img-container'}>*/}
-                {/*                <div style={{'margin': 'auto'}}>*/}
-                {/*                    <img className={'img-proj'} src={animator} alt={'Animator'}/>*/}
-                {/*                </div>*/}
-                {/*            </div>*/}
-                {/*        </div>*/}
-
-                {/*        <div className={'additional-projects'}>*/}
-                {/*            <h3 id={'additional-projects'} style={{'marginBottom': '20px'}}>Additional Projects</h3>*/}
-
-                {/*            /!* Distributed Key-Value STore*!/*/}
-                {/*            {this.getAdditionalProject('Distributed, Replicated Key-Value Store',*/}
-                {/*                (<p>*/}
-                {/*                    Implemented the <a style={{'color': '#3c65cd'}}*/}
-                {/*                                       href={'https://raft.github.io/raft.pdf'}*/}
-                {/*                                       target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus*/}
-                {/*                    protocol in Python to create a key-value store that accepts <i>put</i>s from*/}
-                {/*                    clients and retrieves the corresponding data when receiving a <i>get</i>.*/}
-                {/*                    All data from clients was replicated, in an attempt to maintain consistency*/}
-                {/*                    (clients should always receive correct answers to <i>get</i> requests) and*/}
-                {/*                    achieve high-availability (clients should be able to*/}
-                {/*                    execute <i>put</i> and <i>get</i> requests at any time with low latency.*/}
-                {/*                </p>))}*/}
-
-                {/*            /!* Reliable Transport Protocol *!/*/}
-                {/*            {this.getAdditionalProject('Reliable Transport Protocol',*/}
-                {/*                (<p>*/}
-                {/*                    Designed and developed a simple transport protocol in Python that provided a*/}
-                {/*                    reliable datagram service and ensured that data was delivered in order,*/}
-                {/*                    without duplicates, without missing data, and without errors.*/}
-                {/*                </p>))}*/}
-
-                {/*            /!* File System *!/*/}
-                {/*            {this.getAdditionalProject('File System',*/}
-                {/*                (<p>*/}
-                {/*                    Programmed a mountable, ext-style file system in C using the FUSE API and*/}
-                {/*                    memory-mapped file storage. Implemented a disk image to allow users to*/}
-                {/*                    create, read, edit, and delete variable-length files within nested directories.*/}
-                {/*                </p>))}*/}
-
-                {/*            /!* Memory Allocator *!/*/}
-                {/*            {this.getAdditionalProject('Memory Allocator',*/}
-                {/*                (<p>*/}
-                {/*                    Created a thread-safe memory allocator in C using mutexes, memory-mapped pages,*/}
-                {/*                    and pointer arithmetic. The allocator utilized bucket-style free-lists to handle*/}
-                {/*                    allocation, reallocation and freeing of varying sized memory chunks.*/}
-                {/*                </p>))}*/}
-                {/*        </div>*/}
 
                 {/*    </div>*/}
                 {/*</div>*/}
@@ -615,6 +578,108 @@ class Home extends Component {
             </div>
             // </div>
         );
+    }
+}
+
+class FeaturedProject extends Component {
+    render() {
+        return (
+            <div className={this.props.isMobile ? 'project project-mobile' : 'project'}>
+                <div className={this.props.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
+                    <div className={'featured-project-header'}>
+                        <h3>{this.props.title}</h3>
+                        <div className={'featured-year'}>{this.props.year}</div>
+                    </div>
+                    {this.props.children}
+                </div>
+                <div className={this.props.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
+                    <div style={{'margin': 'auto'}}>
+                        <img className={'img-proj'} src={this.props.imageSrc} alt={'Image'}/>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+}
+
+class Card extends Component {
+    constructor(props) {
+        super(props);
+
+        this.toggleExpand = this.toggleExpand.bind(this);
+
+        this.state = {
+            isExpanded: false
+        };
+
+        this.maxChars = this.props.maxChars ? this.props.maxChars : 250;
+        this.isExpandable = false;
+        this.first = [];
+        this.rest = [];
+
+        if (typeof this.props.children === "string" && this.props.children.length > this.maxChars) {
+            this.isExpandable = true;
+        } else if (Array.isArray(this.props.children)) {
+            let charCount = 0;
+            for (const el of this.props.children) {
+                if (typeof el === "string") {
+                    charCount += el.length;
+                }
+            }
+            if (charCount > this.maxChars) {
+                this.isExpandable = true;
+
+                charCount = 0;
+                let insideElement = false;
+                for (let i = 0; i < this.props.children.length; i++) {
+                    const el = this.props.children[i];
+                    if (typeof el === "string") {
+                        charCount += el.length;
+                    } else {
+                        insideElement = !insideElement;
+                    }
+
+                    if (!insideElement && charCount > this.maxChars) {
+                        this.first = [...this.props.children];
+                        this.rest = this.first.splice(i);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    toggleExpand() {
+        const expanded = this.state.isExpanded;
+        this.setState({isExpanded: !expanded});
+    }
+
+    render() {
+        if (this.isExpandable) {
+            return (
+                <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
+                    <div className={'card-header'}>
+                        <h3 style={{color: 'white'}}>{this.props.title}</h3>
+                        <button className={'plus-btn'} onClick={this.toggleExpand}>
+                            <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
+                        </button>
+                    </div>
+                    <p>
+                        {this.first}
+                        {this.state.isExpanded ? this.rest : '...'}
+                    </p>
+                </div>
+            );
+        } else {
+            return (
+                <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
+                    <h3 style={{color: 'white'}}>{this.props.title}</h3>
+                    <p>
+                        {this.props.children}
+                    </p>
+                </div>
+            );
+        }
     }
 }
 
@@ -650,23 +715,95 @@ class Footer extends Component {
     }
 }
 
-class TimelineElement extends Component {
+class ExpandableText extends Component {
     constructor(props) {
         super(props);
-        this.top = this.props.top ? this.props.top : '50px';
+        this.state = {
+            isExpanded: false
+        };
+
+        this.toggleExpand = this.toggleExpand.bind(this);
+    }
+
+    toggleExpand() {
+        const expanded = this.state.isExpanded;
+        this.setState({isExpanded: !expanded});
     }
 
     render() {
-
-
         return (
             <div>
-                <div className={'timeline-section'}>
-                    <div className={'timeline-content'}>
+                <div className={'expandable-header'}>
+                    <p>{this.props.text}</p>
+                    <button className={'plus-btn'} onClick={this.toggleExpand}>
+                        <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
+                    </button>
+                </div>
+                <div className={this.state.isExpanded ? 'expandable-content' : 'expandable-hidden'}>
+                    {this.props.children}
+                </div>
+            </div>
+        );
+    }
+}
+
+class TimelineElement extends Component {
+    constructor(props) {
+        super(props);
+
+        const styleDot = {
+            top: this.props.dotTop ? this.props.dotTop : '50px'
+        };
+
+        const styleContent = {
+            display: this.props.display ? this.props.display : 'block',
+        };
+
+        const styleSection = {
+            height: this.props.height ? this.props.height : 'auto'
+        };
+
+        this.state = {
+            dot: styleDot,
+            content: styleContent,
+            section: styleSection
+        };
+    }
+
+    offset(elementId) {
+        const rect = document.getElementById(elementId).getBoundingClientRect();
+        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return {
+            top: rect.top + scrollTop,
+            left: rect.left + scrollLeft,
+            width: rect.width,
+            height: rect.height,
+            x: rect.x,
+            y: rect.y,
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.dotId) {
+            const rect = this.offset(this.props.dotId);
+            this.setState({
+                dot: {
+                    top: rect.top - 10 + rect.height * 0.5  // posTop - (1/2)(dotHeight) + (1/2)(elementHeight)
+                }
+            });
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <div className={'timeline-section'} style={this.state.section}>
+                    <div className={'timeline-content'} style={this.state.content}>
                         {this.props.children}
                     </div>
                 </div>
-                <div className={'timeline-dot'} style={{'top': this.top}}/>
+                <div className={'timeline-dot'} style={this.state.dot}/>
             </div>
         );
     }
