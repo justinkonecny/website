@@ -18,6 +18,9 @@ class Home extends Component {
      */
     constructor(props) {
         super(props);
+
+        this.setupSkillHover = this.setupSkillHover.bind(this);
+
         // Scroll listener to handle hiding the navigation bar
         this.scrollListener = this.scrollListener.bind(this);
         // Resize listener to handle switching to a mobile display
@@ -138,7 +141,7 @@ class Home extends Component {
     }
 
     /**
-     * Returns the y position of an element with the given id of name, and adjusts the coordinate by the given offset.
+     * Returns the y position of an element with the given id of name, and adjusts the coordinate by the given getOffset.
      *
      * @param name The id of the element.
      * @param offset The amount to adjust the position by (as a percentage of window height).
@@ -232,36 +235,40 @@ class Home extends Component {
         // document.getElementById('name').innerText = this.introText[1]; // TODO
         //     // setTimeout(this.typeName, 300);
         // }
-        //
-        // let all = Array.from(document.getElementsByClassName('skill-all'));
-        //
-        // for (let i = 0; i < all.length; i++) {
-        //     all[i].addEventListener('mouseover', function (e) {
-        //         all[i].classList.add('skill-animation')
-        //     });
-        //
-        //     all[i].addEventListener('animationend', function (e) {
-        //         all[i].classList.remove('skill-animation');
-        //     });
-        // }
-        //
-        // const icons = Array.from(document.getElementsByClassName('contact-icon'));
-        //
-        // for (let i = 0; i < icons.length; i++) {
-        //     icons[i].addEventListener('mouseover', function (e) {
-        //         icons[i].classList.add('skill-animation');
-        //         const hoverIcons = this.state.hoverIcons;
-        //         hoverIcons.add(icons[i].id);
-        //         this.setState({hoverIcons: hoverIcons});
-        //     }.bind(this));
-        //
-        //     icons[i].addEventListener('animationend', function (e) {
-        //         icons[i].classList.remove('skill-animation');
-        //         const hoverIcons = this.state.hoverIcons;
-        //         hoverIcons.delete(icons[i].id);
-        //         this.setState({hoverIcons: hoverIcons});
-        //     }.bind(this));
-        // }
+
+        this.setupSkillHover();
+    }
+
+    setupSkillHover() {
+        let all = Array.from(document.getElementsByClassName('skill-all'));
+
+        for (let i = 0; i < all.length; i++) {
+            all[i].addEventListener('mouseover', function (e) {
+                all[i].classList.add('skill-animation')
+            });
+
+            all[i].addEventListener('animationend', function (e) {
+                all[i].classList.remove('skill-animation');
+            });
+        }
+
+        const icons = Array.from(document.getElementsByClassName('contact-icon'));
+
+        for (let i = 0; i < icons.length; i++) {
+            icons[i].addEventListener('mouseover', function (e) {
+                icons[i].classList.add('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.add(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
+
+            icons[i].addEventListener('animationend', function (e) {
+                icons[i].classList.remove('skill-animation');
+                const hoverIcons = this.state.hoverIcons;
+                hoverIcons.delete(icons[i].id);
+                this.setState({hoverIcons: hoverIcons});
+            }.bind(this));
+        }
     }
 
     /**
@@ -378,11 +385,11 @@ class Home extends Component {
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <h2 id={'education'}>Education</h2>
                             <h3>Northeastern University, Boston, MA</h3>
-                            <h5>
+                            <h4>
                                 Bachelor of Science in Cybersecurity<br/>
                                 Minor in Mathematics<br/>
                                 Expected 2022
-                            </h5>
+                            </h4>
                             <ExpandableText text={'Relevant Coursework'}>
                                 <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                     <div className={this.state.isMobile ? 'list list-mobile' : 'list'} style={{'padding': '0'}}>
@@ -422,7 +429,7 @@ class Home extends Component {
                     <TimelineElement dotId={'experience'}>
                         <h2 id={'experience'}>Professional Experience</h2>
                         <h3>Rocket Software</h3>
-                        <h5>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h5>
+                        <h4>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h4>
                         <p>
                             Rocket Software is a software development firm that develops products that are designed to
                             run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
@@ -451,7 +458,7 @@ class Home extends Component {
                         <br/>
 
                         <h3>Vonage</h3>
-                        <h5>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h5>
+                        <h4>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h4>
                         <p>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
@@ -491,7 +498,7 @@ class Home extends Component {
                                         which is then processed to make asynchronous requests for the listing data in each
                                         location. The results are then presented to the user for viewing.
                                     </p>
-                                    <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'} style={{'margin': '10px 0'}}>
+                                    <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
                                         <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
                                         <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
                                         <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>
@@ -594,7 +601,7 @@ class FeaturedProject extends Component {
                 </div>
                 <div className={this.props.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
                     <div style={{'margin': 'auto'}}>
-                        <img className={'img-proj'} src={this.props.imageSrc} alt={'Image'}/>
+                        <img className={'img-proj'} src={this.props.imageSrc} alt={this.props.text}/>
                     </div>
                 </div>
             </div>
@@ -612,13 +619,15 @@ class Card extends Component {
             isExpanded: false
         };
 
-        this.maxChars = this.props.maxChars ? this.props.maxChars : 250;
+        this.maxChars = this.props.maxChars ? this.props.maxChars : 230;
         this.isExpandable = false;
         this.first = [];
         this.rest = [];
 
         if (typeof this.props.children === "string" && this.props.children.length > this.maxChars) {
             this.isExpandable = true;
+            this.first = this.props.children.substring(0, this.maxChars);
+            this.rest = this.props.children.substring(this.maxChars);
         } else if (Array.isArray(this.props.children)) {
             let charCount = 0;
             for (const el of this.props.children) {
@@ -734,7 +743,7 @@ class ExpandableText extends Component {
         return (
             <div>
                 <div className={'expandable-header'}>
-                    <p>{this.props.text}</p>
+                    <h5>{this.props.text}</h5>
                     <button className={'plus-btn'} onClick={this.toggleExpand}>
                         <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
                     </button>
@@ -750,6 +759,7 @@ class ExpandableText extends Component {
 class TimelineElement extends Component {
     constructor(props) {
         super(props);
+        this.setDotCoordinates = this.setDotCoordinates.bind(this);
 
         const styleDot = {
             top: this.props.dotTop ? this.props.dotTop : '50px'
@@ -770,7 +780,27 @@ class TimelineElement extends Component {
         };
     }
 
-    offset(elementId) {
+    setDotCoordinates() {
+        if (this.props.dotId) {
+            const rect = this.getOffset(this.props.dotId);
+            this.setState({
+                dot: {
+                    top: rect.top - 10 + rect.height * 0.5  // posTop - (1/2)(dotHeight) + (1/2)(elementHeight)
+                }
+            });
+        }
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.setDotCoordinates);
+        this.setDotCoordinates();
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.setDotCoordinates);
+    }
+
+    getOffset(elementId) {
         const rect = document.getElementById(elementId).getBoundingClientRect();
         const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -781,17 +811,6 @@ class TimelineElement extends Component {
             height: rect.height,
             x: rect.x,
             y: rect.y,
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.dotId) {
-            const rect = this.offset(this.props.dotId);
-            this.setState({
-                dot: {
-                    top: rect.top - 10 + rect.height * 0.5  // posTop - (1/2)(dotHeight) + (1/2)(elementHeight)
-                }
-            });
         }
     }
 
