@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
-import '../css/NavBar.css';
-import icon from '../resources/icon.svg'
-import menu from '../resources/menu.svg'
+import icon from '../resources/icon.svg';
+import menu from '../resources/menu.svg';
+import navLogo from '../resources/navLogo.svg';
+import navHome from '../resources/navHome.svg';
+import navAbout from '../resources/navAbout.svg';
+import navEducation from '../resources/navEducation.svg';
+import navExperience from '../resources/navExperience.svg';
+import navProjects from '../resources/navProjects.svg';
+import navResume from '../resources/navResume.svg';
+import resume from '../resources/resume.pdf';
+import navGithub from '../resources/navGithub.svg';
+import navEmail from '../resources/navEmail.svg';
+import navLinkedIn from '../resources/navLinkedIn.svg';
+import '../css/NavBar.scss';
 
 /**
  * The navigation bar component displayed at the top of the website, disappears as the user scrolls down the page.
  * All links rendered on the left side of the navigation bar are passed as a list to the 'linksLeft' prop.
  * The link rendered on the right side of the navigation bar are passed as a list to the 'linksRight' prop.
  */
-class NavBar extends Component {
+export class NavBar extends Component {
 
     constructor(props) {
         super(props);
@@ -41,7 +52,7 @@ class NavBar extends Component {
      * @returns {*} The mobile side menu.
      */
     getMenu() {
-        const menuButtons = this.props.linksLeft.map(el => (
+        const menuButtons = this.props.linksLeft.map((el) => (
             <div className={'menu-btn-container'} onClick={this.updateMenuState} key={el.key}>
                 {el}
             </div>
@@ -89,23 +100,49 @@ class NavBar extends Component {
         } else {
             return (
                 <div className={this.props.display ? 'nav' : 'nav hide'}>
-                    <div style={{'width': '100px', 'display': 'flex'}}>
-                        <div className={'icon-container'}>
-                            <button onClick={this.scrollToTop} className={'icon-btn'}>
-                                <img src={icon} alt={'icon'} className={'icon'}/>
-                            </button>
-                        </div>
+                    {/*<div style={{'width': '100px', 'display': 'flex'}}>*/}
+                    {/*    <div className={'icon-container'}>*/}
+                    {/*        <button onClick={this.scrollToTop} className={'icon-btn'}>*/}
+                    {/*            <img src={icon} alt={'icon'} className={'icon'}/>*/}
+                    {/*        </button>*/}
+                    {/*    </div>*/}
+                    {/*</div>*/}
+                    <div className={'nav-top'}>
+                        <button className={this.state.isMobile ? 'nav-link nav-link-mobile nav-logo' : 'nav-link nav-logo'} key={'navLogo'} onClick={this.scrollToTop}>
+                            <img src={navLogo} alt={'Logo'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile nav-logo-inner' : 'nav-inner nav-logo-inner'}/>
+                        </button>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#about-me'} key={'navHome'}>
+                            <img src={navHome} alt={'Home'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#projects'} key={'navAbout'}>
+                            <img src={navAbout} alt={'About'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#education'} key={'navEducation'}>
+                            <img src={navEducation} alt={'Education'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#experience'} key={'navExperience'}>
+                            <img src={navExperience} alt={'Experience'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#projects'} key={'navProjects'}>
+                            <img src={navProjects} alt={'Projects'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
+                            <img src={navResume} alt={'Resume'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
                     </div>
-                    <div className={'nav-left'}>
-                        {this.props.linksLeft}
-                    </div>
-                    <div className={'nav-right'}>
-                        {this.props.linksRight}
+                    <div className={'nav-bottom'}>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'https://github.com/justinkonecny'} target={'_blank'} rel={'noopener noreferrer'} key={'navGitHub'}>
+                            <img src={navGithub} alt={'GitHub'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'https://www.linkedin.com/in/justin-konecny/'} target={'_blank'} rel={'noopener noreferrer'} key={'navLinkedIn'}>
+                            <img src={navLinkedIn} alt={'LinkedIn'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
+                        <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'mailto:konecnyjustin@gmail.com'} target={'_blank'} rel={'noopener noreferrer'} key={'navEmail'}>
+                            <img src={navEmail} alt={'Email'} className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}/>
+                        </a>
                     </div>
                 </div>
             );
         }
     }
 }
-
-export default NavBar;

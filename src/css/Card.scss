@@ -1,0 +1,29 @@
+@import 'Global';
+
+.card {
+  display: inline-grid;
+  border: 2px solid $gray-light;
+  border-radius: 4px;
+  margin-bottom: 10%;
+  padding: 10%;
+  width: calc(100% - 20%);
+  height: fit-content;
+
+  a {
+    color: $green;
+  }
+
+  .card-header {
+    position: relative;
+  }
+
+  .plus-btn {
+    position: absolute;
+    top: -10px;
+    right: -20px;
+  }
+}
+
+.card-mobile {
+  width: 100%;
+}

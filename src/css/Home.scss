@@ -12,7 +12,7 @@ h1 {
 h2 {
   margin: 0 0 10px 0;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-size: 36pt;
+  font-size: 34pt;
   font-weight: bold;
   color: white;
 }
@@ -20,14 +20,14 @@ h2 {
 h3 {
   margin: 0 0 10px 0;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-size: 32pt;
+  font-size: 30pt;
   font-weight: 600;
   color: $green;
 }
 
 h4 {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: 500;
   color: white;
 }
@@ -35,7 +35,7 @@ h4 {
 h5 {
   margin: 6px 0 10px 0;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
   font-weight: 500;
   color: $off-white;
 }
@@ -43,21 +43,21 @@ h5 {
 p { // Body2
   margin: 0;
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 p .body1 { // Body1
-  font-size: 22pt;
+  font-size: 20pt;
 }
 
 p .body3 { // Body3
-  font-size: 15pt;
+  font-size: 13pt;
   text-align: center;
 }
 
 li {
   font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 16pt;
+  font-size: 14pt;
 }
 
 button {
@@ -72,54 +72,17 @@ button:hover {
 }
 
 
-.timeline {
-  width: 100%;
-  position: relative;
-}
 
-.timeline::after {
-  background-color: $green;
-  position: absolute;
-  width: 2px;
-  content: '';
-  top: 0;
-  bottom: 0;
-  left: 10%;
-}
 
-.timeline-section {
-  position: relative;
-  width: 90%;
-  left: 10%;
-}
-
-.timeline-dot {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  left: calc(10% - 10px);
-  background-color: $green;
-  border-radius: 50%;
-  z-index: 1;
-}
-
-.timeline-content {
-  background-color: $gray-background;
-  padding: 10vh 20vw 10vh 10vw;
-  position: relative;
-  height: 80%;
-}
-
-.expandable-header {
-  display: flex;
-  align-items: center;
-  margin-top: 17px;
-
-  p {
-    margin: 0 5px 0 0;
-  }
-}
+//.timeline::after {
+//  background-color: $green;
+//  position: absolute;
+//  width: 2px;
+//  content: '';
+//  top: 0;
+//  bottom: 0;
+//  left: 10%;
+//}
 
 .plus-btn {
   height: 15px;
@@ -157,18 +120,6 @@ button:hover {
   }
 }
 
-.expandable-content {
-  max-height: 300px;
-  transition: max-height 600ms ease-in;
-  overflow: hidden;
-}
-
-.expandable-hidden {
-  max-height: 0;
-  transition: max-height 600ms ease-out;
-  overflow: hidden;
-}
-
 .border-right {
   border-right: 0.07em solid #6c6e77;
 }
@@ -198,8 +149,8 @@ button:hover {
     margin: auto auto auto 0;
 
     .intro-blurb {
-      font-size: 22pt;
-      width: 600px;
+      font-size: 19pt;
+      width: 700px;
     }
   }
 }
@@ -530,34 +481,6 @@ button:hover {
   //max-height: 2000px;
   column-count: 2;
   column-gap: 5%;
-}
-
-.card {
-  display: inline-grid;
-  border: 2px solid $gray-light;
-  border-radius: 4px;
-  margin-bottom: 10%;
-  padding: 10%;
-  width: calc(100% - 20%);
-  height: fit-content;
-
-  a {
-    color: $green;
-  }
-
-  .card-header {
-    position: relative;
-  }
-
-  .plus-btn {
-    position: absolute;
-    top: -10px;
-    right: -20px;
-  }
-}
-
-.card-mobile {
-  width: 100%;
 }
 
 #contact {

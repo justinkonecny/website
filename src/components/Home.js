@@ -4,12 +4,17 @@ import resume from '../resources/resume.pdf';
 import animator from '../resources/animator.png';
 import libertyCars from '../resources/liberty_cars_results.png';
 import '../css/Home.scss';
+import {TimelineElement} from './TimelineElement';
+import {ExpandableText} from './ExpandableText';
+import {Card} from './Card';
+import {Timeline} from './Timeline';
+import {NavBar} from './NavBar';
 
 /**
  * Component for the home page (the main website display component).
  * Renders the navigation bar and the website body.
  */
-class Home extends Component {
+export class Home extends Component {
 
     /**
      * Creates the home component with the given props.
@@ -54,43 +59,6 @@ class Home extends Component {
 
         // The animated text that appears at the top of the page
         this.introText = ['Hi, I\'m justin Konecny.', 'Hi, I\'m Justin Konecny.'];
-    }
-
-    /**
-     * Returns the 'normal' links in the navigation bar.
-     *
-     * @returns {*[]} The list of the 'normal' elements in the navigation bar.
-     */
-    getNavLinksOther() {
-        // The links passed to the navigation bar component for rendering (on the left)
-        return ([
-            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#about-me'} key={'navAboutMe'}>
-                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>About Me</div>
-            </a>,
-            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#education'} key={'navEducation'}>
-                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Education</div>
-            </a>,
-            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#experience'} key={'navExperience'}>
-                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Experience</div>
-            </a>,
-            <a className={this.state.isMobile ? 'nav-link nav-link-mobile' : 'nav-link'} href={'#projects'} key={'navProjects'}>
-                <div className={this.state.isMobile ? 'nav-inner nav-inner-mobile' : 'nav-inner'}>Projects</div>
-            </a>
-        ]);
-    }
-
-    /**
-     * Returns the 'special' links in the navigation bar.
-     *
-     * @returns {*[]} The list of the 'main' elements in the navigation bar.
-     */
-    getNavLinksMain() {
-        // The links passed to the navigation bar component for rendering (on the right)
-        return ([
-            <a className={this.state.isMobile ? 'nav-link main-link main-link-mobile' : 'nav-link main-link'} href={resume} target={'_blank'} rel={'noopener noreferrer'} key={'navResume'}>
-                <div className={this.state.isMobile ? 'nav-inner nav-inner-main nav-inner-mobile' : 'nav-inner nav-inner-main'}>Resume</div>
-            </a>
-        ]);
     }
 
     /**
@@ -277,10 +245,10 @@ class Home extends Component {
     render() {
         return (
             <div>
-                {/*<NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} linksLeft={this.getNavLinksOther()} linksRight={this.getNavLinksMain()}/>*/}
-                <div className={'timeline'}>
+                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar}/>
 
-                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'}>
+                <Timeline>
+                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true}>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                                 <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>
@@ -332,10 +300,10 @@ class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-proficient'}>Java</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Python</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>C/C++</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>React</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>JavaScript</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>TypeScript</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>HTML/CSS</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>React</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Vue.js</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Racket</div>
                                             <div className={'skill-all highlight-skill skill-familiar'}>AMD64 Assembly</div>
@@ -355,7 +323,7 @@ class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-proficient'}>PyCharm</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>WebStorm</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>VS Code</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>AWS</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Amazon Web Services</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>LaTeX</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>GDB</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Vim</div>
@@ -561,8 +529,7 @@ class Home extends Component {
                             </div>
                         </div>
                     </TimelineElement>
-
-                </div>
+                </Timeline>
 
 
                 {/*    </div>*/}
@@ -609,88 +576,6 @@ class FeaturedProject extends Component {
     }
 }
 
-class Card extends Component {
-    constructor(props) {
-        super(props);
-
-        this.toggleExpand = this.toggleExpand.bind(this);
-
-        this.state = {
-            isExpanded: false
-        };
-
-        this.maxChars = this.props.maxChars ? this.props.maxChars : 230;
-        this.isExpandable = false;
-        this.first = [];
-        this.rest = [];
-
-        if (typeof this.props.children === "string" && this.props.children.length > this.maxChars) {
-            this.isExpandable = true;
-            this.first = this.props.children.substring(0, this.maxChars);
-            this.rest = this.props.children.substring(this.maxChars);
-        } else if (Array.isArray(this.props.children)) {
-            let charCount = 0;
-            for (const el of this.props.children) {
-                if (typeof el === "string") {
-                    charCount += el.length;
-                }
-            }
-            if (charCount > this.maxChars) {
-                this.isExpandable = true;
-
-                charCount = 0;
-                let insideElement = false;
-                for (let i = 0; i < this.props.children.length; i++) {
-                    const el = this.props.children[i];
-                    if (typeof el === "string") {
-                        charCount += el.length;
-                    } else {
-                        insideElement = !insideElement;
-                    }
-
-                    if (!insideElement && charCount > this.maxChars) {
-                        this.first = [...this.props.children];
-                        this.rest = this.first.splice(i);
-                        break;
-                    }
-                }
-            }
-        }
-    }
-
-    toggleExpand() {
-        const expanded = this.state.isExpanded;
-        this.setState({isExpanded: !expanded});
-    }
-
-    render() {
-        if (this.isExpandable) {
-            return (
-                <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
-                    <div className={'card-header'}>
-                        <h3 style={{color: 'white'}}>{this.props.title}</h3>
-                        <button className={'plus-btn'} onClick={this.toggleExpand}>
-                            <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
-                        </button>
-                    </div>
-                    <p>
-                        {this.first}
-                        {this.state.isExpanded ? this.rest : '...'}
-                    </p>
-                </div>
-            );
-        } else {
-            return (
-                <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
-                    <h3 style={{color: 'white'}}>{this.props.title}</h3>
-                    <p>
-                        {this.props.children}
-                    </p>
-                </div>
-            );
-        }
-    }
-}
 
 /**
  * Component to crop and display the profile image. Does not render on a mobile device.
@@ -723,110 +608,3 @@ class Footer extends Component {
         }
     }
 }
-
-class ExpandableText extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isExpanded: false
-        };
-
-        this.toggleExpand = this.toggleExpand.bind(this);
-    }
-
-    toggleExpand() {
-        const expanded = this.state.isExpanded;
-        this.setState({isExpanded: !expanded});
-    }
-
-    render() {
-        return (
-            <div>
-                <div className={'expandable-header'}>
-                    <h5>{this.props.text}</h5>
-                    <button className={'plus-btn'} onClick={this.toggleExpand}>
-                        <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
-                    </button>
-                </div>
-                <div className={this.state.isExpanded ? 'expandable-content' : 'expandable-hidden'}>
-                    {this.props.children}
-                </div>
-            </div>
-        );
-    }
-}
-
-class TimelineElement extends Component {
-    constructor(props) {
-        super(props);
-        this.setDotCoordinates = this.setDotCoordinates.bind(this);
-
-        const styleDot = {
-            top: this.props.dotTop ? this.props.dotTop : '50px'
-        };
-
-        const styleContent = {
-            display: this.props.display ? this.props.display : 'block',
-        };
-
-        const styleSection = {
-            height: this.props.height ? this.props.height : 'auto'
-        };
-
-        this.state = {
-            dot: styleDot,
-            content: styleContent,
-            section: styleSection
-        };
-    }
-
-    setDotCoordinates() {
-        if (this.props.dotId) {
-            const rect = this.getOffset(this.props.dotId);
-            this.setState({
-                dot: {
-                    top: rect.top - 10 + rect.height * 0.5  // posTop - (1/2)(dotHeight) + (1/2)(elementHeight)
-                }
-            });
-        }
-    }
-
-    componentDidMount() {
-        window.addEventListener('resize', this.setDotCoordinates);
-        this.setDotCoordinates();
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener('resize', this.setDotCoordinates);
-    }
-
-    getOffset(elementId) {
-        const rect = document.getElementById(elementId).getBoundingClientRect();
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        return {
-            top: rect.top + scrollTop,
-            left: rect.left + scrollLeft,
-            width: rect.width,
-            height: rect.height,
-            x: rect.x,
-            y: rect.y,
-        }
-    }
-
-    render() {
-        return (
-            <div>
-                <div className={'timeline-section'} style={this.state.section}>
-                    <div className={'timeline-content'} style={this.state.content}>
-                        {this.props.children}
-                    </div>
-                </div>
-                <div className={'timeline-dot'} style={this.state.dot}/>
-            </div>
-        );
-    }
-}
-
-
-export default Home;

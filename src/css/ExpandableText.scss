@@ -1,0 +1,23 @@
+@import 'Global';
+
+.expandable-header {
+  display: flex;
+  align-items: center;
+  margin-top: 17px;
+
+  p {
+    margin: 0 5px 0 0;
+  }
+}
+
+.expandable-content {
+  max-height: 300px;
+  transition: max-height 600ms ease-in;
+  overflow: hidden;
+}
+
+.expandable-hidden {
+  max-height: 0;
+  transition: max-height 600ms ease-out;
+  overflow: hidden;
+}

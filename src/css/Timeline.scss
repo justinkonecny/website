@@ -1,0 +1,41 @@
+@import 'Global';
+
+.timeline {
+  width: 100%;
+  position: relative;
+
+  .timeline-section {
+    position: relative;
+    width: 90%;
+    left: 10%;
+
+    .timeline-line {
+      background-color: $green;
+      position: absolute;
+      width: 2px;
+      content: '';
+      top: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .timeline-content {
+      background-color: $gray-background;
+      padding: 10vh 20vw 10vh 10vw;
+      position: relative;
+      height: 80%;
+    }
+  }
+
+  .timeline-dot {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: calc(10% - 10px);
+    background-color: $green;
+    border-radius: 50%;
+    z-index: 1;
+  }
+}
