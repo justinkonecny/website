@@ -220,18 +220,16 @@ export class Home extends Component {
             });
         }
 
-        const icons = Array.from(document.getElementsByClassName('contact-icon'));
+        const icons = Array.from(document.getElementsByClassName('svg-icon'));
 
         for (let i = 0; i < icons.length; i++) {
             icons[i].addEventListener('mouseover', function (e) {
-                icons[i].classList.add('skill-animation');
                 const hoverIcons = this.state.hoverIcons;
                 hoverIcons.add(icons[i].id);
                 this.setState({hoverIcons: hoverIcons});
             }.bind(this));
 
-            icons[i].addEventListener('animationend', function (e) {
-                icons[i].classList.remove('skill-animation');
+            icons[i].addEventListener('mouseout', function (e) {
                 const hoverIcons = this.state.hoverIcons;
                 hoverIcons.delete(icons[i].id);
                 this.setState({hoverIcons: hoverIcons});
@@ -245,7 +243,7 @@ export class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar}/>
+                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>
 
                 <Timeline>
                     <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true}>
