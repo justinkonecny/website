@@ -1,12 +1,26 @@
 @import 'Global';
 
+@keyframes grow {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(2.75);
+  }
+  100% {
+    transform: scale(2);
+  }
+}
+
 .timeline {
   width: 100%;
   position: relative;
 
   .timeline-section {
+    padding: 10vh 20vw 10vh 10vw;
     position: relative;
-    width: 90%;
+    width: 60%;
+    //height: 80%;
     left: 10%;
 
     .timeline-line {
@@ -22,20 +36,35 @@
 
     .timeline-content {
       background-color: $gray-background;
-      padding: 10vh 20vw 10vh 10vw;
+      //padding: 10vh 20vw 10vh 10vw;
+      margin: auto 0;
       position: relative;
-      height: 80%;
+    }
+
+    .timeline-content-text {
+      width: 60%;
     }
   }
 
   .timeline-dot {
     content: '';
     position: absolute;
-    width: 20px;
-    height: 20px;
-    left: calc(10% - 10px);
-    background-color: $green;
+    width: 10px;
+    height: 10px;
+    left: calc(10% - 6px);
+    border: 2px solid $green;
+    background-color: $gray-background;
     border-radius: 50%;
     z-index: 1;
+  }
+
+  .timeline-dot-filled {
+    background-color: $green;
+    animation: grow 350ms forwards;
+  }
+
+  .timeline-dot-start {
+    transform: scale(2);
+    background-color: $green;
   }
 }

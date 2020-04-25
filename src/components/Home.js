@@ -347,7 +347,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* EDUCATION */}
-                    <TimelineElement dotId={'education'}>
+                    <TimelineElement dotId={'education'} textOnly={true}>
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <h2 id={'education'}>Education</h2>
                             <h3>Northeastern University, Boston, MA</h3>
@@ -392,7 +392,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* WORK EXPERIENCE */}
-                    <TimelineElement dotId={'experience'}>
+                    <TimelineElement dotId={'experience'} textOnly={true}>
                         <h2 id={'experience'}>Professional Experience</h2>
                         <h3>Rocket Software</h3>
                         <h4>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h4>
