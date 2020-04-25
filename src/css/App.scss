@@ -2,7 +2,8 @@
 
 html, body {
   background-color: $gray-background;
-  color: $off-white
+  color: $off-white;
+  scroll-behavior: smooth;
 }
 
 .App {

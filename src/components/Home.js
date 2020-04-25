@@ -25,6 +25,8 @@ export class Home extends Component {
         super(props);
 
         this.setupSkillHover = this.setupSkillHover.bind(this);
+        this.setupNavHover = this.setupNavHover.bind(this);
+        // this.setupSmoothScroll = this.setupSmoothScroll.bind(this);
 
         // Scroll listener to handle hiding the navigation bar
         this.scrollListener = this.scrollListener.bind(this);
@@ -205,6 +207,8 @@ export class Home extends Component {
         // }
 
         this.setupSkillHover();
+        this.setupNavHover();
+        // this.setupSmoothScroll();
     }
 
     setupSkillHover() {
@@ -219,7 +223,9 @@ export class Home extends Component {
                 all[i].classList.remove('skill-animation');
             });
         }
+    }
 
+    setupNavHover() {
         const icons = Array.from(document.getElementsByClassName('svg-icon'));
 
         for (let i = 0; i < icons.length; i++) {
@@ -236,6 +242,18 @@ export class Home extends Component {
             }.bind(this));
         }
     }
+
+    // setupSmoothScroll() {
+    //     Array.from(document.getElementsByClassName('nav-link')).forEach((navLink) => {
+    //         navLink.addEventListener('click', (event) => {
+    //             event.preventDefault();
+    //             const href = event.currentTarget.getAttribute('href');
+    //             document.querySelector(href).scrollIntoView({
+    //                 behavior: 'smooth'
+    //             });
+    //         });
+    //     });
+    // }
 
     /**
      * Renders this component.
