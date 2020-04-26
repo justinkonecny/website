@@ -92,7 +92,7 @@ export class TimelineElement extends Component {
     render() {
         let dotClass = 'timeline-dot';
         if (this.props.filled !== undefined) {
-            dotClass += this.props.filled ? ' timeline-dot-start' : '';
+            dotClass += this.props.filled ? ' timeline-dot-filled' : '';
         } else {
             dotClass += this.props.start ? ' timeline-dot-start' : '';
             dotClass += !this.props.start && this.state.isFilled ? ' timeline-dot-filled' : '';
