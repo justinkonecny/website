@@ -18,7 +18,7 @@ export class TimelineElement extends Component {
         };
 
         const styleSection = {
-            height: this.props.height ? 'calc(' + this.props.height  + ' - 20vh)' : 'auto', // height - TopBottomPadding
+            height: this.props.height ? 'calc(' + this.props.height + ' - 20vh)' : 'auto', // height - TopBottomPadding
             display: this.props.display ? this.props.display : 'block'
         };
 
@@ -32,32 +32,9 @@ export class TimelineElement extends Component {
             content: styleContent,
             section: styleSection,
             line: styleLine,
+            dotAbsolutePos: 0,
             isFilled: this.props.start
         };
-    }
-
-    setDotCoordinates() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const rect = this.getOffset(this.props.dotId);
-        const dotY = rect.top - 10 + rect.height * 0.5;  // posTop - (1/2)(dotHeight) + (1/2)(elementHeight)
-        if (dotY !== this.state.dot.top) {
-            this.setState({
-                dot: {
-                    top: dotY
-                },
-                line: {
-                    top: this.props.start ? dotY : 0
-                },
-                isFilled: this.props.start || scrollTop > this.state.dot.top - this.offset
-            });
-        }
-    }
-
-    watchDot() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (!this.state.isFilled && scrollTop > this.state.dot.top - this.offset) {
-            this.setState({isFilled: true});
-        }
     }
 
     componentDidMount() {
@@ -72,18 +49,42 @@ export class TimelineElement extends Component {
         window.removeEventListener('scroll', this.watchDot);
     }
 
-    getOffset(elementId) {
-        const rect = document.getElementById(elementId).getBoundingClientRect();
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    setDotCoordinates() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        return {
-            top: rect.top + scrollTop,
-            left: rect.left + scrollLeft,
-            width: rect.width,
-            height: rect.height,
-            x: rect.x,
-            y: rect.y,
+        const offset = this.getOffset(this.props.dotId);
+        if (offset !== this.state.dot.top) {
+            this.setState({
+                dot: {
+                    top: offset.dotRelative
+                },
+                line: {
+                    top: this.props.start ? offset.dotAbsolute : 0
+                },
+                dotAbsolutePos: offset.dotAbsolute,
+                isFilled: this.props.start || scrollTop > this.state.dotAbsolutePos - this.offset
+            });
         }
+    }
+
+    watchDot() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (!this.state.isFilled && scrollTop > this.state.dotAbsolutePos - this.offset) {
+            this.setState({isFilled: true});
+        }
+    }
+
+    getOffset(elementId) {
+        const element = document.getElementById(elementId);
+        const elementBounds = element.getBoundingClientRect();
+        const parentBounds = element.closest(".timeline-section").getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const y = elementBounds.y - parentBounds.y;
+        const heightAdjustment = (0.5 * elementBounds.height) - 6;  // (1/2)(elementHeight) - (1/2)(dotHeight + borderSize)
+
+        return {
+            dotRelative: y + heightAdjustment,
+            dotAbsolute: elementBounds.y + heightAdjustment + scrollTop
+        };
     }
 
     render() {
@@ -98,8 +99,8 @@ export class TimelineElement extends Component {
                         {this.props.children}
                     </div>
                     <div className={'timeline-line'} style={this.state.line}/>
+                    <div className={dotClass} style={this.state.dot}/>
                 </div>
-                <div className={dotClass} style={this.state.dot}/>
             </div>
         );
     }

@@ -3,10 +3,11 @@
 .card {
   display: inline-grid;
   border: 2px solid $gray-light;
+  background-color: $gray-light;
   border-radius: 4px;
   margin-bottom: 10%;
   padding: 10%;
-  width: calc(100% - 20%);
+  width: calc(100% - 20% - 4px);  // adjust for padding and border
   height: fit-content;
 
   a {

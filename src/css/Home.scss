@@ -245,17 +245,15 @@ button:hover {
 
     .highlight-title {
       text-align: left;
-      //padding-left: 5px;
     }
 
     .highlight-skills {
-      width: 60%;
+      width: $content-margin;
       margin: 20px 0;
       display: flex;
       flex-wrap: wrap;
 
       .highlight-skill {
-        //margin: 5px 10px 5px 0;
       }
     }
   }
@@ -324,14 +322,6 @@ button:hover {
   padding: 0;
 }
 
-//
-//li:before {
-//  content: '-';
-//  position: absolute;
-//  margin-left: -1.1em;
-//    overflow:hidden;
-//}
-
 @keyframes shake {
   0% {
     transform: translate(0px, 0px) rotate(0deg);
@@ -392,7 +382,6 @@ button:hover {
 }
 
 .body-skill {
-  //margin: 5px;
 }
 
 .projects {
@@ -455,12 +444,17 @@ button:hover {
 }
 
 .proj-skill {
-  //margin: 5px;
 }
 
 .img-container {
   display: flex;
   width: 47.5%;
+  justify-content: flex-end;
+
+  .img-proj {
+    width: 90%;
+    border-radius: 5px;
+  }
 }
 
 .img-container-mobile {
@@ -468,10 +462,7 @@ button:hover {
   margin: 20px 0;
 }
 
-.img-proj {
-  width: 90%;
-  border-radius: 5px;
-}
+
 
 .additional-projects {
   //display: flex;

@@ -26,7 +26,6 @@ export class Home extends Component {
 
         this.setupSkillHover = this.setupSkillHover.bind(this);
         this.setupNavHover = this.setupNavHover.bind(this);
-        // this.setupSmoothScroll = this.setupSmoothScroll.bind(this);
 
         // Scroll listener to handle hiding the navigation bar
         this.scrollListener = this.scrollListener.bind(this);
@@ -208,7 +207,6 @@ export class Home extends Component {
 
         this.setupSkillHover();
         this.setupNavHover();
-        // this.setupSmoothScroll();
     }
 
     setupSkillHover() {
@@ -243,18 +241,6 @@ export class Home extends Component {
         }
     }
 
-    // setupSmoothScroll() {
-    //     Array.from(document.getElementsByClassName('nav-link')).forEach((navLink) => {
-    //         navLink.addEventListener('click', (event) => {
-    //             event.preventDefault();
-    //             const href = event.currentTarget.getAttribute('href');
-    //             document.querySelector(href).scrollIntoView({
-    //                 behavior: 'smooth'
-    //             });
-    //         });
-    //     });
-    // }
-
     /**
      * Renders this component.
      */
@@ -265,11 +251,9 @@ export class Home extends Component {
 
                 <Timeline>
                     <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true}>
+                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin Konecny.</h1>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
-                                <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>
-                                    Hi, I’m Justin Konecny.
-                                </h1>
                                 <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                                     <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
                                         &lt;\ I'm a <span className={'emphasis'}>Cybersecurity</span> major at
@@ -583,9 +567,7 @@ class FeaturedProject extends Component {
                     {this.props.children}
                 </div>
                 <div className={this.props.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
-                    <div style={{'margin': 'auto'}}>
-                        <img className={'img-proj'} src={this.props.imageSrc} alt={this.props.text}/>
-                    </div>
+                    <img className={'img-proj'} src={this.props.imageSrc} alt={this.props.text}/>
                 </div>
             </div>
         );
