@@ -33,13 +33,15 @@ export class TimelineElement extends Component {
             section: styleSection,
             line: styleLine,
             dotAbsolutePos: 0,
-            isFilled: this.props.start
+            isFilled: this.props.filled !== undefined ? this.props.filled : (this.props.start === true)
         };
     }
 
     componentDidMount() {
         window.addEventListener('resize', this.setDotCoordinates);
-        window.addEventListener('scroll', this.watchDot);
+        if (this.props.filled === undefined) {
+            window.addEventListener('scroll', this.watchDot);
+        }
         setTimeout(this.setDotCoordinates, 100);
         this.setDotCoordinates();
     }
@@ -61,7 +63,7 @@ export class TimelineElement extends Component {
                     top: this.props.start ? offset.dotAbsolute : 0
                 },
                 dotAbsolutePos: offset.dotAbsolute,
-                isFilled: this.props.start || scrollTop > this.state.dotAbsolutePos - this.offset
+                isFilled: (this.props.filled !== undefined) ? this.props.filled : (this.props.start || scrollTop > this.state.dotAbsolutePos - this.offset)
             });
         }
     }
@@ -76,7 +78,7 @@ export class TimelineElement extends Component {
     getOffset(elementId) {
         const element = document.getElementById(elementId);
         const elementBounds = element.getBoundingClientRect();
-        const parentBounds = element.closest(".timeline-section").getBoundingClientRect();
+        const parentBounds = element.closest('.timeline-section').getBoundingClientRect();
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         const y = elementBounds.y - parentBounds.y;
         const heightAdjustment = (0.5 * elementBounds.height) - 6;  // (1/2)(elementHeight) - (1/2)(dotHeight + borderSize)
@@ -89,8 +91,12 @@ export class TimelineElement extends Component {
 
     render() {
         let dotClass = 'timeline-dot';
-        dotClass += this.props.start ? ' timeline-dot-start' : '';
-        dotClass += !this.props.start && this.state.isFilled ? ' timeline-dot-filled' : '';
+        if (this.props.filled !== undefined) {
+            dotClass += this.props.filled ? ' timeline-dot-start' : '';
+        } else {
+            dotClass += this.props.start ? ' timeline-dot-start' : '';
+            dotClass += !this.props.start && this.state.isFilled ? ' timeline-dot-filled' : '';
+        }
 
         return (
             <div>

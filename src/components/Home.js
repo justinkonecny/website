@@ -10,6 +10,15 @@ import {Card} from './Card';
 import {Timeline} from './Timeline';
 import {NavBar} from './NavBar';
 
+
+export const Sections = {
+    PROJECTS: 'projects',
+    EXPERIENCE: 'experience',
+    EDUCATION: 'education',
+    ABOUT: 'about-me',
+    HOME: 'name'
+};
+
 /**
  * Component for the home page (the main website display component).
  * Renders the navigation bar and the website body.
@@ -26,6 +35,7 @@ export class Home extends Component {
 
         this.setupSkillHover = this.setupSkillHover.bind(this);
         this.setupNavHover = this.setupNavHover.bind(this);
+        this.getSectionOffset = this.getSectionOffset.bind(this);
 
         // Scroll listener to handle hiding the navigation bar
         this.scrollListener = this.scrollListener.bind(this);
@@ -35,6 +45,8 @@ export class Home extends Component {
         this.typeName = this.typeName.bind(this);
         // The current state of the page
         this.state = {
+            currentSection: Sections.HOME,
+
             isMobile: false,
             showNavBar: true,
             showIntro: true,
@@ -62,51 +74,79 @@ export class Home extends Component {
         this.introText = ['Hi, I\'m justin Konecny.', 'Hi, I\'m Justin Konecny.'];
     }
 
+    getSectionOffset(elementId) {
+        const element = document.getElementById(elementId);
+        const elementBounds = element.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const heightAdjustment = (0.5 * elementBounds.height) - 6;  // (1/2)(elementHeight) - (1/2)(dotHeight + borderSize)
+
+        return elementBounds.y + heightAdjustment + scrollTop - (0.5 * window.innerHeight);
+    }
+
     /**
      * Updates the page's state to show or hide the navigation bar, based on how far down the user has scrolled.
      */
     scrollListener() {
-        if (window.pageYOffset < 50) {
-            // Handles scrolling to top of page
-            this.setState({showNavBar: true});
-        } else if (window.pageYOffset > this.lastScroll) {
-            // Scrolling towards bottom of page
-            this.lastScroll = window.pageYOffset;
-            this.setState({showNavBar: false});
-        } else if (this.lastScroll - window.pageYOffset > 50) {
-            // Scrolling towards top of the page
-            this.lastScroll = window.pageYOffset;
-            this.setState({showNavBar: true});
-        }
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-        if (window.pageYOffset > 200 && !this.state.skipIntro) {
-            // Show the rest of the page before the intro animation finishes if user scrolls down
-            this.setState({skipIntro: true});
-        }
+        // if (window.pageYOffset < 50) {
+        //     // Handles scrolling to top of page
+        //     this.setState({showNavBar: true});
+        // } else if (window.pageYOffset > this.lastScroll) {
+        //     // Scrolling towards bottom of page
+        //     this.lastScroll = window.pageYOffset;
+        //     this.setState({showNavBar: false});
+        // } else if (this.lastScroll - window.pageYOffset > 50) {
+        //     // Scrolling towards top of the page
+        //     this.lastScroll = window.pageYOffset;
+        //     this.setState({showNavBar: true});
+        // }
+
+        // if (window.pageYOffset > 200 && !this.state.skipIntro) {
+        //     // Show the rest of the page before the intro animation finishes if user scrolls down
+        //     this.setState({skipIntro: true});
+        // }
 
         // Displays the different sets of skills based on how far the user has scrolled down the page
-        if (window.pageYOffset > this.getElementYCoord('animator', 0.60) && this.state.showAnimatorSkills === false) {
-            this.setState({showAnimatorSkills: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('liberty-cars', 0.65) && this.state.showLibertySkills === false) {
-            this.setState({showLibertySkills: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('vonage-skills', 0.9) && this.state.showVonageSkills === false) {
-            this.setState({showVonageSkills: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('rocket-skills', 0.9) && this.state.showRocketSkills === false) {
-            this.setState({showRocketSkills: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('neu-skills', 0.9) && this.state.showNEUSkills === false) {
-            this.setState({showNEUSkills: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('highlights', 0.65) && this.state.showHighlights === false) {
-            this.setState({showHighlights: true});
-        }
-        if (window.pageYOffset > this.getElementYCoord('about-me', 0.75) && this.state.showAboutMe === false) {
-            this.setState({showAboutMe: true});
-        }
+        // if (window.pageYOffset > this.getElementYCoord('animator', 0.60) && this.state.showAnimatorSkills === false) {
+        //     this.setState({showAnimatorSkills: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('liberty-cars', 0.65) && this.state.showLibertySkills === false) {
+        //     this.setState({showLibertySkills: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('vonage-skills', 0.9) && this.state.showVonageSkills === false) {
+        //     this.setState({showVonageSkills: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('rocket-skills', 0.9) && this.state.showRocketSkills === false) {
+        //     this.setState({showRocketSkills: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('neu-skills', 0.9) && this.state.showNEUSkills === false) {
+        //     this.setState({showNEUSkills: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('highlights', 0.65) && this.state.showHighlights === false) {
+        //     this.setState({showHighlights: true});
+        // }
+        // if (window.pageYOffset > this.getElementYCoord('about-me', 0.75) && this.state.showAboutMe === false) {
+        //     this.setState({showAboutMe: true});
+        // }
 
+        // console.log(scrollTop, this.getSectionOffset(Sections.ABOUT));
+
+        // if (this.state.currentSection !== Sections.HOME && scrollTop < this.getSectionOffset(Sections.ABOUT)) {
+        //     this.setState({currentSection: Sections.HOME});
+        //     return;
+        // }
+
+        for (let sectionKey in Sections) {
+            const sectionId = Sections[sectionKey];
+            const sectionOffset = this.getSectionOffset(sectionId);
+            if (scrollTop >= sectionOffset) {
+                if (this.state.currentSection !== sectionId) {
+                    this.setState({currentSection: sectionId});
+                }
+                return;
+            }
+        }
     }
 
     /**
@@ -188,7 +228,7 @@ export class Home extends Component {
      */
     componentDidMount() {
         // window.addEventListener('resize', this.resizeListener);
-        // window.addEventListener('scroll', this.scrollListener);
+        window.addEventListener('scroll', this.scrollListener);
         //
         // if (window.innerWidth <= this.mobileThreshold) {
         //     this.setState({isMobile: true});
@@ -247,10 +287,10 @@ export class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>
+                <NavBar currentSection={this.state.currentSection} isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>
 
                 <Timeline>
-                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true}>
+                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} filled={this.state.currentSection === Sections.HOME}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin Konecny.</h1>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
@@ -268,7 +308,7 @@ export class Home extends Component {
                     {/* The main body, includes education, software projects, skills, and work experience */}
 
                     {/* ABOUT ME */}
-                    <TimelineElement dotId={'about-me'}>
+                    <TimelineElement dotId={'about-me'} filled={this.state.currentSection === Sections.ABOUT}>
                         {/*<div className={this.state.skipIntro ? {} : (this.state.showIntro ? 'fade-in' : 'fade-in-hide')}>*/}
                         <div className={this.state.isMobile ? 'about about-mobile' : 'about'}>
                             <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
@@ -349,7 +389,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* EDUCATION */}
-                    <TimelineElement dotId={'education'} textOnly={true}>
+                    <TimelineElement dotId={'education'} textOnly={true} filled={this.state.currentSection === Sections.EDUCATION}>
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <h2 id={'education'}>Education</h2>
                             <h3>Northeastern University, Boston, MA</h3>
@@ -394,7 +434,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* WORK EXPERIENCE */}
-                    <TimelineElement dotId={'experience'} textOnly={true}>
+                    <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE}>
                         <h2 id={'experience'}>Professional Experience</h2>
                         <h3>Rocket Software</h3>
                         <h4>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h4>
@@ -453,7 +493,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/*/!* FEATURED SOFTWARE PROJECTS *!/*/}
-                    <TimelineElement dotId={'projects'}>
+                    <TimelineElement dotId={'projects'} filled={this.state.currentSection === Sections.PROJECTS}>
                         <div className={'projects'}>
                             <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
                                 <h2 id={'projects'} style={{'color': 'white'}}>Software Projects</h2>

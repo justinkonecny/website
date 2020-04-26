@@ -13,6 +13,7 @@ import navGithub from '../resources/navGithub.svg';
 import navEmail from '../resources/navEmail.svg';
 import navLinkedIn from '../resources/navLinkedIn.svg';
 import '../css/NavBar.scss';
+import {Sections} from "./Home";
 
 /**
  * The navigation bar component displayed at the top of the website, disappears as the user scrolls down the page.
@@ -78,16 +79,16 @@ export class NavBar extends Component {
     }
 
     render() {
-        const colorHome = this.props.hoverIcons.has('btn-home') ? this.colorActive : this.colorInactive;
-        const colorAbout = this.props.hoverIcons.has('btn-about') ? this.colorActive : this.colorInactive;
-        const colorEducation = this.props.hoverIcons.has('btn-education') ? this.colorActive : this.colorInactive;
-        const colorExperience = this.props.hoverIcons.has('btn-experience') ? this.colorActive : this.colorInactive;
-        const colorProjects = this.props.hoverIcons.has('btn-projects') ? this.colorActive : this.colorInactive;
+        const colorHome = this.props.hoverIcons.has('btn-home') || this.props.currentSection === Sections.HOME ? this.colorActive : this.colorInactive;
+        const colorAbout = this.props.hoverIcons.has('btn-about') || this.props.currentSection === Sections.ABOUT ? this.colorActive : this.colorInactive;
+        const colorEducation = this.props.hoverIcons.has('btn-education') || this.props.currentSection === Sections.EDUCATION ? this.colorActive : this.colorInactive;
+        const colorExperience = this.props.hoverIcons.has('btn-experience') || this.props.currentSection === Sections.EXPERIENCE ? this.colorActive : this.colorInactive;
+        const colorProjects = this.props.hoverIcons.has('btn-projects') || this.props.currentSection === Sections.PROJECTS ? this.colorActive : this.colorInactive;
+
         const colorResume = this.props.hoverIcons.has('btn-resume') ? this.colorActive : this.colorInactive;
         const colorGithub = this.props.hoverIcons.has('btn-github') ? this.colorActive : this.colorInactive;
         const colorLinkedIn = this.props.hoverIcons.has('btn-linkedin') ? this.colorActive : this.colorInactive;
         const colorEmail = this.props.hoverIcons.has('btn-email') ? this.colorActive : this.colorInactive;
-
 
         if (this.props.isMobile) {
             if (!this.props.display && this.state.showMenu) {

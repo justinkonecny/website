@@ -5,10 +5,10 @@
     transform: scale(0);
   }
   60% {
-    transform: scale(3.5);
+    transform: scale(2);
   }
   100% {
-    transform: scale(2);
+    transform: scale(1.5);
   }
 }
 
@@ -57,11 +57,11 @@
 
   .timeline-dot-filled {
     background-color: $green;
-    animation: grow 350ms forwards;
+    animation: grow 400ms forwards;
   }
 
   .timeline-dot-start {
-    transform: scale(2);
+    transform: scale(1.5);
     background-color: $green;
   }
 }
