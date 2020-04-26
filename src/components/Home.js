@@ -9,6 +9,7 @@ import {ExpandableText} from './ExpandableText';
 import {Card} from './Card';
 import {Timeline} from './Timeline';
 import {NavBar} from './NavBar';
+import {ContactForm} from "./ContactForm";
 
 
 export const Sections = {
@@ -569,28 +570,27 @@ export class Home extends Component {
                             </div>
                         </div>
                     </TimelineElement>
+
+                    <TimelineElement dotId={'contact'} textOnly={true} filled={false}>
+                        <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
+                            <div className={'body-info'}>
+                                <div className={this.state.isMobile ? 'get-in-touch-mobile' : 'get-in-touch'}>
+                                    <h2 id={'contact'}>Let's Get In Touch</h2>
+                                    <p>
+                                        I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.
+                                        Looking to chat about my work experiences or any of my projects? Feel free to reach out!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <ContactForm/>
+                    </TimelineElement>
+
                 </Timeline>
 
-
-                {/*    </div>*/}
-                {/*</div>*/}
-
-                {/*<div className={this.state.isMobile ? 'body body-mobile' : 'body'}>*/}
-                {/*    <div className={'body-info'} style={{'display': 'flex'}}>*/}
-                {/*        <div className={this.state.isMobile ? 'get-in-touch-mobile' : 'get-in-touch'}>*/}
-                {/*            <h2 id={'contact'}>LET'S GET IN TOUCH</h2>*/}
-                {/*            <p>*/}
-                {/*                I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.*/}
-                {/*                Looking to chat about my work experiences or any of my projects? Feel free to reach out!*/}
-                {/*            </p>*/}
-                {/*            <Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons}/>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
+                {/*<Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons}/>*/}
                 {/*<Footer/>*/}
             </div>
-            // </div>
         );
     }
 }

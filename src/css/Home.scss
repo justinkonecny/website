@@ -413,10 +413,10 @@ button:hover {
   }
 
   .featured-year {
-    color: $green;
+    color: $off-white;
     font-size: 12px;
     font-weight: 600;
-    border: 1px solid $green;
+    border: 1.5px solid $off-white;
     border-radius: 5px;
     padding: 6px 8px;
   }
@@ -474,11 +474,6 @@ button:hover {
   column-gap: 5%;
 }
 
-#contact {
-  text-transform: none;
-  color: #284496;
-}
-
 .contact-anchor {
   width: 50px;
   margin: auto;
@@ -500,8 +495,6 @@ button:hover {
 }
 
 .get-in-touch {
-  margin: auto 0;
-  text-align: left;
 }
 
 .get-in-touch-mobile {
