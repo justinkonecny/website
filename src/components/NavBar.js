@@ -18,36 +18,46 @@ export class NavBar extends Component {
         this.updateMenuState = this.updateMenuState.bind(this);
         this.scrollToTop = this.scrollToTop.bind(this);
         this.scrollListener = this.scrollListener.bind(this);
+        this.stopAnimating = this.stopAnimating.bind(this);
 
         this.colorInactive = '#DAE0E6';
         this.colorActive = '#30B96E';
 
         this.state = {
             showMenu: false,
-            animating: false
+            isAnimating: false
         };
     }
 
     componentDidMount() {
         window.addEventListener('scroll', this.scrollListener);
-        setTimeout(this.scrollListener, 100);
+        setTimeout(this.scrollListener, 200);
     }
 
     componentWillUnmount() {
         window.removeEventListener('scroll', this.scrollListener);
     }
 
+    stopAnimating() {
+        if (!this.state.isAnimating) {
+            return;
+        }
+        Array.from(document.getElementsByClassName('nav-animation')).forEach((el) => {
+            el.classList.remove('nav-animation');
+            el.classList.add('nav-animate');
+
+        });
+        this.setState({isAnimating: false});
+    }
+
     scrollListener() {
-        if (!this.state.animating && this.props.currentSection === Sections.CONTACT) {
+        if (!this.state.isAnimating && this.props.currentSection === Sections.CONTACT) {
             Array.from(document.getElementsByClassName('nav-animate')).forEach((el) => {
+                el.classList.remove('nav-animate');
                 el.classList.add('nav-animation');
             });
-            this.setState({animating: true});
-        } else if (this.state.animating && this.props.currentSection !== Sections.CONTACT) {
-            Array.from(document.getElementsByClassName('nav-animation')).forEach((el) => {
-                el.classList.remove('nav-animation');
-            });
-            this.setState({animating: false});
+            this.setState({isAnimating: true});
+            setTimeout(this.stopAnimating, 2000);
         }
     }
 
@@ -101,11 +111,11 @@ export class NavBar extends Component {
         const colorExperience = this.props.hoverIcons.has('btn-experience') || this.props.currentSection === Sections.EXPERIENCE ? this.colorActive : this.colorInactive;
         const colorProjects = this.props.hoverIcons.has('btn-projects') || this.props.currentSection === Sections.PROJECTS ? this.colorActive : this.colorInactive;
 
-        const colorResume = this.props.hoverIcons.has('btn-resume')? this.colorActive : this.colorInactive;
+        const colorResume = this.props.hoverIcons.has('btn-resume') ? this.colorActive : this.colorInactive;
 
-        const colorGithub = this.props.hoverIcons.has('btn-github') || this.props.currentSection === Sections.CONTACT  ? this.colorActive : this.colorInactive;
-        const colorLinkedIn = this.props.hoverIcons.has('btn-linkedin') || this.props.currentSection === Sections.CONTACT  ? this.colorActive : this.colorInactive;
-        const colorEmail = this.props.hoverIcons.has('btn-email')  || this.props.currentSection === Sections.CONTACT ? this.colorActive : this.colorInactive;
+        const colorGithub = this.props.hoverIcons.has('btn-github') || this.state.isAnimating ? this.colorActive : this.colorInactive;
+        const colorLinkedIn = this.props.hoverIcons.has('btn-linkedin') || this.state.isAnimating ? this.colorActive : this.colorInactive;
+        const colorEmail = this.props.hoverIcons.has('btn-email') || this.state.isAnimating ? this.colorActive : this.colorInactive;
 
         if (this.props.isMobile) {
             if (!this.props.display && this.state.showMenu) {
