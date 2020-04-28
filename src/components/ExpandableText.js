@@ -19,7 +19,7 @@ export class ExpandableText extends Component {
 
     render() {
         return (
-            <div>
+            <div className={'expandable-container'}>
                 <div className={'expandable-header'}>
                     <h5>{this.props.text}</h5>
                     <button className={'plus-btn'} onClick={this.toggleExpand}>

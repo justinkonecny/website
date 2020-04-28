@@ -10,7 +10,7 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 10px 0;
+  margin: 0 0 32px 0;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-size: 34pt;
   font-weight: bold;
@@ -18,14 +18,15 @@ h2 {
 }
 
 h3 {
-  margin: 0 0 10px 0;
+  margin: 24px 0;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-size: 30pt;
+  font-size: 22pt;
   font-weight: 600;
   color: $green;
 }
 
 h4 {
+  margin: 12px 0;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 14pt;
   font-weight: 500;
@@ -40,8 +41,16 @@ h5 {
   color: $off-white;
 }
 
+h6 {
+  margin: 12px 0;
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 14pt;
+  font-weight: 500;
+  color: $off-white;
+}
+
 p { // Body2
-  margin: 0;
+  margin: 16px 0;
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 14pt;
 }
@@ -70,19 +79,6 @@ button {
 button:hover {
   cursor: pointer;
 }
-
-
-
-
-//.timeline::after {
-//  background-color: $green;
-//  position: absolute;
-//  width: 2px;
-//  content: '';
-//  top: 0;
-//  bottom: 0;
-//  left: 10%;
-//}
 
 .plus-btn {
   height: 15px;
@@ -180,6 +176,10 @@ button:hover {
     .about-text {
       max-width: 60%;
       text-align: left;
+
+      .about-inside {
+        margin-bottom: 60px;
+      }
     }
 
     .about-profile {
@@ -249,7 +249,6 @@ button:hover {
 
     .highlight-skills {
       width: $content-margin;
-      margin: 20px 0;
       display: flex;
       flex-wrap: wrap;
 
@@ -314,7 +313,8 @@ button:hover {
 }
 
 .list {
-  margin: 10px 5% 0 5%;
+  margin: 0 30px;
+  padding: 0;
 }
 
 .list-mobile {
@@ -373,7 +373,6 @@ button:hover {
 }
 
 .skills {
-  margin: 17px 0 0 0;
   display: flex;
   flex-wrap: wrap;
 }
@@ -396,16 +395,22 @@ button:hover {
   margin: 10px 13vw;
 }
 
+.featured-projects {
+  margin-bottom: 80px;
+}
+
 .project {
   display: flex;
   border-radius: 5px;
-  padding: 20px 0;
   margin: 0;
   justify-content: space-between;
 
   h3 {
     color: white;
-    margin-right: 20px;
+  }
+
+  p {
+    margin-top: 0;
   }
 
   .featured-project-header {
@@ -419,7 +424,8 @@ button:hover {
     font-weight: 600;
     border: 1.5px solid $off-white;
     border-radius: 5px;
-    padding: 6px 8px;
+    padding: 5px 8px;
+    margin: 0 24px;
   }
 }
 
@@ -441,16 +447,15 @@ button:hover {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-  margin: 10px 0;
 }
 
 .proj-skill {
 }
 
 .img-container {
-  display: flex;
+  //display: flex;
+  //justify-content: flex-end;
   width: 47.5%;
-  justify-content: flex-end;
 
   .img-proj {
     width: 90%;
@@ -464,7 +469,8 @@ button:hover {
 }
 
 .additional-projects {
-  column-count: 2;
+  margin-top: 40px;
+  column-count: 3;
   column-gap: 5%;
 }
 
@@ -489,6 +495,7 @@ button:hover {
 }
 
 .get-in-touch {
+  margin-bottom: 32px;
 }
 
 .get-in-touch-mobile {

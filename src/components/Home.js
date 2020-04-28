@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
-import animator from '../resources/animator.png';
+import calendays from '../resources/calendays.png';
 import libertyCars from '../resources/liberty_cars_results.png';
 import '../css/Home.scss';
 import {TimelineElement} from './TimelineElement';
@@ -314,15 +314,14 @@ export class Home extends Component {
                         <div className={this.state.isMobile ? 'about about-mobile' : 'about'}>
                             <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
                                 <div className={this.state.isMobile ? 'about-text about-text-mobile' : 'about-text'}>
-                                    <h2 id={'about-me'} style={{'color': 'white'}}>About Me</h2>
-                                    <div className={this.state.showAboutMe ? 'fade-in' : 'fade-in-hide'} style={{'margin': '20px auto'}}>
+                                    <h2 id={'about-me'}>About Me</h2>
+                                    <div className={this.state.showAboutMe ? 'fade-in about-inside' : 'fade-in-hide about-inside'}>
                                         <p>
                                             Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
                                             Cybersecurity at Northeastern University in Boston, Massachusetts. I recently completed
                                             a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer, and
                                             I would love to tell you all about it.
                                         </p>
-                                        <br/>
                                         <p>
                                             I love developing software across the stack, and I'm always looking for new opportunities
                                             to expand my skill set. I'm seeking out a position to make meaningful software
@@ -330,7 +329,11 @@ export class Home extends Component {
                                         </p>
                                     </div>
                                 </div>
-                                <ProfileImage isMobile={this.state.isMobile}/>
+                                <div className={this.state.isMobile ? 'about-profile-mobile' : 'about-profile'}>
+                                    <div className={this.state.isMobile ? 'profile-crop profile-crop-mobile' : 'profile-crop'}>
+                                        <img src={profile} className={this.state.isMobile ? 'profile-img profile-img-mobile' : 'profile-img'} alt={'Profile'}/>
+                                    </div>
+                                </div>
                             </div>
 
                             <div id={'highlights'} className={this.state.isMobile ? 'highlights highlights-mobile' : 'highlights'}>
@@ -401,7 +404,7 @@ export class Home extends Component {
                             </h4>
                             <ExpandableText text={'Relevant Coursework'}>
                                 <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
-                                    <div className={this.state.isMobile ? 'list list-mobile' : 'list'} style={{'padding': '0'}}>
+                                    <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                         <li>Object-Oriented Design</li>
                                         <li>Algorithms & Data Structures</li>
                                         <li>Networks & Distributed Systems</li>
@@ -437,12 +440,37 @@ export class Home extends Component {
                     {/* WORK EXPERIENCE */}
                     <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE}>
                         <h2 id={'experience'}>Professional Experience</h2>
+
+                        <h3>Places For Less</h3>
+                        <h4>Full Stack Software Engineer Co-op<br/>May - December 2020 | Boston, MA</h4>
+                        <h5>
+                            Places For Less is building the first real estate platform to fundamentally change the way we rent,
+                            pairing leading technology with an on-demand workforce to make an affordable and seamless apartment search experience.
+                        </h5>
+                        {/*<ExpandableText text={'Role + Responsibilities'}>*/}
+                        {/*    <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>*/}
+                        {/*        <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>*/}
+                        {/*            <li>TBD</li>*/}
+                        {/*        </div>*/}
+                        {/*    </ul>*/}
+                        {/*</ExpandableText>*/}
+                        <div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                            <span className={'skill-all body-skill skill-proficient'}>PHP</span>
+                            {/*<span className={'skill-all body-skill skill-proficient'}>Laravel</span>*/}
+                            {/*<span className={'skill-all body-skill skill-proficient'}>Eloquent</span>*/}
+                            <span className={'skill-all body-skill skill-proficient'}>Angular</span>
+                            {/*<span className={'skill-all body-skill skill-proficient'}>Asana</span>*/}
+                            {/*<span className={'skill-all body-skill skill-proficient'}>Git</span>*/}
+                        </div>
+
+                        <br/>
+
                         <h3>Rocket Software</h3>
                         <h4>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h4>
-                        <p>
+                        <h5>
                             Rocket Software is a software development firm that develops products that are designed to
                             run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
-                        </p>
+                        </h5>
                         <ExpandableText text={'Role + Responsibilities'}>
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
@@ -454,7 +482,7 @@ export class Home extends Component {
                                 </div>
                             </ul>
                         </ExpandableText>
-                        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                        <div id={'rocket-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
                             <span className={'skill-all body-skill skill-proficient'}>Java</span>
                             <span className={'skill-all body-skill skill-proficient'}>Python</span>
                             <span className={'skill-all body-skill skill-proficient'}>React</span>
@@ -462,17 +490,18 @@ export class Home extends Component {
                             <span className={'skill-all body-skill skill-proficient'}>Jira</span>
                             <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>
                             <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                            <span className={'skill-all body-skill skill-familiar'}>Selenium</span>
                         </div>
 
                         <br/>
 
                         <h3>Vonage</h3>
                         <h4>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h4>
-                        <p>
+                        <h5>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
                             team to develop software-based solutions for internal use.
-                        </p>
+                        </h5>
                         <ExpandableText text={'Role + Responsibilities'}>
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
@@ -483,7 +512,7 @@ export class Home extends Component {
                                 </div>
                             </ul>
                         </ExpandableText>
-                        <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'} style={{'marginBottom': '0'}}>
+                        <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
                             <span className={'skill-all body-skill skill-proficient'}>Python</span>
                             <span className={'skill-all body-skill skill-proficient'}>Amazon Web Services</span>
                             <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>
@@ -497,37 +526,39 @@ export class Home extends Component {
                     <TimelineElement dotId={'projects'} filled={this.state.currentSection === Sections.PROJECTS}>
                         <div className={'projects'}>
                             <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
-                                <h2 id={'projects'} style={{'color': 'white'}}>Software Projects</h2>
+                                <h2 id={'projects'}>Software Projects</h2>
                                 <h3>Featured Projects</h3>
 
-                                <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile}>
-                                    <p>
-                                        An app developed with Vue.js for simultaneously searching multiple geographic
-                                        locations for a used car. Search criteria is entered by the user on the initial page,
-                                        which is then processed to make asynchronous requests for the listing data in each
-                                        location. The results are then presented to the user for viewing.
-                                    </p>
-                                    <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
-                                        <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
-                                        <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
-                                        <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>
-                                        <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
-                                    </div>
-                                </FeaturedProject>
+                                <div className={'featured-projects'}>
+                                    <FeaturedProject title={'Calendays'} year={'2020'} imageSrc={calendays} isMobile={this.state.isMobile}>
+                                        <p>
+                                            Web application used for shared event planning. Uses Firebase for user authentication and
+                                            storing user data (events, networks, profile). Once authenticated and verified, users can
+                                            create events to be displayed on their calendar. Users can also create named networks, which
+                                            consist of groups of two or more users.
+                                        </p>
+                                        <div className={this.state.showAnimatorSkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
+                                            <span className={'skill-all proj-skill skill-proficient'}>React</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>TypeScript</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
+                                        </div>
+                                    </FeaturedProject>
 
-                                <FeaturedProject title={'Interactive Animator'} year={'2018'} imageSrc={animator} isMobile={this.state.isMobile}>
-                                    <p>
-                                        A Java application developed with a Java Swing user interface in a pair programming
-                                        setting to read and display textual descriptions of animations. Display modes include
-                                        interactive, visual, textual, and SVG. Interactive options developed are pause, resume,
-                                        restart, loop on/off, speed increase/decrease, and export animation.
-                                    </p>
-                                    <div className={this.state.showAnimatorSkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
-                                        <span className={'skill-all proj-skill skill-proficient'}>Java</span>
-                                        <span className={'skill-all proj-skill skill-proficient'}>Swing</span>
-                                        <span className={'skill-all proj-skill skill-proficient'}>MVC</span>
-                                    </div>
-                                </FeaturedProject>
+                                    <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile}>
+                                        <p>
+                                            An app developed with Vue.js for simultaneously searching multiple geographic
+                                            locations for a used car. Search criteria is entered by the user on the initial page,
+                                            which is then processed to make asynchronous requests for the listing data in each
+                                            location. The results are then presented to the user for viewing.
+                                        </p>
+                                        <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
+                                            <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
+                                        </div>
+                                    </FeaturedProject>
+                                </div>
 
 
                                 <h3 id={'additional-projects'}>Additional Projects</h3>
@@ -565,6 +596,13 @@ export class Home extends Component {
                                         and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
                                         allocation, reallocation and freeing of varying sized memory chunks.
                                     </Card>
+
+                                    <Card title={'Interactive Animator'} isMobile={this.state.isMobile}>
+                                        Developed this Java application with a Java Swing user interface in a pair programming
+                                        setting to read and display textual descriptions of animations. Display modes include
+                                        interactive, visual, textual, and SVG. Interactive options developed are pause, resume,
+                                        restart, loop on/off, speed increase/decrease, and export animation.
+                                    </Card>
                                 </div>
 
                             </div>
@@ -579,7 +617,6 @@ export class Home extends Component {
                                     <p>
                                         I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.
                                     </p>
-                                    <br/>
                                     <p>
                                         Looking to chat about my work experiences or any of my projects? Feel free to reach out!
                                     </p>
@@ -590,9 +627,6 @@ export class Home extends Component {
                     </TimelineElement>
 
                 </Timeline>
-
-                {/*<Icons isMobile={this.state.isMobile} hoverIcons={this.state.hoverIcons}/>*/}
-                {/*<Footer/>*/}
             </div>
         );
     }
@@ -617,35 +651,3 @@ class FeaturedProject extends Component {
     }
 }
 
-
-/**
- * Component to crop and display the profile image. Does not render on a mobile device.
- */
-class ProfileImage extends Component {
-    render() {
-        return (
-            <div className={this.props.isMobile ? 'about-profile-mobile' : 'about-profile'}>
-                <div className={this.props.isMobile ? 'profile-crop profile-crop-mobile' : 'profile-crop'}>
-                    <img src={profile} className={this.props.isMobile ? 'profile-img profile-img-mobile' : 'profile-img'} alt={'Profile'}/>
-                </div>
-            </div>
-        );
-    }
-}
-
-/**
- * Component for the footer displayed at the bottom of the page. Does not render on a mobile device.
- */
-class Footer extends Component {
-    render() {
-        if (this.props.isMobile) {
-            return null;
-        } else {
-            return (
-                <div className={'footer'}>
-                    <p>Developed by Justin Konecny</p>
-                </div>
-            );
-        }
-    }
-}

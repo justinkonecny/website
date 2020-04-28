@@ -1,23 +1,26 @@
 @import 'Global';
 
-.expandable-header {
-  display: flex;
-  align-items: center;
-  margin-top: 17px;
+.expandable-container {
+  margin-bottom: 14px;
 
-  p {
-    margin: 0 5px 0 0;
+  .expandable-header {
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 0 5px 0 0;
+    }
   }
-}
 
-.expandable-content {
-  max-height: 300px;
-  transition: max-height 600ms ease-in;
-  overflow: hidden;
-}
+  .expandable-content {
+    max-height: 400px;
+    transition: max-height 600ms ease-in;
+    overflow: hidden;
+  }
 
-.expandable-hidden {
-  max-height: 0;
-  transition: max-height 600ms ease-out;
-  overflow: hidden;
+  .expandable-hidden {
+    max-height: 0;
+    transition: max-height 600ms ease-out;
+    overflow: hidden;
+  }
 }
