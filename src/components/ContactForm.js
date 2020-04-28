@@ -5,32 +5,42 @@ export class ContactForm extends Component {
     constructor(props) {
         super(props);
         this.submitForm = this.submitForm.bind(this);
+        this.updateInput = this.updateInput.bind(this);
         this.state = {
-            status: ''
+            status: '',
+            name: '',
+            email: '',
+            message: ''
         };
     }
 
+    updateInput(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({[name]: value});
+    }
+
     render() {
+        const disabled = (this.state.name.length < 2) || (this.state.email.length < 4) || (this.state.message.length < 5);
+
         return (
             <form id={'contact-form'} className={'contact-form'} onSubmit={this.submitForm}
                   action={'https://formspree.io/mdownkkq'}
                   method={'POST'}>
-                <div>
-                    <label>Your Email:</label>
-                    <input type={'email'} name={'email'}/>
-                </div>
 
-                <div>
-                    <label>Your Message:</label>
-                    <input type={'text'} name={'message'}/>
-                </div>
+                {this.state.status === 'SUCCESS' && <p className={'success'}>Thanks for the message! I'll be in touch as soon as possible.</p>}
+                {this.state.status === 'ERROR' && <p className={'error'}>Ooops! Something went wrong. Please try again.</p>}
 
-                <button className={'btn-submit'} type={'submit'}>
-                    Submit
-                </button>
+                <p>Name</p>
+                <input placeholder={'Name'} type={'name'} name={'name'} value={this.state.name} onChange={this.updateInput}/>
 
-                {this.state.status === 'SUCCESS' ? <p>Thanks!</p> : <button>Submit</button>}
-                {this.state.status === 'ERROR' && <p>Ooops! There was an error.</p>}
+                <p>Email</p>
+                <input placeholder={'Email Address'} type={'email'} name={'email'} value={this.state.email} onChange={this.updateInput}/>
+
+                <p>Message</p>
+                <textarea className={'input-msg'} placeholder={'Message'} name={'message'} value={this.state.message} onChange={this.updateInput}/>
+
+                {<button className={disabled ? 'btn-disabled' : 'btn-enabled'} type={'submit'} disabled={disabled}>Submit</button>}
             </form>
         );
     }
@@ -48,7 +58,12 @@ export class ContactForm extends Component {
             }
             if (xhr.status === 200) {
                 form.reset();
-                this.setState({status: 'SUCCESS'});
+                this.setState({
+                    status: 'SUCCESS',
+                    name: '',
+                    email: '',
+                    message: ''
+                });
             } else {
                 this.setState({status: 'ERROR'});
             }

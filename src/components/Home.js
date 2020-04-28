@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
-import resume from '../resources/resume.pdf';
 import animator from '../resources/animator.png';
 import libertyCars from '../resources/liberty_cars_results.png';
 import '../css/Home.scss';
@@ -13,6 +12,7 @@ import {ContactForm} from "./ContactForm";
 
 
 export const Sections = {
+    CONTACT: 'contact',
     PROJECTS: 'projects',
     EXPERIENCE: 'experience',
     EDUCATION: 'education',
@@ -291,7 +291,7 @@ export class Home extends Component {
                 <NavBar currentSection={this.state.currentSection} isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>
 
                 <Timeline>
-                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} filled={this.state.currentSection === Sections.HOME}>
+                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true} filled={this.state.currentSection === Sections.HOME}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin Konecny.</h1>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
@@ -571,13 +571,16 @@ export class Home extends Component {
                         </div>
                     </TimelineElement>
 
-                    <TimelineElement dotId={'contact'} textOnly={true} filled={false}>
+                    <TimelineElement dotId={'contact'} textOnly={true} filled={this.state.currentSection === Sections.CONTACT}>
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <div className={'body-info'}>
                                 <div className={this.state.isMobile ? 'get-in-touch-mobile' : 'get-in-touch'}>
                                     <h2 id={'contact'}>Let's Get In Touch</h2>
                                     <p>
                                         I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.
+                                    </p>
+                                    <br/>
+                                    <p>
                                         Looking to chat about my work experiences or any of my projects? Feel free to reach out!
                                     </p>
                                 </div>
