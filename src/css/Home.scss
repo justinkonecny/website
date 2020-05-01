@@ -427,6 +427,14 @@ button:hover {
     padding: 5px 8px;
     margin: 0 24px;
   }
+
+  .github-proj {
+    display: flex;
+
+    img {
+      margin: auto;
+    }
+  }
 }
 
 .project-mobile {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
 import calendays from '../resources/calendays.png';
 import libertyCars from '../resources/liberty_cars_results.png';
+import github from '../resources/github.svg';
 import '../css/Home.scss';
 import {TimelineElement} from './TimelineElement';
 import {ExpandableText} from './ExpandableText';
@@ -349,6 +350,8 @@ export class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>TypeScript</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>HTML/CSS</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Vue.js</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>PHP</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>SQL</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Racket</div>
                                             <div className={'skill-all highlight-skill skill-familiar'}>AMD64 Assembly</div>
                                         </div>
@@ -456,11 +459,12 @@ export class Home extends Component {
                         {/*</ExpandableText>*/}
                         <div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
                             <span className={'skill-all body-skill skill-proficient'}>PHP</span>
-                            {/*<span className={'skill-all body-skill skill-proficient'}>Laravel</span>*/}
+                            <span className={'skill-all body-skill skill-proficient'}>Laravel</span>
                             {/*<span className={'skill-all body-skill skill-proficient'}>Eloquent</span>*/}
-                            <span className={'skill-all body-skill skill-proficient'}>Angular</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Vue.js</span>
                             {/*<span className={'skill-all body-skill skill-proficient'}>Asana</span>*/}
-                            {/*<span className={'skill-all body-skill skill-proficient'}>Git</span>*/}
+                            <span className={'skill-all body-skill skill-proficient'}>SQL</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Git</span>
                         </div>
 
                         <br/>
@@ -530,7 +534,7 @@ export class Home extends Component {
                                 <h3>Featured Projects</h3>
 
                                 <div className={'featured-projects'}>
-                                    <FeaturedProject title={'Calendays'} year={'2020'} imageSrc={calendays} isMobile={this.state.isMobile}>
+                                    <FeaturedProject title={'Calendays'} year={'2020'} imageSrc={calendays} isMobile={this.state.isMobile} linkGitHub={'https://github.com/justinkonecny/calendays'}>
                                         <p>
                                             Web application used for shared event planning. Uses Firebase for user authentication and
                                             storing user data (events, networks, profile). Once authenticated and verified, users can
@@ -544,7 +548,7 @@ export class Home extends Component {
                                         </div>
                                     </FeaturedProject>
 
-                                    <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile}>
+                                    <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile} linkGitHub={'https://github.com/justinkonecny/liberty_cars'}>
                                         <p>
                                             An app developed with Vue.js for simultaneously searching multiple geographic
                                             locations for a used car. Search criteria is entered by the user on the initial page,
@@ -554,7 +558,6 @@ export class Home extends Component {
                                         <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
                                             <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
                                             <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
-                                            <span className={'skill-all proj-skill skill-proficient'}>HTML/CSS</span>
                                             <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
                                         </div>
                                     </FeaturedProject>
@@ -565,43 +568,36 @@ export class Home extends Component {
                                 <div className={'additional-projects'}>
 
                                     {/* Distributed Key-Value Store*/}
-                                    <Card title={'Distributed Key-Value Store'} isMobile={this.state.isMobile}>
-                                        Implemented the <a href={'https://raft.github.io/raft.pdf'}
-                                                           target={'_blank'} rel={'noopener noreferrer'}>raft</a> consensus
-                                        protocol in Python to create a key-value store that accepts <i>put</i>s from
-                                        clients and retrieves the corresponding data when receiving a <i>get</i>.
-                                        All data from clients was replicated, in an attempt to maintain consistency
-                                        (clients should always receive correct answers to <i>get</i> requests) and
-                                        achieve high-availability (clients should be able to
-                                        execute <i>put</i> and <i>get</i> requests at any time with low latency.
+                                    <Card title={'Key-Value Store'} isMobile={this.state.isMobile} year={2019} tech={['Python', 'Raft']}>
+                                        An implementation of the <a href={'https://raft.github.io/raft.pdf'}
+                                                                    target={'_blank'} rel={'noopener noreferrer'}>raft</a> quorum-consensus
+                                        protocol for a distributed, replicated key-value store that can tolerant a variety of network faults.
                                     </Card>
 
                                     {/* Reliable Transport Protocol */}
-                                    <Card title={'Reliable Transport Protocol'} isMobile={this.state.isMobile}>
-                                        Designed and developed a simple transport protocol in Python that provided a
-                                        reliable datagram service and ensured that data was delivered in order,
-                                        without duplicates, without missing data, and without errors.
+                                    <Card title={'Reliable Transport'} isMobile={this.state.isMobile} year={2019} tech={['Python']}>
+                                        A transport protocol that provided a
+                                        reliable datagram service to ensure packets were delivered in order and
+                                        without duplicates, errors, or missing data.
                                     </Card>
 
                                     {/* File System */}
-                                    <Card title={'File System'} isMobile={this.state.isMobile}>
-                                        Programmed a mountable, ext-style file system in C using the FUSE API and
+                                    <Card title={'File System'} isMobile={this.state.isMobile} year={2018} tech={['C', 'FUSE']}>
+                                        A mountable, ext-style file system using the FUSE API and
                                         memory-mapped file storage. Implemented a disk image to allow users to
                                         create, read, edit, and delete variable-length files within nested directories.
                                     </Card>
 
                                     {/* Memory Allocator */}
-                                    <Card title={'Memory Allocator'} isMobile={this.state.isMobile}>
-                                        Created a thread-safe memory allocator in C using mutexes, memory-mapped pages,
-                                        and pointer arithmetic. The allocator utilized bucket-style free-lists to handle
+                                    <Card title={'Memory Allocator'} isMobile={this.state.isMobile} year={2018} tech={['C']}>
+                                        A thread-safe memory allocator that uses mutexes, memory-mapped pages,
+                                        and pointer arithmetic; utilized bucket-style free-lists to handle
                                         allocation, reallocation and freeing of varying sized memory chunks.
                                     </Card>
 
-                                    <Card title={'Interactive Animator'} isMobile={this.state.isMobile}>
-                                        Developed this Java application with a Java Swing user interface in a pair programming
-                                        setting to read and display textual descriptions of animations. Display modes include
-                                        interactive, visual, textual, and SVG. Interactive options developed are pause, resume,
-                                        restart, loop on/off, speed increase/decrease, and export animation.
+                                    <Card title={'Interactive Animator'} isMobile={this.state.isMobile} year={2018} tech={['Java', 'Swing']}>
+                                        An application with a GUI that reads textual animations and displays them in interactive, visual, textual, or SVG mode.
+                                        Users can pause, resume, restart, toggle looping, adjust speed, and export animation.
                                     </Card>
                                 </div>
 
@@ -640,6 +636,10 @@ class FeaturedProject extends Component {
                     <div className={'featured-project-header'}>
                         <h3>{this.props.title}</h3>
                         <div className={'featured-year'}>{this.props.year}</div>
+                        {this.props.linkGitHub &&
+                        <a className={'github-proj'} href={this.props.linkGitHub} target={'_blank'} rel={'noopener noreferrer'}>
+                            <img src={github} alt={'Github'}/>
+                        </a>}
                     </div>
                     {this.props.children}
                 </div>

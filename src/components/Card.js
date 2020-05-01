@@ -61,7 +61,7 @@ export class Card extends Component {
             return (
                 <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
                     <div className={'card-header'}>
-                        <h3 style={{color: 'white'}}>{this.props.title}</h3>
+                        <h3>{this.props.title}</h3>
                         <button className={'plus-btn'} onClick={this.toggleExpand}>
                             <div className={this.state.isExpanded ? 'plus x' : 'plus'}/>
                         </button>
@@ -75,10 +75,16 @@ export class Card extends Component {
         } else {
             return (
                 <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
-                    <h3 style={{color: 'white'}}>{this.props.title}</h3>
+                    <h3>{this.props.title}</h3>
+                    {this.props.year && <div className={'featured-label'}>{this.props.year}</div>}
                     <p>
                         {this.props.children}
                     </p>
+                    <div className={'tech-container'}>
+                        {this.props.tech && this.props.tech.map((el) => {
+                            return <div className={'featured-label'}>{el}</div>
+                        })}
+                    </div>
                 </div>
             );
         }
