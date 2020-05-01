@@ -402,7 +402,7 @@ button:hover {
 .project {
   display: flex;
   border-radius: 5px;
-  margin: 0;
+  margin: 0 0 40px 0;
   justify-content: space-between;
 
   h3 {
@@ -428,8 +428,9 @@ button:hover {
     margin: 0 24px;
   }
 
-  .github-proj {
+  .proj-icon {
     display: flex;
+    margin: 0 16px 0 0;
 
     img {
       margin: auto;
@@ -460,14 +461,20 @@ button:hover {
 .proj-skill {
 }
 
-.img-container {
-  //display: flex;
-  //justify-content: flex-end;
+.right-half {
+  display: flex;
   width: 47.5%;
 
-  .img-proj {
-    width: 90%;
-    border-radius: 5px;
+  .img-container {
+    //display: flex;
+    //justify-content: flex-end;
+    margin: auto;
+    text-align: center;
+
+    .img-proj {
+      width: 90%;
+      border-radius: 5px;
+    }
   }
 }
 
@@ -479,7 +486,7 @@ button:hover {
 .additional-projects {
   margin-top: 40px;
   column-count: 3;
-  column-gap: 5%;
+  column-gap: 2%;
 }
 
 .contact-anchor {

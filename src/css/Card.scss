@@ -2,13 +2,10 @@
 
 .card {
   display: inline-grid;
-  border: 2px solid $gray-light;
-  background-color: $gray-light;
+  background-color: $card;
   border-radius: 4px;
-  margin-bottom: 10%;
+  margin-bottom: 6%;
   padding: 10%;
-  width: calc(100% - 20% - 4px);  // adjust for padding and border
-  height: fit-content;
 
   h3 {
     font-size: 20pt;
@@ -34,6 +31,11 @@
     right: -20px;
   }
 
+  .subheader-container {
+    display: flex;
+    margin: 0 0 16px 0;
+  }
+
   .featured-label {
     color: $off-white;
     font-size: 12px;
@@ -41,8 +43,8 @@
     border: 1.5px solid $off-white;
     border-radius: 5px;
     padding: 5px 8px;
-    margin: 0 0 16px 0;
     width: fit-content;
+    margin-right: 12px;
   }
 
   .tech-container {

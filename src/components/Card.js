@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import '../css/Card.scss';
 import '../css/Home.scss';
+import github from "../resources/github.svg";
 
 export class Card extends Component {
     constructor(props) {
@@ -76,7 +77,13 @@ export class Card extends Component {
             return (
                 <div className={this.props.isMobile ? 'card card-mobile' : 'card'}>
                     <h3>{this.props.title}</h3>
-                    {this.props.year && <div className={'featured-label'}>{this.props.year}</div>}
+                    <div className={'subheader-container'}>
+                        {this.props.year && <div className={'featured-label'}>{this.props.year}</div>}
+                        {this.props.linkGitHub &&
+                        <a className={'proj-icon'} href={this.props.linkGitHub} target={'_blank'} rel={'noopener noreferrer'}>
+                            <img src={github} alt={'Github'}/>
+                        </a>}
+                    </div>
                     <p>
                         {this.props.children}
                     </p>
