@@ -2,15 +2,14 @@ import React, {Component} from 'react';
 import profile from '../resources/profile.jpeg';
 import calendays from '../resources/calendays.png';
 import libertyCars from '../resources/liberty_cars_results.png';
-import github from '../resources/github.svg';
-import link from '../resources/link.svg';
 import '../css/Home.scss';
 import {TimelineElement} from './TimelineElement';
 import {ExpandableText} from './ExpandableText';
 import {Card} from './Card';
 import {Timeline} from './Timeline';
 import {NavBar} from './NavBar';
-import {ContactForm} from "./ContactForm";
+import {ContactForm} from './ContactForm';
+import {FeaturedProject} from './FeaturedProject';
 
 
 export const Sections = {
@@ -569,18 +568,8 @@ export class Home extends Component {
                                 <div className={'additional-projects'}>
 
                                     <Card title={'Cloud Service Analysis'} isMobile={this.state.isMobile} year={2020} tech={['Python', 'AWS', 'Kubernetes', 'etcd']} linkGitHub={'https://github.com/justinkonecny/cloud_service_analysis'}>
-                                        Setup and monitored four 'honeypot' EC2 instances in varying geographic locations in
-                                        Amazon Web Services running Kubernetes and etcd to analyze cloud service traffic.
-                                    </Card>
-
-                                    <Card title={'NSTP Server'} isMobile={this.state.isMobile} year={2020} tech={['Python', 'Protocol Buffers', 'libsodium']}>
-                                        A multi-threaded web server over TCP that uses Google's v3 Protobufs for communication and includes password-based and certificate-based
-                                        client authentication, an intrusion detection system, and user-separated key-value stores.
-                                    </Card>
-
-                                    <Card title={'Reliable Transport'} isMobile={this.state.isMobile} year={2019} tech={['Python']}>
-                                        A transport protocol that provided a reliable datagram service to ensure packets were delivered
-                                        in order and without duplicates, errors, or missing data.
+                                        Setup and monitored four 'honeypot' AWS EC2 instances running Kubernetes and etcd in varying
+                                        geographic locations to analyze captured traffic.
                                     </Card>
 
                                     <Card title={'Key-Value Store'} isMobile={this.state.isMobile} year={2019} tech={['Python', 'Raft']} linkGitHub={'https://github.com/justinkonecny/dist_key_value'}>
@@ -589,22 +578,30 @@ export class Home extends Component {
                                         protocol for a distributed, replicated key-value store that can tolerant a variety of network faults.
                                     </Card>
 
-                                    <Card title={'BGP Router'} isMobile={this.state.isMobile} year={2019} tech={['Python']}>
-                                        Simulated a BGP router to route packets based using a dynamic routing table. Added, revoked,
-                                        aggregated, and deaggregated routes based on a build-log and external 'update' messages.
+                                    <Card title={'NSTP Server'} isMobile={this.state.isMobile} year={2020} tech={['Python', 'Protocol Buffers', 'libsodium']}>
+                                        A multi-threaded web server using Google's v3 Protobufs that includes password and certificate
+                                        client auth., intrusion detection, and user-specific key-value stores.
                                     </Card>
 
+                                    <Card title={'Reliable Transport'} isMobile={this.state.isMobile} year={2019} tech={['Python']}>
+                                        A transport protocol that provided a reliable datagram service to ensure that network packets are delivered
+                                        in order and without duplicates, errors, or incomplete data.
+                                    </Card>
+
+                                    <Card title={'BGP Router'} isMobile={this.state.isMobile} year={2019} tech={['Python']}>
+                                        Simulated a BGP router to route packets using a dynamic routing table. Added, revoked,
+                                        aggregated, and deaggregated routes using a build-log and neighbor updates.
+                                    </Card>
 
                                     <Card title={'File System'} isMobile={this.state.isMobile} year={2018} tech={['C', 'FUSE']}>
                                         A mountable, ext-style file system using the FUSE API and
-                                        memory-mapped file storage. Implemented a disk image to allow users to
-                                        create, read, edit, and delete variable-length files within nested directories.
+                                        memory-mapped storage that can create, read, edit, delete variable-length files within nested directories.
                                     </Card>
 
                                     <Card title={'Memory Allocator'} isMobile={this.state.isMobile} year={2018} tech={['C']}>
                                         A thread-safe memory allocator that uses mutexes, memory-mapped pages,
-                                        and pointer arithmetic; utilized bucket-style free-lists to handle
-                                        allocation, reallocation and freeing of varying sized memory chunks.
+                                        and pointer arithmetic, and bucket-style free-lists to allocate, reallocate,
+                                        or free varying sized memory chunks.
                                     </Card>
 
                                     <Card title={'Interactive Animator'} isMobile={this.state.isMobile} year={2018} tech={['Java', 'Swing']}>
@@ -636,35 +633,6 @@ export class Home extends Component {
                     </TimelineElement>
 
                 </Timeline>
-            </div>
-        );
-    }
-}
-
-class FeaturedProject extends Component {
-    render() {
-        return (
-            <div className={this.props.isMobile ? 'project project-mobile' : 'project'}>
-                <div className={this.props.isMobile ? 'project-descript project-descript-mobile' : 'project-descript'}>
-                    <div className={'featured-project-header'}>
-                        <h3>{this.props.title}</h3>
-                        <div className={'featured-year'}>{this.props.year}</div>
-                        {this.props.linkGitHub &&
-                        <a className={'proj-icon'} href={this.props.linkGitHub} target={'_blank'} rel={'noopener noreferrer'}>
-                            <img src={github} alt={'Github'}/>
-                        </a>}
-                        {this.props.linkExternal &&
-                        <a className={'proj-icon'} href={this.props.linkExternal} target={'_blank'} rel={'noopener noreferrer'}>
-                            <img src={link} alt={'External'}/>
-                        </a>}
-                    </div>
-                    {this.props.children}
-                </div>
-                <div className={'right-half'}>
-                    <div className={this.props.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
-                        <img className={'img-proj'} src={this.props.imageSrc} alt={this.props.text}/>
-                    </div>
-                </div>
             </div>
         );
     }

@@ -21,6 +21,7 @@ export class NavBar extends Component {
         this.stopAnimating = this.stopAnimating.bind(this);
 
         this.colorInactive = '#DAE0E6';
+        this.colorHover = '#767A7E';
         this.colorActive = '#30B96E';
 
         this.state = {
@@ -105,17 +106,19 @@ export class NavBar extends Component {
     }
 
     render() {
-        const colorHome = this.props.hoverIcons.has('btn-home') || this.props.currentSection === Sections.HOME ? this.colorActive : this.colorInactive;
-        const colorAbout = this.props.hoverIcons.has('btn-about') || this.props.currentSection === Sections.ABOUT ? this.colorActive : this.colorInactive;
-        const colorEducation = this.props.hoverIcons.has('btn-education') || this.props.currentSection === Sections.EDUCATION ? this.colorActive : this.colorInactive;
-        const colorExperience = this.props.hoverIcons.has('btn-experience') || this.props.currentSection === Sections.EXPERIENCE ? this.colorActive : this.colorInactive;
-        const colorProjects = this.props.hoverIcons.has('btn-projects') || this.props.currentSection === Sections.PROJECTS ? this.colorActive : this.colorInactive;
 
-        const colorResume = this.props.hoverIcons.has('btn-resume') ? this.colorActive : this.colorInactive;
+        const colorHome = this.props.hoverIcons.has('btn-home') ? this.colorHover : this.props.currentSection === Sections.HOME ? this.colorActive : this.colorInactive;
 
-        const colorGithub = this.props.hoverIcons.has('btn-github') || this.state.isAnimating ? this.colorActive : this.colorInactive;
-        const colorLinkedIn = this.props.hoverIcons.has('btn-linkedin') || this.state.isAnimating ? this.colorActive : this.colorInactive;
-        const colorEmail = this.props.hoverIcons.has('btn-email') || this.state.isAnimating ? this.colorActive : this.colorInactive;
+        const colorAbout = this.props.hoverIcons.has('btn-about') ? this.colorHover : this.props.currentSection === Sections.ABOUT ? this.colorActive : this.colorInactive;
+        const colorEducation = this.props.hoverIcons.has('btn-education') ? this.colorHover : this.props.currentSection === Sections.EDUCATION ? this.colorActive : this.colorInactive;
+        const colorExperience = this.props.hoverIcons.has('btn-experience') ? this.colorHover : this.props.currentSection === Sections.EXPERIENCE ? this.colorActive : this.colorInactive;
+        const colorProjects = this.props.hoverIcons.has('btn-projects') ? this.colorHover : this.props.currentSection === Sections.PROJECTS ? this.colorActive : this.colorInactive;
+
+        const colorResume = this.props.hoverIcons.has('btn-resume') ? this.colorHover : this.colorInactive;
+
+        const colorGithub = this.props.hoverIcons.has('btn-github') ? this.colorHover : this.state.isAnimating ? this.colorActive : this.colorInactive;
+        const colorLinkedIn = this.props.hoverIcons.has('btn-linkedin') ? this.colorHover : this.state.isAnimating ? this.colorActive : this.colorInactive;
+        const colorEmail = this.props.hoverIcons.has('btn-email') ? this.colorHover : this.state.isAnimating ? this.colorActive : this.colorInactive;
 
         if (this.props.isMobile) {
             if (!this.props.display && this.state.showMenu) {

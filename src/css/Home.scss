@@ -116,6 +116,18 @@ button:hover {
   }
 }
 
+.plus-btn:hover {
+  .plus, .x, .plus::after, .x::after {
+    background-color: $green-hover;
+  }
+}
+
+.plus-btn:active {
+  .plus, .x, .plus::after, .x::after {
+    background-color: $green-active;
+  }
+}
+
 .border-right {
   border-right: 0.07em solid #6c6e77;
 }
@@ -290,7 +302,6 @@ button:hover {
 .body-mobile {
   margin: 10px 13vw;
 }
-
 
 .list-container {
   padding: 0;
@@ -485,8 +496,9 @@ button:hover {
 
 .additional-projects {
   margin-top: 40px;
-  column-count: 3;
-  column-gap: 2%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
 }
 
 .contact-anchor {
