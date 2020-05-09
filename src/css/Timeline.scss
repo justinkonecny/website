@@ -43,6 +43,12 @@
     }
   }
 
+  .timeline-section-mobile {
+    padding: 10vh (90% - $content-width-mobile) 10vh 5vw;
+    width: $content-width-mobile;
+    left: 5%;
+  }
+
   .timeline-dot {
     content: '';
     position: absolute;

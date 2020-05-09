@@ -13,9 +13,8 @@ export class TimelineElement extends Component {
             top: this.props.dotTop ? this.props.dotTop : '50px'
         };
 
-        const styleContent = {
-            width: this.props.textOnly ? '60%' : '100%'
-        };
+
+
 
         const styleSection = {
             height: this.props.height ? 'calc(' + this.props.height + ' - 20vh)' : 'auto', // height - TopBottomPadding
@@ -29,7 +28,6 @@ export class TimelineElement extends Component {
 
         this.state = {
             dot: styleDot,
-            content: styleContent,
             section: styleSection,
             line: styleLine,
             dotAbsolutePos: 0,
@@ -98,10 +96,12 @@ export class TimelineElement extends Component {
             dotClass += !this.props.start && this.state.isFilled ? ' timeline-dot-filled' : '';
         }
 
+        const styleContent = {width: !this.props.isMobile && this.props.textOnly ? '60%' : '100%'};
+
         return (
             <div>
-                <div className={'timeline-section'} style={this.state.section}>
-                    <div className={'timeline-content'} style={this.state.content}>
+                <div className={this.props.isMobile ? 'timeline-section timeline-section-mobile' : 'timeline-section'} style={this.state.section}>
+                    <div className={'timeline-content'} style={styleContent}>
                         {this.props.children}
                     </div>
                     <div className={'timeline-line'} style={this.state.line}/>

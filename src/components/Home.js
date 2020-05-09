@@ -229,8 +229,9 @@ export class Home extends Component {
      * Updates the current state to mobile if the window width is less than the mobile width threshold.
      */
     componentDidMount() {
-        // window.addEventListener('resize', this.resizeListener);
+        window.addEventListener('resize', this.resizeListener);
         window.addEventListener('scroll', this.scrollListener);
+        this.resizeListener();
         //
         // if (window.innerWidth <= this.mobileThreshold) {
         //     this.setState({isMobile: true});
@@ -289,10 +290,10 @@ export class Home extends Component {
     render() {
         return (
             <div>
-                <NavBar currentSection={this.state.currentSection} isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>
+                {!this.state.isMobile && <NavBar currentSection={this.state.currentSection} isMobile={this.state.isMobile} display={this.state.showNavBar} hoverIcons={this.state.hoverIcons}/>}
 
                 <Timeline>
-                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true} filled={this.state.currentSection === Sections.HOME}>
+                    <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true} filled={this.state.currentSection === Sections.HOME} isMobile={this.state.isMobile}>
                         <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin Konecny.</h1>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
@@ -310,7 +311,7 @@ export class Home extends Component {
                     {/* The main body, includes education, software projects, skills, and work experience */}
 
                     {/* ABOUT ME */}
-                    <TimelineElement dotId={'about-me'} filled={this.state.currentSection === Sections.ABOUT}>
+                    <TimelineElement dotId={'about-me'} filled={this.state.currentSection === Sections.ABOUT} isMobile={this.state.isMobile}>
                         {/*<div className={this.state.skipIntro ? {} : (this.state.showIntro ? 'fade-in' : 'fade-in-hide')}>*/}
                         <div className={this.state.isMobile ? 'about about-mobile' : 'about'}>
                             <div className={this.state.isMobile ? 'about-inner about-inner-mobile' : 'about-inner'}>
@@ -330,7 +331,7 @@ export class Home extends Component {
                                         </p>
                                     </div>
                                 </div>
-                                <div className={this.state.isMobile ? 'about-profile-mobile' : 'about-profile'}>
+                                <div className={this.state.isMobile ? 'about-profile about-profile-mobile' : 'about-profile'}>
                                     <div className={this.state.isMobile ? 'profile-crop profile-crop-mobile' : 'profile-crop'}>
                                         <img src={profile} className={this.state.isMobile ? 'profile-img profile-img-mobile' : 'profile-img'} alt={'Profile'}/>
                                     </div>
@@ -341,7 +342,7 @@ export class Home extends Component {
                                 <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
                                     <h3 className={'highlight-title'}>Languages</h3>
                                     <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
-                                        <div className={'highlight-skills'}>
+                                        <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Java</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Python</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>C/C++</div>
@@ -361,7 +362,7 @@ export class Home extends Component {
                                 <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
                                     <h3 className={'highlight-title'}>Software</h3>
                                     <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
-                                        <div className={'highlight-skills'}>
+                                        <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Linux</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Docker</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Jira</div>
@@ -382,7 +383,7 @@ export class Home extends Component {
                                 <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
                                     <h3 className={'highlight-title'}>Interests</h3>
                                     <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
-                                        <div className={'highlight-skills'}>
+                                        <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Running</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Snowboarding</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Traveling</div>
@@ -396,7 +397,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* EDUCATION */}
-                    <TimelineElement dotId={'education'} textOnly={true} filled={this.state.currentSection === Sections.EDUCATION}>
+                    <TimelineElement dotId={'education'} textOnly={true} filled={this.state.currentSection === Sections.EDUCATION} isMobile={this.state.isMobile}>
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <h2 id={'education'}>Education</h2>
                             <h3>Northeastern University, Boston, MA</h3>
@@ -441,7 +442,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/* WORK EXPERIENCE */}
-                    <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE}>
+                    <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE} isMobile={this.state.isMobile}>
                         <h2 id={'experience'}>Professional Experience</h2>
 
                         <h3>Places For Less</h3>
@@ -527,7 +528,7 @@ export class Home extends Component {
                     </TimelineElement>
 
                     {/*/!* FEATURED SOFTWARE PROJECTS *!/*/}
-                    <TimelineElement dotId={'projects'} filled={this.state.currentSection === Sections.PROJECTS}>
+                    <TimelineElement dotId={'projects'} filled={this.state.currentSection === Sections.PROJECTS} isMobile={this.state.isMobile}>
                         <div className={'projects'}>
                             <div className={this.state.isMobile ? 'project-body project-body-mobile' : 'project-body'}>
                                 <h2 id={'projects'}>Software Projects</h2>
@@ -615,7 +616,7 @@ export class Home extends Component {
                         </div>
                     </TimelineElement>
 
-                    <TimelineElement dotId={'contact'} textOnly={true} filled={this.state.currentSection === Sections.CONTACT}>
+                    <TimelineElement dotId={'contact'} textOnly={true} filled={this.state.currentSection === Sections.CONTACT} isMobile={this.state.isMobile}>
                         <div className={this.state.isMobile ? 'body body-mobile' : 'body'}>
                             <div className={'body-info'}>
                                 <div className={this.state.isMobile ? 'get-in-touch-mobile' : 'get-in-touch'}>

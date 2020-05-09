@@ -13,14 +13,15 @@
   }
 
   .expandable-content {
-    max-height: 400px;
-    transition: max-height 600ms ease-in;
-    overflow: hidden;
+    //max-height: 400px;
+    max-height: none;
+    //transition: max-height 600ms ease-in;
+    //overflow: hidden;
   }
 
   .expandable-hidden {
     max-height: 0;
-    transition: max-height 600ms ease-out;
+    //transition: max-height 600ms ease-out;
     overflow: hidden;
   }
 }

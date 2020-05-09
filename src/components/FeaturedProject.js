@@ -93,7 +93,7 @@ export class FeaturedProject extends Component {
                     </div>
                     {this.props.children}
                 </div>
-                <div className={'right-half'}>
+                <div className={this.props.isMobile ? 'right-half right-half-mobile' : 'right-half'}>
                     <div className={this.props.isMobile ? 'img-container img-container-mobile' : 'img-container'}>
                         <img className={'img-proj'} src={this.props.imageSrc} alt={this.props.text}/>
                     </div>

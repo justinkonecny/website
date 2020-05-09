@@ -164,19 +164,15 @@ button:hover {
 }
 
 .intro-mobile {
-  min-height: 100vh;
-}
+  height: 100%;
 
-.intro-inner-mobile {
-  margin: 15vh 5vw auto 5vw;
-}
+  .intro-inner-mobile {
 
-
-.intro-blurb-mobile {
-  margin: 0 10vw;
-  text-align: center;
-  font-size: 24px;
-  width: 80%;
+    .intro-blurb-mobile {
+      text-align: center;
+      width: auto;
+    }
+  }
 }
 
 .about {
@@ -217,35 +213,19 @@ button:hover {
 }
 
 .about-mobile {
-  min-height: 100vh;
-}
+  .about-inner-mobile {
+    flex-wrap: wrap;
 
-.about-inner-mobile {
-  flex-wrap: wrap;
-}
+    .about-text-mobile {
+      max-width: 100%;
+    }
 
-
-.about-text-mobile {
-  margin: 10px 13vw;
-  width: 100vw;
-}
-
-
-.about-profile-mobile {
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-
-.profile-crop-mobile {
-  margin: 20px auto;
-}
-
-
-.profile-img-mobile {
-  margin: -130px 0 0 -85px;
-  width: 145%;
+    .about-profile-mobile {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 
 .highlights {
@@ -263,19 +243,11 @@ button:hover {
       width: $content-margin;
       display: flex;
       flex-wrap: wrap;
-
-      .highlight-skill {
-      }
     }
-  }
-}
 
-.highlights-mobile {
-  flex-wrap: wrap;
-  padding: 10px 4vw;
-
-  .highlight-mobile {
-    width: 100%;
+    .highlight-skills-mobile {
+      width: auto;
+    }
   }
 }
 
@@ -300,7 +272,7 @@ button:hover {
 }
 
 .body-mobile {
-  margin: 10px 13vw;
+  width: 100%;
 }
 
 .list-container {
@@ -403,7 +375,6 @@ button:hover {
 }
 
 .project-body-mobile {
-  margin: 10px 13vw;
 }
 
 .featured-projects {
@@ -487,6 +458,11 @@ button:hover {
       border-radius: 5px;
     }
   }
+}
+
+.right-half-mobile {
+  width: 100%;
+  margin-top: 16px;
 }
 
 .img-container-mobile {
