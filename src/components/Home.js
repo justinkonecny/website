@@ -622,9 +622,6 @@ export class Home extends Component {
                                 <div className={this.state.isMobile ? 'get-in-touch-mobile' : 'get-in-touch'}>
                                     <h2 id={'contact'}>Let's Get In Touch</h2>
                                     <p>
-                                        I am currently seeking opportunities for a co-op position or internship for July through December 2020 in a software engineering role.
-                                    </p>
-                                    <p>
                                         Looking to chat about my work experiences or any of my projects? Feel free to reach out!
                                     </p>
                                 </div>
