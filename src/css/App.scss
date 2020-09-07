@@ -4,14 +4,20 @@ html, body {
   background-color: $gray-background;
   color: $off-white;
   scroll-behavior: smooth;
+  text-align: center;
+}
+
+#root {
+  background-color: $gray-background;
 }
 
 .App {
   text-align: left;
   font-family: 'IBM Plex Sans', sans-serif;
-  background-color: $gray-background;
   color: $off-white;
   scroll-behavior: smooth;
+  max-width: 2000px;
+  margin: auto;
 }
 
 .App-logo {
