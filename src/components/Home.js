@@ -232,21 +232,6 @@ export class Home extends Component {
         window.addEventListener('resize', this.resizeListener);
         window.addEventListener('scroll', this.scrollListener);
         this.resizeListener();
-        //
-        // if (window.innerWidth <= this.mobileThreshold) {
-        //     this.setState({isMobile: true});
-        //     setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMobileMS);
-        // } else {
-        //     // setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMS);
-        //     setTimeout(() => this.setState({showIntro: true, showNavBar: true}), this.introDelayMobileMS); // TODO
-        // }
-        //
-        // if (this.state.isMobile) {
-        //     document.getElementById('name').innerText = this.introText[1];
-        // } else {
-        // document.getElementById('name').innerText = this.introText[1]; // TODO
-        //     // setTimeout(this.typeName, 300);
-        // }
 
         this.setupSkillHover();
         this.setupNavHover();
@@ -320,13 +305,13 @@ export class Home extends Component {
                                     <div className={this.state.showAboutMe ? 'fade-in about-inside' : 'fade-in-hide about-inside'}>
                                         <p>
                                             Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
-                                            Cybersecurity at Northeastern University in Boston, Massachusetts. I recently completed
-                                            a six-month co-op at Rocket Software in Waltham, Massachusetts as a Software Engineer, and
-                                            I would love to tell you all about it.
+                                            Cybersecurity at Northeastern University in Boston, Massachusetts. I've recently completed
+                                            professional, full-stack software engineering co-op experiences, and I'm looking forward to
+                                            summer 2021 internship at Facebook. I would love to tell you all about my recent experiences!
                                         </p>
                                         <p>
                                             I love developing software across the stack, and I'm always looking for new opportunities
-                                            to expand my skill set. I'm seeking out a position to make meaningful software
+                                            to expand my skill set. I'm seeking a position to make meaningful software
                                             contributions to real products.
                                         </p>
                                     </div>
@@ -347,14 +332,15 @@ export class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-proficient'}>Python</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>C/C++</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>React</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>JavaScript</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>TypeScript</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>HTML/CSS</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Vue.js</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>PHP</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>JavaScript</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>TypeScript</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>HTML/CSS</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Vue.js</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>PHP</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Laravel</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>SQL</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Go</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Racket</div>
-                                            <div className={'skill-all highlight-skill skill-familiar'}>AMD64 Assembly</div>
                                         </div>
                                     </div>
                                 </div>
@@ -372,6 +358,7 @@ export class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-proficient'}>WebStorm</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>VS Code</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Amazon Web Services</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Salesforce</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>LaTeX</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>GDB</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Vim</div>
@@ -409,15 +396,17 @@ export class Home extends Component {
                             <ExpandableText text={'Relevant Coursework'}>
                                 <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                     <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
-                                        <li>Object-Oriented Design</li>
                                         <li>Algorithms & Data Structures</li>
                                         <li>Networks & Distributed Systems</li>
+                                        <li>Object-Oriented Design</li>
                                         <li>Network Security</li>
-                                        <li>Cryptography</li>
                                         <li>Computer Systems</li>
+                                        <li>Systems Security</li>
+                                        <li>Cryptography</li>
                                         <li>Theory of Computation</li>
                                     </div>
                                     <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                        <li>Software Vulnerabilities & Security</li>
                                         <li>Foundations of Cybersecurity</li>
                                         <li>Fundamentals of CS 1 & 2</li>
                                         <li>Discrete Structures</li>
@@ -445,33 +434,56 @@ export class Home extends Component {
                     <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE} isMobile={this.state.isMobile}>
                         <h2 id={'experience'}>Professional Experience</h2>
 
+                        <h3>Facebook</h3>
+                        <h4>Incoming Privacy Incident Engineering Intern<br/>May 2021 - August 2021 | Menlo Park, CA (Remote)</h4>
+                        {/*<h5>*/}
+                        {/*    Places For Less is building the first real estate platform to fundamentally change the way we rent,*/}
+                        {/*    pairing leading technology with an on-demand workforce to make an affordable and seamless apartment search experience.*/}
+                        {/*</h5>*/}
+                        <ExpandableText text={'Role + Responsibilities'}>
+                            <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Identify, advise, investigate, and mitigate privacy violations and exposures in various products</li>
+                                </div>
+                            </ul>
+                        </ExpandableText>
+                        {/*<div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>*/}
+                        {/*    <span className={'skill-all body-skill skill-proficient'}>PHP</span>*/}
+                        {/*</div>*/}
+
+                        <br/>
+
                         <h3>Places For Less</h3>
-                        <h4>Full Stack Software Engineer Co-op<br/>May - December 2020 | Boston, MA</h4>
+                        <h4>Full-Stack Software Engineer Co-op<br/>May 2020 - January 2021 | Boston, MA</h4>
                         <h5>
                             Places For Less is building the first real estate platform to fundamentally change the way we rent,
                             pairing leading technology with an on-demand workforce to make an affordable and seamless apartment search experience.
                         </h5>
-                        {/*<ExpandableText text={'Role + Responsibilities'}>*/}
-                        {/*    <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>*/}
-                        {/*        <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>*/}
-                        {/*            <li>TBD</li>*/}
-                        {/*        </div>*/}
-                        {/*    </ul>*/}
-                        {/*</ExpandableText>*/}
+                        <ExpandableText text={'Role + Responsibilities'}>
+                            <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Architected and developed full-stack solutions for email-based subscriptions, tracking anonymous website users, and reusable, customizable landing pages for marketing ads</li>
+                                    <li>Implemented new features, enhancements, and bug fixes in a PHP / Laravel and Vue.js</li>
+                                    <li>Queried MariaDB database using SQL and Eloquent ORM for aggregating metrics from tens of thousands of records to analyze effectiveness of various business efforts</li>
+                                    <li>Integrated PHP / Laravel backend API with Twilio SDK and Salesforce REST API to analyze client profiles and sync modifications based on website user interactions</li>
+                                </div>
+                            </ul>
+                        </ExpandableText>
                         <div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
-                            <span className={'skill-all body-skill skill-proficient'}>PHP</span>
-                            <span className={'skill-all body-skill skill-proficient'}>Laravel</span>
-                            {/*<span className={'skill-all body-skill skill-proficient'}>Eloquent</span>*/}
+                            <span className={'skill-all body-skill skill-proficient'}>PHP / Laravel</span>
                             <span className={'skill-all body-skill skill-proficient'}>Vue.js</span>
-                            {/*<span className={'skill-all body-skill skill-proficient'}>Asana</span>*/}
+                            <span className={'skill-all body-skill skill-proficient'}>JavaScript</span>
                             <span className={'skill-all body-skill skill-proficient'}>SQL</span>
+                            <span className={'skill-all body-skill skill-proficient'}>MariaDB</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Asana</span>
                             <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Salesforce API</span>
                         </div>
 
                         <br/>
 
                         <h3>Rocket Software</h3>
-                        <h4>Software Engineer Co-op<br/>July - December 2019 | Waltham, MA</h4>
+                        <h4>Software Engineer Co-op<br/>July 2019 - December 2019 | Waltham, MA</h4>
                         <h5>
                             Rocket Software is a software development firm that develops products that are designed to
                             run on mainframes, Linux/Unix/Windows, IBM i, cloud, and hybrid/virtualized systems.
@@ -501,7 +513,7 @@ export class Home extends Component {
                         <br/>
 
                         <h3>Vonage</h3>
-                        <h4>Information Security Associate<br/>July - August 2018 | Holmdel, NJ</h4>
+                        <h4>Information Security Associate<br/>July 2018 - August 2018 | Holmdel, NJ</h4>
                         <h5>
                             Vonage is a business cloud communications provider, headquartered in New Jersey. As an
                             Information Security Associate, I worked directly with the the Vonage Information Security
@@ -538,7 +550,7 @@ export class Home extends Component {
                                     <FeaturedProject title={'Calendays'} year={'2020'} imageSrc={calendays} isMobile={this.state.isMobile} linkGitHub={'https://github.com/justinkonecny/calendays'} linkExternal={'https://www.calendays.jkonecny.com/'}>
                                         <p>
                                             Web application used for shared event planning. Uses Firebase for user authentication and
-                                            storing user data (events, networks, profile). Once authenticated and verified, users can
+                                            a Go backend server connected to a MySQL database. Once authenticated and verified, users can
                                             create events to be displayed on their calendar. Users can also create named networks, which
                                             consist of groups of two or more users.
                                         </p>
@@ -546,6 +558,11 @@ export class Home extends Component {
                                             <span className={'skill-all proj-skill skill-proficient'}>React</span>
                                             <span className={'skill-all proj-skill skill-proficient'}>TypeScript</span>
                                             <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>AWS EC2</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>AWS RDS</span>
+                                            <span className={'skill-all proj-skill skill-proficient'}>Docker</span>
+                                            <span className={'skill-all proj-skill skill-knowledgeable'}>Go</span>
+                                            <span className={'skill-all proj-skill skill-knowledgeable'}>MySQL</span>
                                         </div>
                                     </FeaturedProject>
 
