@@ -58,6 +58,9 @@ export class Home extends Component {
             showNEUSkills: true,
             showVonageSkills: true,
             showRocketSkills: true,
+            showPlacesForLessSkills: true,
+            showFacebookSkills: true,
+            showMetaSkills: true,
             showLibertySkills: true,
             showAnimatorSkills: true,
             hoverIcons: new Set()
@@ -279,14 +282,12 @@ export class Home extends Component {
 
                 <Timeline>
                     <TimelineElement dotId={'name'} height={'100vh'} display={'flex'} start={true} filled={this.state.currentSection === Sections.HOME} isMobile={this.state.isMobile}>
-                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin Konecny.</h1>
+                        <h1 id={'name'} className={this.state.isMobile ? 'name-mobile' : 'name-desk'}>Hi, I’m Justin.</h1>
                         <div className={this.state.isMobile ? 'intro intro-mobile' : 'intro'}>
                             <div className={this.state.isMobile ? 'intro-inner intro-inner-mobile' : 'intro-inner'}>
                                 <div className={this.state.showIntro ? 'fade-in' : 'fade-in-hide'} style={this.state.showIntro ? {} : {'top': '5px'}}>
                                     <p className={this.state.isMobile ? 'intro-blurb intro-blurb-mobile' : 'intro-blurb'}>
-                                        &lt;\ I'm a <span className={'emphasis'}>Cybersecurity</span> major at
-                                        <span className={'emphasis'}> Northeastern University</span>, currently
-                                        pursuing a career in <span className={'emphasis'}>software engineering</span> /&gt;.
+                                        I'm a <span className={'emphasis'}>Privacy Engineer</span>.
                                     </p>
                                 </div>
                             </div>
@@ -304,14 +305,12 @@ export class Home extends Component {
                                     <h2 id={'about-me'}>About Me</h2>
                                     <div className={this.state.showAboutMe ? 'fade-in about-inside' : 'fade-in-hide about-inside'}>
                                         <p>
-                                            Hello! I'm Justin, a software engineer originally from New Jersey, currently studying
-                                            Cybersecurity at Northeastern University in Boston, Massachusetts. I've recently completed
-                                            professional, full-stack software engineering co-op experiences, and I'm looking forward to
-                                            summer 2021 internship at Facebook. I would love to tell you all about my recent experiences!
+                                            Hello! I'm Justin, a software engineer originally from New Jersey. I'm currently
+                                            living in the Bay Area, working to make an impact on privacy at Meta.
                                         </p>
                                         <p>
                                             I love developing software across the stack, and I'm always looking for new opportunities
-                                            to expand my skill set. I'm seeking a position to make meaningful software
+                                            to expand my skill set. I'm open position to make meaningful software
                                             contributions to real products.
                                         </p>
                                     </div>
@@ -328,19 +327,33 @@ export class Home extends Component {
                                     <h3 className={'highlight-title'}>Languages</h3>
                                     <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                         <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>Java</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Hack</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>PHP</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Python</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>C/C++</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Java</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>React</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>JavaScript</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>TypeScript</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>HTML/CSS</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>Vue.js</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>PHP</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Laravel</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>GraphQL</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Vue.js</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>SQL</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>C/C++</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Go</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Racket</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className={this.state.isMobile ? 'highlight highlight-mobile' : 'highlight'}>
+                                    <h3 className={'highlight-title'}>Privacy Skills</h3>
+                                    <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
+                                        <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Software Development</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Root Cause Analysis</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Variant Analysis</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Incident Impact Analysis</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Mitigation Validation</div>
                                         </div>
                                     </div>
                                 </div>
@@ -352,14 +365,10 @@ export class Home extends Component {
                                             <div className={'skill-all highlight-skill skill-proficient'}>Linux</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Docker</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Jira</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>IntelliJ</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>Eclipse</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>PyCharm</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>WebStorm</div>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>JetBrains</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>VS Code</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>Amazon Web Services</div>
+                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>AWS</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Salesforce</div>
-                                            <div className={'skill-all highlight-skill skill-knowledgeable'}>LaTeX</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>GDB</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>Vim</div>
                                             <div className={'skill-all highlight-skill skill-knowledgeable'}>XCode</div>
@@ -371,11 +380,11 @@ export class Home extends Component {
                                     <h3 className={'highlight-title'}>Interests</h3>
                                     <div className={this.state.showHighlights ? 'fade-in' : 'fade-in-hide'}>
                                         <div className={this.state.isMobile ? 'highlight-skills highlight-skills-mobile' : 'highlight-skills'}>
+                                            <div className={'skill-all highlight-skill skill-proficient'}>Dogs</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Running</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Snowboarding</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Traveling</div>
                                             <div className={'skill-all highlight-skill skill-proficient'}>Cooking</div>
-                                            <div className={'skill-all highlight-skill skill-proficient'}>Spanish</div>
                                         </div>
                                     </div>
                                 </div>
@@ -391,13 +400,14 @@ export class Home extends Component {
                             <h4>
                                 Bachelor of Science in Cybersecurity<br/>
                                 Minor in Mathematics<br/>
-                                Expected 2022
+                                <i>Summa Cum Laude</i>
                             </h4>
                             <ExpandableText text={'Relevant Coursework'}>
                                 <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                     <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
                                         <li>Algorithms & Data Structures</li>
                                         <li>Networks & Distributed Systems</li>
+                                        <li>Software Development</li>
                                         <li>Object-Oriented Design</li>
                                         <li>Network Security</li>
                                         <li>Computer Systems</li>
@@ -434,12 +444,8 @@ export class Home extends Component {
                     <TimelineElement dotId={'experience'} textOnly={true} filled={this.state.currentSection === Sections.EXPERIENCE} isMobile={this.state.isMobile}>
                         <h2 id={'experience'}>Professional Experience</h2>
 
-                        <h3>Facebook</h3>
-                        <h4>Incoming Privacy Incident Engineering Intern<br/>May 2021 - August 2021 | Menlo Park, CA (Remote)</h4>
-                        {/*<h5>*/}
-                        {/*    Places For Less is building the first real estate platform to fundamentally change the way we rent,*/}
-                        {/*    pairing leading technology with an on-demand workforce to make an affordable and seamless apartment search experience.*/}
-                        {/*</h5>*/}
+                        <h3>Meta</h3>
+                        <h4>Privacy Engineer<br/>February 2022 - Present | Menlo Park, CA</h4>
                         <ExpandableText text={'Role + Responsibilities'}>
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
                                 <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
@@ -447,17 +453,39 @@ export class Home extends Component {
                                 </div>
                             </ul>
                         </ExpandableText>
-                        {/*<div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>*/}
-                        {/*    <span className={'skill-all body-skill skill-proficient'}>PHP</span>*/}
-                        {/*</div>*/}
+                        <div id={'meta-skills'} className={this.state.showMetaSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                            <span className={'skill-all body-skill skill-proficient'}>Hack</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Python</span>
+                            <span className={'skill-all body-skill skill-proficient'}>GraphQL</span>
+                            <span className={'skill-all body-skill skill-proficient'}>React</span>
+                            <span className={'skill-all body-skill skill-proficient'}>SQL</span>
+                            <span className={'skill-all body-skill skill-knowledgeable'}>Machine Learning</span>
+                        </div>
+
+                        <br/>
+
+                        <h3>Facebook</h3>
+                        <h4>Privacy Engineering Intern<br/>May 2021 - August 2021 | Menlo Park, CA (Remote)</h4>
+                        <ExpandableText text={'Role + Responsibilities'}>
+                            <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
+                                <div className={this.state.isMobile ? 'list list-mobile' : 'list'}>
+                                    <li>Identify, advise, investigate, and mitigate privacy violations and exposures in various products</li>
+                                </div>
+                            </ul>
+                        </ExpandableText>
+                        <div id={'meta-skills'} className={this.state.showMetaSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                            <span className={'skill-all body-skill skill-proficient'}>Hack</span>
+                            <span className={'skill-all body-skill skill-proficient'}>React</span>
+                            <span className={'skill-all body-skill skill-proficient'}>SQL</span>
+                        </div>
 
                         <br/>
 
                         <h3>Places For Less</h3>
                         <h4>Full-Stack Software Engineer Co-op<br/>May 2020 - January 2021 | Boston, MA</h4>
                         <h5>
-                            Places For Less is building the first real estate platform to fundamentally change the way we rent,
-                            pairing leading technology with an on-demand workforce to make an affordable and seamless apartment search experience.
+                            Places For Less is a real estate platform fundamentally changing the way we rent,
+                            making an affordable and seamless apartment search experience.
                         </h5>
                         <ExpandableText text={'Role + Responsibilities'}>
                             <ul className={this.state.isMobile ? 'list-container list-container-mobile' : 'list-container'}>
@@ -469,7 +497,7 @@ export class Home extends Component {
                                 </div>
                             </ul>
                         </ExpandableText>
-                        <div id={'pfl-skills'} className={this.state.showRocketSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
+                        <div id={'pfl-skills'} className={this.state.showPlacesForLessSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
                             <span className={'skill-all body-skill skill-proficient'}>PHP / Laravel</span>
                             <span className={'skill-all body-skill skill-proficient'}>Vue.js</span>
                             <span className={'skill-all body-skill skill-proficient'}>JavaScript</span>
@@ -531,9 +559,9 @@ export class Home extends Component {
                         </ExpandableText>
                         <div id={'vonage-skills'} className={this.state.showVonageSkills ? 'skills fade-in' : 'skills fade-in-hide'}>
                             <span className={'skill-all body-skill skill-proficient'}>Python</span>
-                            <span className={'skill-all body-skill skill-proficient'}>Amazon Web Services</span>
-                            <span className={'skill-all body-skill skill-proficient'}>Linux CLI</span>
+                            <span className={'skill-all body-skill skill-proficient'}>AWS</span>
                             <span className={'skill-all body-skill skill-proficient'}>Git</span>
+                            <span className={'skill-all body-skill skill-proficient'}>Linux</span>
                             <span className={'skill-all body-skill skill-familiar'}>Nessus</span>
                             <span className={'skill-all body-skill'} style={this.skillCert}>AWS Certified Cloud Practitioner</span>
                         </div>
@@ -565,27 +593,35 @@ export class Home extends Component {
                                             <span className={'skill-all proj-skill skill-knowledgeable'}>MySQL</span>
                                         </div>
                                     </FeaturedProject>
-
-                                    <FeaturedProject title={'Liberty Cars'} year={'2019'} imageSrc={libertyCars} isMobile={this.state.isMobile} linkGitHub={'https://github.com/justinkonecny/liberty_cars'}>
-                                        <p>
-                                            An app developed with Vue.js for simultaneously searching multiple geographic
-                                            locations for a used car. Search criteria is entered by the user on the initial page,
-                                            which is then processed to make asynchronous requests for the listing data in each
-                                            location. The results are then presented to the user for viewing.
-                                        </p>
-                                        <div className={this.state.showLibertySkills ? 'project-skills fade-in' : 'project-skills fade-in-hide'}>
-                                            <span className={'skill-all proj-skill skill-proficient'}>Vue.js</span>
-                                            <span className={'skill-all proj-skill skill-proficient'}>JavaScript</span>
-                                            <span className={'skill-all proj-skill skill-proficient'}>Firebase</span>
-                                        </div>
-                                    </FeaturedProject>
                                 </div>
 
 
                                 <h3 id={'additional-projects'}>Additional Projects</h3>
                                 <div className={'additional-projects'}>
 
-                                    <Card title={'Cloud Service Analysis'} isMobile={this.state.isMobile} year={2020} tech={['Python', 'AWS', 'Kubernetes', 'etcd']} linkGitHub={'https://github.com/justinkonecny/cloud_service_analysis'}>
+                                    <Card title={'Liberty Cars'}
+                                          isMobile={this.state.isMobile}
+                                          year={2019}
+                                          tech={['Vue.js', 'JavaScript', 'Firebase']}
+                                          linkGitHub={'https://github.com/justinkonecny/liberty_cars'}
+                                    >
+                                        Developed web app in Vue.js to search and aggeregate the results from
+                                        multiple geographic locations to create a single, unified search interface.
+                                    </Card>
+
+                                    <Card title={'Remote Drone Attacks'}
+                                          isMobile={this.state.isMobile}
+                                          year={2021}
+                                          tech={['C++', 'Python', 'ArduPilot']}
+                                      >
+                                        Design effective mitigations against deauthentication Denial of Service (DoS) and GPS spoofing attacks.
+                                    </Card>
+
+                                    <Card title={'Cloud Service Analysis'}
+                                          isMobile={this.state.isMobile}
+                                          year={2020}
+                                          tech={['Python', 'AWS', 'Kubernetes', 'etcd']}
+                                          linkGitHub={'https://github.com/justinkonecny/cloud_service_analysis'}>
                                         Setup and monitored four 'honeypot' AWS EC2 instances running Kubernetes and etcd in varying
                                         geographic locations to analyze captured traffic.
                                     </Card>
@@ -621,12 +657,6 @@ export class Home extends Component {
                                         and pointer arithmetic, and bucket-style free-lists to allocate, reallocate,
                                         or free varying sized memory chunks.
                                     </Card>
-
-                                    <Card title={'Interactive Animator'} isMobile={this.state.isMobile} year={2018} tech={['Java', 'Swing']}>
-                                        An application with a GUI that reads textual animations and displays them in interactive, visual, textual, or SVG mode.
-                                        Users can pause, resume, restart, toggle looping, adjust speed, and export animation.
-                                    </Card>
-
                                 </div>
 
                             </div>
