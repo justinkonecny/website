@@ -1,0 +1,112 @@
+:root {
+    --gray-background: #27282E;
+    --gray-light: #767A7E;
+    --off-white: #DAE0E6;
+    --dark: #1B1C20;
+    --card: #4b4c53;
+
+    --green: #30B96E;
+    --green-hover: #2C7F54;
+    --green-active: #2C704E;
+
+    --error: #ff7d5b;
+
+    --content-margin: 65%;
+    --content-width-mobile: 85%;
+
+    --darkgrey: #21252b;
+    --lightgrey: #f3f3f3;
+}
+
+html, body {
+    background-color: var(--gray-background);
+    color: var(--off-white);
+    scroll-behavior: smooth;
+    text-align: left;
+    font-family: 'IBM Plex Sans', sans-serif;
+    max-width: 2000px;
+    margin: auto;
+}
+
+h1 {
+    margin: 0 0 30px 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 66pt;
+    font-weight: 900;
+    color: var(--off-white);
+}
+
+h2 {
+    margin: 0 0 32px 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 34pt;
+    font-weight: bold;
+    color: white;
+}
+
+h3 {
+    margin: 24px 0;
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+    font-size: 22pt;
+    font-weight: 600;
+    color: var(--green);
+}
+
+h4 {
+    margin: 12px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: white;
+}
+
+h5 {
+    margin: 6px 0 10px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--off-white);
+}
+
+h6 {
+    margin: 12px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14pt;
+    font-weight: 500;
+    color: var(--off-white);
+}
+
+p {
+    margin: 16px 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14pt;
+}
+
+p .body1 {
+    font-size: 20pt;
+}
+
+p .body3 {
+    font-size: 13pt;
+    text-align: center;
+}
+
+li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 14pt;
+}
+
+button {
+    border: none;
+    color: transparent;
+    background-color: transparent;
+    outline: 0;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.emphasis {
+    color: var(--green);
+}

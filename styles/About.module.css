@@ -1,0 +1,27 @@
+.aboutSplit {
+    display: flex;
+}
+
+.aboutText {
+    max-width: 60%;
+}
+
+.aboutProfile {
+    max-width: 40%;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.profileCrop {
+    margin: auto;
+    width: 260px;
+    height: 260px;
+    overflow: hidden;
+    border-radius: 33%;
+    filter: grayscale(100%);
+}
+
+.profileImg {
+    margin: -125px 0 0 -85px;
+}
