@@ -446,15 +446,16 @@ button:hover {
 .right-half {
   display: flex;
   width: 47.5%;
-
+  
   .img-container {
     //display: flex;
     //justify-content: flex-end;
     margin: auto;
     text-align: center;
-
+    
     .img-proj {
-      width: 90%;
+      max-width: 90%;
+      max-height: 600px;
       border-radius: 5px;
     }
   }
