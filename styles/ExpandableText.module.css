@@ -1,0 +1,69 @@
+.expandableContainer {
+    margin-bottom: 14px;
+}
+
+.expandableHeader {
+    display: flex;
+    align-items: center;
+}
+
+.expandableContainer p {
+    margin: 0 5px 0 0;
+}
+
+.expandableContent {
+    max-height: none;
+}
+
+.expandableHidden {
+    max-height: 0;
+    overflow: hidden;
+}
+
+.plusBtn {
+    height: 15px;
+}
+
+.plus {
+    position: relative;
+    width: 10px;
+    height: 2px;
+    background-color: var(--green);
+    transform: rotateZ(0deg);
+    transition: transform 500ms ease-in-out;
+}
+
+.plus::after {
+    content: '';
+    display: block;
+    position: relative;
+    bottom: 4px;
+    left: 4px;
+    width: 2px;
+    height: 10px;
+    background-color: var(--green);
+    transform: rotateZ(0deg);
+    transition: transform 500ms ease-in-out;
+}
+
+.x {
+    transform: rotateZ(45deg);
+    transition: transform 500ms ease-in-out;
+}
+
+.x::after {
+    transform: rotateZ(180deg);
+    transition: transform 500ms ease-in-out;
+}
+
+/*.plus-btn:hover {*/
+/*.plus, .x, .plus::after, .x::after {*/
+/*    background-color: $green-hover;*/
+/*}*/
+/*}*/
+
+/*.plus-btn:active {*/
+/*.plus, .x, .plus::after, .x::after {*/
+/*    background-color: $green-active;*/
+/*}*/
+/*}*/

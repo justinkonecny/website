@@ -3,7 +3,8 @@
 }
 
 .aboutText {
-    max-width: 60%;
+    max-width: 55%;
+    margin-right: 5%;
 }
 
 .aboutProfile {
@@ -15,13 +16,19 @@
 
 .profileCrop {
     margin: auto;
-    width: 260px;
-    height: 260px;
+    width: 350px;
+    height: 350px;
     overflow: hidden;
-    border-radius: 33%;
+    border-radius: 10%;
     filter: grayscale(100%);
+    transition: filter 0.10s ease-in;
+}
+
+.profileCrop:hover {
+    filter: grayscale(0);
+    transition: filter 0.10s ease-in;
 }
 
 .profileImg {
-    margin: -125px 0 0 -85px;
+    margin: 0 0 0 -55px;
 }

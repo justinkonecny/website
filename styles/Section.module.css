@@ -10,3 +10,7 @@
 .sectionContent {
     margin: auto;
 }
+
+.sectionLeft {
+    margin-left: 0;
+}
