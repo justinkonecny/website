@@ -15,19 +15,20 @@ export const About: FC<Props> = (props) => {
                 <div className={styles.aboutText}>
                     <h2>About Me</h2>
                     <p>
-                        Hey there, I&apos;m Justin, a software engineer from NJ. I&apos;m currently living in the Bay
-                        Area, and I&apos;m a <span className={'emphasis'}>Privacy Engineer</span> at Meta.
+                        Hey there, I&apos;m Justin, a software engineer from New Jersey. I&apos;m currently living in
+                        the New York area, with my pup, Jingle.
                     </p>
                     <p>
-                        I love developing software across the stack, and I&apos;m always looking for new opportunities
-                        to expand my skill set. I&apos;m looking for a position where I can make meaningful software
-                        contributions to real products.
+                        I&apos;m a <span className={'emphasis'}>Privacy Engineer</span> at <span
+                        className={'emphasis'}>Meta</span>. I love developing software across the stack, and I&apos;m
+                        always looking for new opportunities to expand my skill set. I&apos;m open to exploring
+                        positions where I can make meaningful software contributions to real products.
                     </p>
                 </div>
 
                 <div className={styles.aboutProfile}>
                     <div className={styles.profileCrop}>
-                        <Image src={profileImage} className={styles.profileImg} width={320} alt={'Profile'}/>
+                        <Image src={profileImage} className={styles.profileImg} width={400} alt={'Profile'}/>
                     </div>
                 </div>
             </div>

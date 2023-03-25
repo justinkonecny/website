@@ -1,6 +1,8 @@
 .sectionContainer {
     display: flex;
     padding: 10vh 10vw;
+    max-width: 900px;
+    margin: auto;
 }
 
 .sectionContainerFullHeight {

@@ -10,7 +10,8 @@ export const Education: FC<Props> = (props) => {
     return (
         <Section alignment={'left'}>
             <h2>Education</h2>
-            <h3>Northeastern University, Boston, MA</h3>
+            <h3>Northeastern University</h3>
+            <h4>2017 - 2021 | Boston, MA</h4>
             <h4>
                 Bachelor of Science in Cybersecurity<br/>
                 Minor in Mathematics<br/>
@@ -44,7 +45,7 @@ export const Education: FC<Props> = (props) => {
             </ExpandableText>
             <Skills
                 proficient={['Java', 'Python', 'Git']}
-                knowledgeable={['C', 'C++', 'Racket', 'LaTeX']}
+                knowledgeable={['AWS', 'C', 'C++', 'Racket', 'LaTeX']}
                 familiar={['AMD64 Assembly']}
             />
         </Section>

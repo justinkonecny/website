@@ -1,4 +1,4 @@
-import React, {FC} from 'react';
+import React, {createRef, FC, useEffect, useRef} from 'react';
 import style from '../../styles/Skills.module.css';
 
 interface Props {
@@ -15,10 +15,28 @@ export const Skills: FC<Props> = ({
                                       familiar,
                                   }) => {
 
+    // ref used to animate child elements
+    const ref = useRef<HTMLDivElement>(null);
+
+    // setup event listeners for animating skills on hover
+    useEffect(() => {
+        const skills = Array.from(ref.current?.children ?? []);
+        for (const skill of skills) {
+            // on hover, add class to animate the skill
+            skill.addEventListener('mouseover', function (e) {
+                skill.classList.add(style.skillAnimation)
+            })
+            // on animation end, remove the animation class
+            skill.addEventListener('animationend', function (e) {
+                skill.classList.remove(style.skillAnimation)
+            })
+        }
+    }, []);
+
     return (
         <div className={header ? style.highlight : style.highlightNoHeader}>
             {header && (<h3 className={style.highlightTitle}>{header}</h3>)}
-            <div className={style.highlightSkills}>
+            <div ref={ref} className={style.highlightSkills}>
                 {proficient && proficient.map(s =>
                     (<div key={s}
                           className={[style.skillAll, style.highlightSkill, style.skillProficient].join(' ')}>{s}</div>)

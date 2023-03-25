@@ -9,23 +9,23 @@ interface Props {
 export const AllSkills: FC<Props> = (props) => {
     return (
         <div className={style.highlights}>
-            <Skills header={'Languages'}
+            <Skills header={'Languages, Libraries, & Frameworks'}
                     proficient={[
-                        'Hack', 'PHP', 'Python', 'Java', 'React', 'JavaScript', 'TypeScript', 'HTML/CSS', 'Laravel'
+                        'Hack', 'PHP', 'GraphQL', 'Python', 'Laravel',  'React', 'JavaScript', 'TypeScript', 'Java', 'HTML', 'CSS',
                     ]}
-                    knowledgeable={['GraphQL', 'Vue.js', 'SQL', 'C', 'C++', 'Go']}
+                    knowledgeable={['Vue.js', 'SQL', 'C', 'C++', 'Go']}
+            />
+            <Skills header={'Other Software'}
+                    proficient={['Git', 'Docker']}
+                    knowledgeable={['AWS', 'Salesforce', 'GDB']}
             />
             <Skills header={'Privacy Skills'}
                     proficient={[
                         'Software Development', 'Root Cause Analysis', 'Variant Analysis', 'Incident Impact Analysis',
-                        'Mitigation Validation'
+                        'Mitigation Validation', 'Remediation Validation', 'Data Lineage Analysis'
                     ]}
             />
-            <Skills header={'Software'}
-                    proficient={['Linux', 'Docker', 'Jira', 'JetBrains', 'VS Code']}
-                    knowledgeable={['AWS', 'Salesforce', 'GDB', 'VIM', 'XCode']}
-            />
-            <Skills header={'Interests'}
+            <Skills header={'Personal Interests'}
                     proficient={['Dogs', 'Running', 'Snowboarding', 'Traveling', 'Cooking']}
             />
         </div>
