@@ -22,6 +22,7 @@
 
 .plusBtn {
     height: 15px;
+    margin-left: 4px;
 }
 
 .plus {
@@ -56,14 +57,10 @@
     transition: transform 500ms ease-in-out;
 }
 
-/*.plus-btn:hover {*/
-/*.plus, .x, .plus::after, .x::after {*/
-/*    background-color: $green-hover;*/
-/*}*/
-/*}*/
+.plusBtn:hover .plus, .plusBtn:hover .x, .plusBtn:hover .plus::after, .plusBtn:hover .x::after {
+    background-color: var(--green-hover);
+}
 
-/*.plus-btn:active {*/
-/*.plus, .x, .plus::after, .x::after {*/
-/*    background-color: $green-active;*/
-/*}*/
-/*}*/
+.plusBtn:active .plus, .plusBtn:active .x, .plusBtn:active .plus::after, .plusBtn:active .x::after {
+    background-color: var(--green-active);
+}

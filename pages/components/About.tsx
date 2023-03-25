@@ -28,7 +28,7 @@ export const About: FC<Props> = (props) => {
 
                 <div className={styles.aboutProfile}>
                     <div className={styles.profileCrop}>
-                        <Image src={profileImage} className={styles.profileImg} width={400} alt={'Profile'}/>
+                        <Image src={profileImage} className={styles.profileImg} width={300} alt={'Profile'}/>
                     </div>
                 </div>
             </div>

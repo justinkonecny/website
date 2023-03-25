@@ -16,7 +16,8 @@
 
 .profileCrop {
     margin: auto;
-    width: 350px;
+    min-width: 250px;
+    max-width: 350px;
     height: 350px;
     overflow: hidden;
     border-radius: 10%;
@@ -30,5 +31,5 @@
 }
 
 .profileImg {
-    margin: 0 0 0 -55px;
+    margin: 0;
 }
