@@ -17,3 +17,5 @@ export const Hero: FC<Props> = (props) => {
         </Section>
     );
 }
+
+export default Hero;

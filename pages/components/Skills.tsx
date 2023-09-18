@@ -53,3 +53,5 @@ export const Skills: FC<Props> = ({
         </div>
     );
 }
+
+export default Skills;

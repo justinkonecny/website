@@ -51,3 +51,5 @@ export const Education: FC<Props> = (props) => {
         </Section>
     );
 }
+
+export default Education;

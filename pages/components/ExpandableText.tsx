@@ -27,3 +27,5 @@ export const ExpandableText: FC<PropsWithChildren<Props>> = ({text, children}) =
         </div>
     );
 }
+
+export default ExpandableText;

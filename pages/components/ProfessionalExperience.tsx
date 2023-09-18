@@ -125,3 +125,5 @@ export const ProfessionalExperience: FC<Props> = (props) => {
         </Section>
     );
 }
+
+export default ProfessionalExperience;

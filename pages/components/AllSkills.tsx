@@ -31,3 +31,5 @@ export const AllSkills: FC<Props> = (props) => {
         </div>
     );
 }
+
+export default AllSkills;
